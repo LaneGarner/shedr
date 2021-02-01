@@ -1,4 +1,4 @@
-# Shedr app
+# shedr app
 
 ## Components
 
