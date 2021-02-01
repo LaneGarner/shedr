@@ -1,13 +1,13 @@
-#Shedr app
+# Shedr app
 
-##Components
+## Components
 
-*Home
-*Header
-*Footer
-*Metrodrone
-*Tuner
-*Profile
-*Menu
-*Record
-*Stats
+* Home
+* Header
+* Footer
+* Metrodrone
+* Tuner
+* Profile
+* Menu
+* Record
+* Stats
