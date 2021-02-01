@@ -2,9 +2,9 @@
 
 ## Components
 
-* Home
 * Header
 * Footer
+* Home
 * Metrodrone
 * Tuner
 * Profile
