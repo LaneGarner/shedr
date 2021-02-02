@@ -1,5 +1,5 @@
 import { RecordIcon } from "../icons/RecordIcon";
-// import { MetDroneIcon } from "../icons/MetDroneIcon";
+import { MetDroneIcon } from "../icons/MetDroneIcon";
 import { ForkIcon } from "../icons/ForkIcon";
 
 export const Footer = () => {
@@ -12,7 +12,7 @@ export const Footer = () => {
     return (
         <footer syle={styles.footer}>
             <RecordIcon />
-            {/* <MetDroneIcon /> */}
+            <MetDroneIcon />
             <ForkIcon />
         </footer>
     )
