@@ -2,10 +2,10 @@
 
 ## Components
 
-* Header
-* Footer
-* Home
-* New practice session form
+* Header X
+* Footer X
+* Home - need to take out of App.js and put in Home.js?
+* Start new practice session form
 * Metrodrone
 * Tuner
 * Profile
