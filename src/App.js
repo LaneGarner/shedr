@@ -1,12 +1,43 @@
-import './App.css';
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+// import './App.css';
+// import { Header } from "./components/Header";
+// import { Footer } from "./components/Footer";
+// import { Home } from "./components/Home";
+// import { Logo } from "./icons/Logo";
 
-export const App = () => {
+
+// export const App = () => {
+//   return (
+//     <>
+//       <Header />
+//       <Home />
+//       <Footer />
+//     </>
+//   );
+// }
+
+
+
+
+
+import React from 'react';
+import {Header} from './components/Header'
+import {Footer} from './components/Footer'
+import Router from './Router'
+import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+// import { Provider } from 'react-redux'
+// import store from './redux/store'
+
+const App = () => {
   return (
-    <>
-      <Header />
-      <Footer />
-    </>
+    // <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <Router />
+        <Footer />
+      </BrowserRouter>
+    // </Provider>
   );
 }
+
+export default App

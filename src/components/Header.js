@@ -1,21 +1,48 @@
+import { findByLabelText } from '@testing-library/react';
 import React from 'react'
 import { HomeIcon } from "../icons/HomeIcon";
 import { UserIcon } from "../icons/UserIcon";
+import { Link } from 'react-router-dom'
+
 import { VegBurgIcon } from "../icons/VegBurgIcon";
+import VegBurg from "./VegBurg"
 
 export const Header = () => {
     const styles = {
         header: {
-            backgroundColor: "#333",
-            color: "#fff"
+            backgroundColor: "#272727",
+            color: "#fff",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "1em",
+            paddingBottom: "1em",
+            paddingLeft: "2em",
+            paddingRight: "2em",
+            height: "4em",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+        },
+        nav: {
+            display: "flex",
+            justifyContent: "space-around",
+            width: "10%",
         }
     };
     return (
         <header style={styles.header}>
-            <HomeIcon />
-            <UserIcon />
-            <h1>shedr</h1>
-            <VegBurgIcon />
+            <nav style={styles.nav}>
+                <Link to="/">
+                    <HomeIcon fill={"orange"} />
+                </Link>
+                <Link to="/user">
+                    <UserIcon />
+                </Link>
+            </nav>
+            {/* <VegBurgIcon /> */}
+            <VegBurg />
         </header>
     )
 }

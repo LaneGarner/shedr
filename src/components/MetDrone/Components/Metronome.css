@@ -1,0 +1,28 @@
+.metronome {
+    text-align: center;
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.bpm-slider input {
+    width: 100%;
+    margin: 10px;
+}
+
+.metronome button {
+    background: #333;
+    padding: .8em;
+    margin: .5em;
+    border: none;
+    border-radius: 2em;
+    outline: 2em;
+    /* width: 1em; */
+    color: #fff;
+    font-size: 18px;
+    width: 100px;
+}
+
+.Slider {
+    color: #333;
+}
