@@ -1,134 +1,136 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import './Metronome.css';
 import * as Tone from 'tone'
 import { TimeSigSelect } from "./TimeSigSelect";
 import { Accent } from "./Accent"
-import click1 from '../click1.flac';
-import click2 from '../click2.wav';
-import click3 from '../click3.wav';
+import click1Sample from '../click1.flac';
+import click2Sample from '../click2.wav';
+import click3Sample from '../click3.wav';
 import StartAudioContext from 'startaudiocontext'
 
-class Metronome extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            playing: false,
-            bpm: 120,
-            timeSig: 4,
-            subdivision: "",
-            position: "0:0:0",
-            accent: false,
-    };
-    this.click1 = new Tone.Player(click1).toDestination()
-    this.click2 = new Tone.Player(click2).toDestination()
-    this.click3 = new Tone.Player(click3).toDestination()
-    }
+const Metronome = () => {
+    const [ playing, setPlaying ] = useState (false);
+    const [ bpm, setBpm ] = useState(120);
+    const [ timeSig, setTimeSig ] = useState(4);
+    const [ subdivision, setSubDivision ] = useState("");
+    const [ position, SetPosition ] = "0:0:0";
+    const [ accent, setAccent ] = useState(false);
 
-    handleBpmChange = event => {
-        const bpm = event.target.value;
+    const click1 = new Tone.Player(click1Sample).toDestination()
+    const click2 = new Tone.Player(click2Sample).toDestination()
+    const click3 = new Tone.Player(click3Sample).toDestination()
+
+    const handleBpmChange = e => {
+        const newBpm = e.target.value;
         Tone.Transport.cancel();
         Tone.Transport.stop();
         Tone.Transport.position = "0:0:0"
         
-        if(this.state.playing) {
-            this.setState({ bpm }, this.playClick)
+        if(playing) {
+            setBpm(newBpm)
+            playClick()
             Tone.Transport.start()
         } else {
-            this.setState({ bpm });
+            setBpm(newBpm)
         }
     }
 
-    handleTimeSigChange = e => {
-        const newTimeSig = parseInt(e.target.value);
-        const { playing } = this.state
-        
+    const handleTimeSigChange = e => {
+        const newTimeSig = parseInt(e.target.value);        
         
         if(playing) {
             Tone.Transport.cancel();
             Tone.Transport.stop();
             Tone.Transport.position = "0:0:0"
-            this.setState({
-                playing: false
-            })
-            this.setState({
-                playing: true,
-                timeSig: newTimeSig,
-            }, this.playClick)
+            setPlaying(false)
+            setPlaying(true)
+            setTimeSig(newTimeSig)
+            playClick()
             Tone.Transport.start()
         } else {
-            this.setState({ timeSig: newTimeSig });
+            setTimeSig(newTimeSig)
         }
     }
 
-    handleAccentChange = (e) => {
-        // const accent = e.target.value
+    const handleAccentChange = (e) => {
         Tone.Transport.cancel();
         Tone.Transport.stop();
         Tone.Transport.position = 0
 
-        if(this.state.playing) {
-            this.setState({accent: !this.state.accent}, this.playClick)
+        if(playing) {
+            setAccent(!accent)
+            playClick()
             Tone.Transport.start()
         } else {
-            this.setState({accent: !this.state.accent})
+            setAccent(!accent)
         }
     }
+
+    useEffect(() => {
+        Tone.Transport.cancel();
+        Tone.Transport.stop();
+        Tone.Transport.position = 0
+
+        if (playing) {
+            playClick()
+            Tone.Transport.start()
+        } 
+
+        // accent ? console.log('accent') : console.log('no accent')
+
+    }, [accent])
     
-    startStop = () => {
-        // const { time } = this.state;
+    const startStop = () => {
+        // StartAudioContext(Tone.context)
+        Tone.start()
 
-        StartAudioContext(Tone.context)
-
-        if(!this.state.playing) {
-            this.setState({
-                playing: true
-            }, this.playClick)
+        if(!playing) {
+            setPlaying(true)
+            playClick()
         } else {
             Tone.Transport.cancel();
             Tone.Transport.stop();
-
-            this.setState({
-                playing: false
-            });
+            setPlaying(false)
         }
     }
 
-    playClick = () => {
-        const bpmNum = parseInt(this.state.bpm);
-        const { timeSig } = this.state;
-        // const osc = new Tone.Oscillator().toDestination();
+    const playClick = () => {
+        const bpmNum = parseInt(bpm);
         
         Tone.Transport.bpm.value = bpmNum;
         Tone.Transport.timeSignature = timeSig;        
         
-        this.state.accent && (
+        accent && (
         Tone.Transport.scheduleRepeat((time) => {
-            this.click1.start(time)
+            click1.start(time)
         }, "1m")
         )        
         Tone.Transport.start();
         
         Tone.Transport.scheduleRepeat((time) => {
-            this.setState({
-                position: Tone.Transport.position
-            });
-            this.click3.start(time)
+            // setPosition(Tone.Transport.position)
+            click3.start(time)
         }, "4n");
 
     }
 
-    render() {
-        const { playing, bpm } = this.state;
+
         const newPosition = parseInt(Tone.Transport.position.split(':')[1])
 
         return (
             <div className="metronome">
-            <Accent handleAccentChange={this.handleAccentChange}/>
-            <TimeSigSelect handleTimeSigChange={this.handleTimeSigChange} />
+            <h1 style={{color: "white"}}>met</h1>
+            <div>
+                <input type="checkbox" id="checkbox" value="accent" onChange={() => setAccent(!accent)} />
+                <label htmlFor="Accent">Accent</label>
+            </div>
+            {/* <Accent handleAccentChange={handleAccentChange}/> */}
+            <TimeSigSelect handleTimeSigChange={handleTimeSigChange} />
             <div className="bpm-slider">
                 <label htmlFor="bpmSlider">Tempo</label>
                 <div>{bpm} BPM</div>
+                
                 <input
                 id="bpmSlider"
                 className="Slider"
@@ -136,17 +138,17 @@ class Metronome extends Component {
                 min="01"
                 max="500"
                 value={bpm}
-                onChange={this.handleBpmChange} />
+                onChange={handleBpmChange} />
             </div>
-            <button id="startStopBtn" onClick={this.startStop}>
+            <button id="startStopBtn" onClick={startStop}>
                 {playing ? 'Stop' : 'Start'}
             </button>
             <button>Tap</button>
-            {playing ? <h3 style={{"fontSize": "6em", "color":"#333"}}>{newPosition + 1}</h3> : <div></div>}
+            {playing ? <h3 style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
             
             </div>
         );
-    }
+    // }
 }
 
 export default Metronome;

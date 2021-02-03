@@ -1,3 +1,5 @@
+import { ForkIcon } from "../icons/ForkIcon";
+
 export const Fork = () => {
 
     const styles = {
@@ -8,11 +10,13 @@ export const Fork = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            color: "white",
         },
     };
     return (
         <div style={styles.forkContainer}>
-            <h1>Fork</h1>
+            <ForkIcon />
+            <h1>fork</h1>
         </div>
     )
 }

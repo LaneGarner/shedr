@@ -8,17 +8,34 @@ export const MetDrone = () => {
         metDroneContainer: {
             paddingTop: "10em",
             backgroundColor: "#333",
-            height: "100vh",
+            height: "80vh",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            // flexDirection: "column",
+            alignItems: "flex-start",
+            justifyItems: "center",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
         },
+        metDroneHeadline: {
+            textAlign: "center",
+            color: "#5AC18E",
+        },
+        // metDroneComponentContainer: {
+        //     display: "flex",
+        //     alignItems: "center",
+        //     justifyContent: "center",
+        //     justifyItems: "center",
+        // }
     };
     return (
-        <div style={styles.metDroneContainer}>
-            <h1>MetDrone</h1>
-            <Drone />
-            <Metronome />
-        </div>
+        // <div>
+            <div style={styles.metDroneContainer}>
+            <h1 style={styles.metDroneHeadline}>MetDrone</h1>
+                {/* <div style={styles.metDroneComponentContainer}> */}
+                    <Metronome />
+                    <Drone />
+                {/* </div> */}
+            </div>
+        // </div>
     )
 }

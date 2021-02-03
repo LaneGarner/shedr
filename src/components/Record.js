@@ -8,6 +8,7 @@ export const Record = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            color: "white",
         },
     };
     return (
