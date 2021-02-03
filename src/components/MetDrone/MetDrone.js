@@ -6,7 +6,7 @@ export const MetDrone = () => {
 
     const styles = {
         metDroneContainer: {
-            paddingTop: "10em",
+            paddingTop: "8em",
             backgroundColor: "#333",
             height: "80vh",
             // display: "flex",
@@ -19,6 +19,7 @@ export const MetDrone = () => {
         metDroneHeadline: {
             textAlign: "center",
             color: "#5AC18E",
+            paddingBottom: "1em",
         },
         // metDroneComponentContainer: {
         //     display: "flex",

@@ -14,7 +14,7 @@ const Metronome = () => {
     const [ bpm, setBpm ] = useState(120);
     const [ timeSig, setTimeSig ] = useState(4);
     const [ subdivision, setSubDivision ] = useState("");
-    const [ position, SetPosition ] = "0:0:0";
+    const [ position, setPosition ] = useState("0:0:0");
     const [ accent, setAccent ] = useState(false);
 
     const click1 = new Tone.Player(click1Sample).toDestination()
@@ -80,6 +80,10 @@ const Metronome = () => {
         // accent ? console.log('accent') : console.log('no accent')
 
     }, [accent])
+
+    // useEffect(() => {
+    //     console.log(object)
+    // })
     
     const startStop = () => {
         // StartAudioContext(Tone.context)
@@ -109,8 +113,10 @@ const Metronome = () => {
         Tone.Transport.start();
         
         Tone.Transport.scheduleRepeat((time) => {
-            // setPosition(Tone.Transport.position)
+            // const newPosition = Tone.Transport.position
+            setPosition(Tone.Transport.position)
             click3.start(time)
+            console.log(Tone.Transport.position)
         }, "4n");
 
     }
@@ -118,9 +124,15 @@ const Metronome = () => {
 
         const newPosition = parseInt(Tone.Transport.position.split(':')[1])
 
+        let metTitleColor
+
+        useEffect(()=> {
+            {playing === true ? metTitleColor = "#5AC18E" : metTitleColor = "white"}
+        }, [playing])
+
         return (
             <div className="metronome">
-            <h1 style={{color: "white"}}>met</h1>
+            <h1 style={{color: {metTitleColor}}}>met</h1>
             <div>
                 <input type="checkbox" id="checkbox" value="accent" onChange={() => setAccent(!accent)} />
                 <label htmlFor="Accent">Accent</label>
@@ -144,7 +156,7 @@ const Metronome = () => {
                 {playing ? 'Stop' : 'Start'}
             </button>
             <button>Tap</button>
-            {playing ? <h3 style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
+            {playing ? <h3 className="Count" style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
             
             </div>
         );
