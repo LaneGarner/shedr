@@ -8,6 +8,9 @@ import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
 import StartAudioContext from 'startaudiocontext'
 
+const click1 = new Tone.Player(click1Sample).toDestination()
+const click2 = new Tone.Player(click2Sample).toDestination()
+const click3 = new Tone.Player(click3Sample).toDestination()
 
 const Metronome = () => {
     const [ playing, setPlaying ] = useState (false);
@@ -17,76 +20,48 @@ const Metronome = () => {
     const [ position, setPosition ] = useState("0:0:0");
     const [ accent, setAccent ] = useState(false);
 
-    const click1 = new Tone.Player(click1Sample).toDestination()
-    const click2 = new Tone.Player(click2Sample).toDestination()
-    const click3 = new Tone.Player(click3Sample).toDestination()
 
-    const handleBpmChange = e => {
-        const newBpm = e.target.value;
-        Tone.Transport.cancel();
-        Tone.Transport.stop();
-        Tone.Transport.position = "0:0:0"
+    // const handleBpmChange = e => {
+    //     const newBpm = e.target.value;
+    //     Tone.Transport.cancel();
+    //     Tone.Transport.stop();
+    //     Tone.Transport.position = "0:0:0"
         
-        if(playing) {
-            setBpm(newBpm)
-            playClick()
-            Tone.Transport.start()
-        } else {
-            setBpm(newBpm)
-        }
-    }
+    //     if(playing) {
+    //         setBpm(newBpm)
+    //         playClick()
+    //         Tone.Transport.start()
+    //     } else {
+    //         setBpm(newBpm)
+    //     }
+    // }
 
-    const handleTimeSigChange = e => {
-        const newTimeSig = parseInt(e.target.value);        
+    // const handleTimeSigChange = e => {
+    //     const newTimeSig = parseInt(e.target.value);        
         
-        if(playing) {
-            Tone.Transport.cancel();
-            Tone.Transport.stop();
-            Tone.Transport.position = "0:0:0"
-            setPlaying(false)
-            setPlaying(true)
-            setTimeSig(newTimeSig)
-            playClick()
-            Tone.Transport.start()
-        } else {
-            setTimeSig(newTimeSig)
-        }
-    }
+    //     if(playing) {
+    //         // Tone.Transport.cancel();
 
-    const handleAccentChange = (e) => {
-        Tone.Transport.cancel();
-        Tone.Transport.stop();
-        Tone.Transport.position = 0
+    //         playClick()
+    //     } else {
+    //         setTimeSig(newTimeSig)
+    //     }
+    // }
 
-        if(playing) {
-            setAccent(!accent)
-            playClick()
-            Tone.Transport.start()
-        } else {
-            setAccent(!accent)
-        }
-    }
+
 
     useEffect(() => {
-        Tone.Transport.cancel();
-        Tone.Transport.stop();
-        Tone.Transport.position = 0
-
+        
         if (playing) {
+            stopClick()
             playClick()
-            Tone.Transport.start()
         } 
 
-        // accent ? console.log('accent') : console.log('no accent')
+    }, [accent, timeSig, bpm])
 
-    }, [accent])
-
-    // useEffect(() => {
-    //     console.log(object)
-    // })
     
     const startStop = () => {
-        // StartAudioContext(Tone.context)
+        StartAudioContext(Tone.context)
         Tone.start()
 
         if(!playing) {
@@ -110,47 +85,51 @@ const Metronome = () => {
             click1.start(time)
         }, "1m")
         )        
-        Tone.Transport.start();
         
         Tone.Transport.scheduleRepeat((time) => {
-            // const newPosition = Tone.Transport.position
             setPosition(Tone.Transport.position)
             click3.start(time)
             console.log(Tone.Transport.position)
         }, "4n");
+        
+        Tone.Transport.start();
+    }
+
+    const stopClick = () => {
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
+        Tone.Transport.position = "0:0:0"
 
     }
 
 
         const newPosition = parseInt(Tone.Transport.position.split(':')[1])
 
-        let metTitleColor
-
-        useEffect(()=> {
-            {playing === true ? metTitleColor = "#5AC18E" : metTitleColor = "white"}
-        }, [playing])
-
         return (
             <div className="metronome">
-            <h1 style={{color: {metTitleColor}}}>met</h1>
+            {playing ? <h1 style={{color: "orange"}}>met</h1> : <h1 style={{color: "white"}}>met</h1>}
             <div>
                 <input type="checkbox" id="checkbox" value="accent" onChange={() => setAccent(!accent)} />
                 <label htmlFor="Accent">Accent</label>
             </div>
-            {/* <Accent handleAccentChange={handleAccentChange}/> */}
-            <TimeSigSelect handleTimeSigChange={handleTimeSigChange} />
+            <label htmlFor="selectTimeSig">Time signature</label>
+            <select onChange={(e) => setTimeSig(parseInt(e.target.value))} name="selectTimeSig" id="selectTimeSig">
+                <option value="4">4/4</option>
+                <option value="3">3/4</option>
+                <option value="5">5/4</option>
+                <option value="7">7/4</option>
+            </select>
             <div className="bpm-slider">
                 <label htmlFor="bpmSlider">Tempo</label>
                 <div>{bpm} BPM</div>
-                
                 <input
-                id="bpmSlider"
-                className="Slider"
-                type="range"
-                min="01"
-                max="500"
-                value={bpm}
-                onChange={handleBpmChange} />
+                    id="bpmSlider"
+                    className="Slider"
+                    type="range"
+                    min="01"
+                    max="500"
+                    value={bpm}
+                    onChange={(e) => setBpm(e.target.value)} />
             </div>
             <button id="startStopBtn" onClick={startStop}>
                 {playing ? 'Stop' : 'Start'}

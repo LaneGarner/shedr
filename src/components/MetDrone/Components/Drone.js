@@ -4,6 +4,7 @@ import * as Tone from 'tone'
 import StartAudioContext from 'startaudiocontext'
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
+import { Chord } from "@tonaljs/tonal";
 
 
 export const Drone = () => {
