@@ -9,12 +9,12 @@ export const MetDrone = () => {
             paddingTop: "10em",
             backgroundColor: "#333",
             height: "80vh",
-            display: "flex",
-            // flexDirection: "column",
-            alignItems: "flex-start",
-            justifyItems: "center",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
+            // display: "flex",
+            // // flexDirection: "column",
+            // alignItems: "flex-start",
+            // justifyItems: "center",
+            // justifyContent: "space-around",
+            // flexWrap: "wrap",
         },
         metDroneHeadline: {
             textAlign: "center",
@@ -26,15 +26,23 @@ export const MetDrone = () => {
         //     justifyContent: "center",
         //     justifyItems: "center",
         // }
+        metDroneComponentContainer: {
+            display: "flex",
+            // flexDirection: "column",
+            alignItems: "flex-start",
+            justifyItems: "center",
+            justifyContent: "space-around",
+            flexWrap: "wrap",
+        }
     };
     return (
         // <div>
             <div style={styles.metDroneContainer}>
             <h1 style={styles.metDroneHeadline}>MetDrone</h1>
-                {/* <div style={styles.metDroneComponentContainer}> */}
+                <div style={styles.metDroneComponentContainer}>
                     <Metronome />
                     <Drone />
-                {/* </div> */}
+                </div>
             </div>
         // </div>
     )
