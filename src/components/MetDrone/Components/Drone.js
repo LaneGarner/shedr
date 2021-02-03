@@ -8,7 +8,7 @@ import { Chord } from "@tonaljs/tonal";
 
 
 export const Drone = () => {
-    const [playing, setPlaying] = useState(false);
+    const [droning, setDroning] = useState(false);
     const [volume, setVolume] = useState(50);
 
     const chord = ["C2", "C3", "C4", "Eb4", "G4", "Bb4", "D4"]
@@ -18,7 +18,7 @@ export const Drone = () => {
             type: "sine"
         },
         envelope: {
-            attack: 3,
+            attack: 4,
             decay: 2,
             sustain: 1,
             release: 1.5,
@@ -30,29 +30,34 @@ export const Drone = () => {
 
     synth.chain( filter, verb, wide, Tone.Destination)
 
-    const handleDroneStart = () => {
-        StartAudioContext(Tone.context)
-        setPlaying(true)
-    }
+    // const handleDroneStart = () => {
+    //     StartAudioContext(Tone.context)
+    //     setPlaying(true)
+    // }
 
     const stopDrone = () => {
         synth.releaseAll()
-        setPlaying(false)
-        console.log("stop")
+        setDroning(false)
+        // console.log("stop")
     }
 
     useEffect(() => {
-        playing && synth.triggerAttack(chord)
-    }, [playing])
+        droning && synth.triggerAttack(chord);
+    }, [droning])
+    
 
-    useEffect(() => {
-        // synth.volume = volume
-    }, [volume])
+    // useEffect(() => {
+    //     // synth.volume = volume
+    // }, [volume])
 
     return (
         <div className="Drone">
             <h1 style={{color: "white"}}>drone</h1>
-            {!playing ? <button onClick={handleDroneStart}>Start</button> : <button onClick={stopDrone}>Stop</button>}
+            {!droning ? <button onClick={() => setDroning(!droning)}>Start</button> : <button onClick={stopDrone}>Stop</button>}
+            {/* <button onClick={() => setDroning(!droning)}>
+            {droning ? "Stop" : "Start"}
+            </button> */}
+            {/* <button onClick={stopDrone}>stop</button> */}
             <div>
                 <VolumeDown />
                 <input 
