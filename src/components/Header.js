@@ -8,6 +8,7 @@ import { VegBurgIcon } from "../icons/VegBurgIcon";
 import VegBurg from "./VegBurg"
 
 export const Header = () => {
+
     const styles = {
         header: {
             backgroundColor: "#272727",
@@ -28,20 +29,21 @@ export const Header = () => {
         nav: {
             display: "flex",
             justifyContent: "space-around",
-            width: "10%",
-        }
+            maxWidth: "20em",
+            minWidth: "8em",
+            // marginRight: "10em",
+        },
     };
     return (
         <header style={styles.header}>
             <nav style={styles.nav}>
-                <Link to="/">
-                    <HomeIcon fill={"orange"} />
-                </Link>
-                <Link to="/user">
-                    <UserIcon />
-                </Link>
+                    <Link to="/">
+                        <HomeIcon fill={"orange"} />
+                    </Link>
+                    <Link to="/user">
+                        <UserIcon />
+                    </Link>
             </nav>
-            {/* <VegBurgIcon /> */}
             <VegBurg />
         </header>
     )

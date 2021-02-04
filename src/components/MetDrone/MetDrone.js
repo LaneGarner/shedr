@@ -1,7 +1,6 @@
 import Metronome from './Components/Metronome';
 import { Drone } from './Components/Drone';
 
-
 export const MetDrone = () => {
 
     const styles = {
@@ -10,27 +9,15 @@ export const MetDrone = () => {
             backgroundColor: "#333",
             paddingBottom: "8em",
             minHeight: "70vh",
-            // display: "flex",
-            // // flexDirection: "column",
-            // alignItems: "flex-start",
-            // justifyItems: "center",
-            // justifyContent: "space-around",
-            // flexWrap: "wrap",
+
         },
         metDroneHeadline: {
             textAlign: "center",
             color: "#5AC18E",
             paddingBottom: "1em",
         },
-        // metDroneComponentContainer: {
-        //     display: "flex",
-        //     alignItems: "center",
-        //     justifyContent: "center",
-        //     justifyItems: "center",
-        // }
         metDroneComponentContainer: {
             display: "flex",
-            // flexDirection: "column",
             alignItems: "flex-start",
             justifyItems: "center",
             justifyContent: "space-around",

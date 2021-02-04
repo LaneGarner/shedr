@@ -16,19 +16,31 @@ export const Footer = () => {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
+        },
+        footerIcon: {
+            width: "4em",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
         }
     };
     return (
         <footer style={styles.footer}>
-            <Link to="/record">
-                <RecordIcon />
-            </Link>
-            <Link to="/metdrone">
-                <MetDroneIcon />
-            </Link>
-            <Link to="/fork">
-                <ForkIcon />
-            </Link>
+            <div style={styles.footerIcon}>
+                <Link to="/record">
+                    <RecordIcon />
+                </Link>
+            </div>
+            <div style={styles.footerIcon}>
+                <Link to="/metdrone">
+                    <MetDroneIcon />
+                </Link>
+            </div>
+            <div style={styles.footerIcon}>
+                <Link to="/fork">
+                    <ForkIcon />
+                </Link>
+            </div>
         </footer>
     )
 }

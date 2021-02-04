@@ -9,9 +9,8 @@ import { User } from './components/User'
 import { Record } from './components/Record'
 import MetDrone from './components/MetDrone/'
 import { Fork } from './components/Fork'
+import { NewSessionForm } from './components/NewSessionForm'
 import cookie from 'cookie'
-
-
 
 const checkAuth = () => {
     const cookies = cookie.parse(document.cookie)
@@ -40,6 +39,7 @@ const Router = () => {
             <Route path="/record" component={Record} />
             <Route path="/metdrone" component={MetDrone} />
             <Route path="/fork" component={Fork} />
+            <Route path="/form" component={NewSessionForm} />
             {/* <Route path="/login" component={Login} /> */}
             {/* <ProtectedRoute path="/add" component={Add} /> */}
             {/* <Route exact path="/details/:id" component={Details} /> */}

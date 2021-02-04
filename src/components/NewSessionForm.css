@@ -1,0 +1,26 @@
+.formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: white;
+    background-color: #333;
+    padding-top: 8em;
+    padding-bottom: 8em;
+    min-height: 70vh;
+}
+
+.practiceTimerContainer {
+
+}
+
+.newSessionContainer {
+    padding: 3em;
+    width: 22em;
+    background-color: #272727;
+    margin: 2em;
+    border-radius: 2em;
+}
+
+.timerDisplay {
+    font-size: 4em;
+}
