@@ -19,7 +19,7 @@ export const Home = () => {
             alignItems: "center",
         },
         button: {
-            margin: "4em",
+            margin: "2em",
             backgroundColor: "orange",
             border: "none",
             borderRadius: "2em",
@@ -28,10 +28,17 @@ export const Home = () => {
             textDecoration: "none",
             color: "#333",
         },
+        homeSubtitle: {
+            color: "white",
+            marginBottom: 0,
+            fontWeight: 100,
+
+        }
     };
     return (
         <div style={styles.homeContainer}>
             <Logo height="20em"/>
+            <h2 style={styles.homeSubtitle}>Musician's practice toolkit</h2>
             <NavLink 
                 to="/form"
                 style={styles.button}>
