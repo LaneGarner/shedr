@@ -3,16 +3,11 @@ import { Logo } from "../icons/Logo";
 
 
 export const Home = () => {
-    const handleClick = () => {
-        // alert('hi')
-        // history.push('/form');
-        
-    }
 
     const styles = {
         homeContainer: {
             paddingTop: "8em",
-            paddingBottom: "6em",
+            paddingBottom: "8em",
             backgroundColor: "#333",
             // height: "100vh",
             display: "flex",
