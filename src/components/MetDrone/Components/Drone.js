@@ -129,7 +129,7 @@ export const Drone = () => {
             </select>
 
             {/* {!droning ? <button onClick={() => setDroning(!droning)}>Start</button> : <button onClick={stopDrone}>Stop</button>} */}
-            {!droning ? <button onClick={startDrone}></button> : <button onClick={() => setDroning(!droning)}> "Stop" </button> }
+            {!droning ? <button onClick={startDrone}>Start</button> : <button onClick={() => setDroning(!droning)}>Stop</button> }
             
             
             <div>
