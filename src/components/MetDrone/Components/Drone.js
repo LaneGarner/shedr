@@ -71,11 +71,11 @@ export const Drone = () => {
 
     // synth.chain( filter, verb, wide, vol, Tone.Destination)
 
-    // const handleDroneStart = () => {
-    //     StartAudioContext(Tone.context)
-    //     setDroning(true)
-    //     synth.triggerAttack(chord)
-    // }
+    const startDrone = () => {
+        StartAudioContext(Tone.context)
+        setDroning(true)
+        // synth.triggerAttack(chord)
+    }
 
     // const stopDrone = () => {
     //     synth.triggerRelease(chord)
@@ -85,7 +85,6 @@ export const Drone = () => {
     // }
 
     useEffect(() => {
-        StartAudioContext(Tone.context)
 
         droning ? synth.triggerAttack(chord) : synth.releaseAll();
     }, [droning])
@@ -130,9 +129,9 @@ export const Drone = () => {
             </select>
 
             {/* {!droning ? <button onClick={() => setDroning(!droning)}>Start</button> : <button onClick={stopDrone}>Stop</button>} */}
-            <button onClick={() => setDroning(!droning)}>
-                {!droning ? "Start" : "Stop"}
-            </button>
+            {!droning ? <button onClick={startDrone}></button> : <button onClick={() => setDroning(!droning)}> "Stop" </button> }
+            
+            
             <div>
                 <VolumeDown />
                 <input 
