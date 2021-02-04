@@ -8,7 +8,7 @@ export const MetDrone = () => {
         metDroneContainer: {
             paddingTop: "8em",
             backgroundColor: "#333",
-            height: "80vh",
+            height: "100vh",
             // display: "flex",
             // // flexDirection: "column",
             // alignItems: "flex-start",
