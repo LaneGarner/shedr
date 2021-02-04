@@ -85,6 +85,8 @@ export const Drone = () => {
     // }
 
     useEffect(() => {
+        StartAudioContext(Tone.context)
+
         droning ? synth.triggerAttack(chord) : synth.releaseAll();
     }, [droning])
     
