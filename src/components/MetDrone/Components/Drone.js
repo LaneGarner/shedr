@@ -12,11 +12,15 @@ const synth = new Tone.PolySynth({
     },
     envelope: {
         attack: 2,
-        decay: 2,
-        sustain: 2,
-        release: 5,
+        decay: 1,
+        sustain: 1,
+        release: 0.5,
     },
 });
+const filter = new Tone.Filter(2000, "lowpass")
+const verb = new Tone.Reverb(1)
+const wide = new Tone.StereoWidener()
+synth.chain( filter, verb, wide, Tone.Destination)
 
 let chord;
 
@@ -35,7 +39,8 @@ export const Drone = () => {
 
     useEffect(() => {
         // const myChord = Chord.get(root + chordType);
-            myChord = Chord.getChord(chordType, `${root}4`);
+            setDroning(false)
+            myChord = Chord.getChord(chordType, `${root}4`, `${root}5`);
             // const myChord = Chord.getChord(chordType, `${root}4`, "C5");
 
         chord = myChord.notes
@@ -53,15 +58,18 @@ export const Drone = () => {
         // console.log(`"${root}4"`)
     }
     
-    const filter = new Tone.Filter(2000, "lowpass")
-    const verb = new Tone.Reverb(1)
-    const wide = new Tone.StereoWidener()
+    // const filter = new Tone.Filter(2000, "lowpass")
+    // const verb = new Tone.Reverb(1)
+    // const wide = new Tone.StereoWidener()
+    // synth.chain( filter, verb, wide, Tone.Destination)
+
+
+
     // const vlm = volume
     // const vol = new Tone.Volume({volume})
     // const vol = new Tone.Volume(-12).toDestination();
 
     // synth.chain( filter, verb, wide, vol, Tone.Destination)
-    synth.chain( filter, verb, wide, Tone.Destination)
 
     // const handleDroneStart = () => {
     //     StartAudioContext(Tone.context)
@@ -77,7 +85,7 @@ export const Drone = () => {
     // }
 
     useEffect(() => {
-        droning ? synth.triggerAttack(chord) : synth.triggerRelease(chord);
+        droning ? synth.triggerAttack(chord) : synth.releaseAll();
     }, [droning])
     
 
@@ -89,7 +97,7 @@ export const Drone = () => {
 
     return (
         <div className="Drone">
-            <button onClick={test}>Test</button>
+            {/* <button onClick={test}>Test</button> */}
             <h1 style={{color: "white"}}>drone</h1>
             <input 
                 value={root} 
