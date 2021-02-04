@@ -12,8 +12,9 @@ export const Home = () => {
     const styles = {
         homeContainer: {
             paddingTop: "8em",
+            paddingBottom: "6em",
             backgroundColor: "#333",
-            minHeight: "70vh",
+            // height: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
