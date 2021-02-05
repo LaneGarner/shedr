@@ -2,6 +2,7 @@ import Metronome from './Components/Metronome';
 import { Drone } from './Components/Drone';
 
 export const MetDrone = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+    {droneVolume === undefined && setDroneVolume(-10)}
 
     const styles = {
         metDroneContainer: {

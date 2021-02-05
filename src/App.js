@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom'
+import Router from './Router'
 import {Header} from './components/Header'
 import {Footer} from './components/Footer'
-import Router from './Router'
+
 import './App.css'
-import { BrowserRouter } from 'react-router-dom'
-// import { Provider } from 'react-redux'
-// import store from './redux/store'
 
 const App = () => {
   const [tempo, setTempo] = useState(100)
@@ -14,7 +13,7 @@ const App = () => {
   const [ position, setPosition ] = useState("0:0:0");
   const [ accent, setAccent ] = useState(false);
   
-  const [droning, setDroning] = useState(false)
+  const [droning, setDroning] = useState()
   const [droneVolume, setDroneVolume] = useState(-10)
   const [root, setRoot] = useState("C")
   const [chordType, setChordType] = useState("minor ninth")

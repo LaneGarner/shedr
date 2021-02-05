@@ -12,55 +12,34 @@ const click1 = new Tone.Player(click1Sample).toDestination()
 const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent }) => {
-    // const [ playing, setPlaying ] = useState (false);
-    // const [ timeSig, setTimeSig ] = useState(4);
-    // const [ position, setPosition ] = useState("0:0:0");
-    // const [ accent, setAccent ] = useState(false);
-    
+const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent }) => {    
     const [ bpm, setBpm ] = useState(120);
     const [ subdivision, setSubDivision ] = useState("");
 
-    // const handleBpmChange = e => {
-    //     const newBpm = e.target.value;
-    //     Tone.Transport.cancel();
-    //     Tone.Transport.stop();
-    //     Tone.Transport.position = "0:0:0"
-        
-    //     if(playing) {
-    //         setBpm(newBpm)
-    //         playClick()
-    //         Tone.Transport.start()
-    //     } else {
-    //         setBpm(newBpm)
-    //     }
-    // }
 
-    // const handleTimeSigChange = e => {
-    //     const newTimeSig = parseInt(e.target.value);        
-        
-    //     if(playing) {
-    //         // Tone.Transport.cancel();
 
-    //         playClick()
-    //     } else {
-    //         setTimeSig(newTimeSig)
-    //     }
-    // }
     // useEffect(() => {
-    //     // console.log(tempo)
-    //     setTempo(tempo)
-    // },[])
-
-
-    useEffect(() => {
         
-        if (playing) {
-            stopClick()
-            playClick()
-        } 
+    //     if (playing) {
+    //         stopClick()
+    //         playClick()
+    //     } 
 
-    }, [accent, timeSig, tempo])
+    // }, [accent, timeSig, tempo])
+
+    const handleAccent = () => {
+        setAccent(!accent)
+        
+    }
+
+    const handleTimeSig = (e) => {
+        setTimeSig(parseInt(e.target.value))
+    }
+    
+    const handleTempo = (e) => {
+        setTempo(e.target.value)
+    }
+    
 
     
     const startStop = () => {
@@ -102,47 +81,44 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
         Tone.Transport.stop();
         Tone.Transport.cancel();
         Tone.Transport.position = "0:0:0"
-
     }
 
+    const newPosition = parseInt(Tone.Transport.position.split(':')[1])
 
-        const newPosition = parseInt(Tone.Transport.position.split(':')[1])
-
-        return (
-            <div className="metronome">
-            {playing ? <h1 style={{color: "orange"}}>met</h1> : <h1 style={{color: "white"}}>met</h1>}
-            <div>
-                <input type="checkbox" id="checkbox" value="accent" onChange={() => setAccent(!accent)} />
-                <label htmlFor="Accent">Accent</label>
-            </div>
-            <label htmlFor="selectTimeSig">Time signature</label>
-            <select onChange={(e) => setTimeSig(parseInt(e.target.value))} name="selectTimeSig" id="selectTimeSig" value={timeSig}>
-                <option value="4">4/4</option>
-                <option value="3">3/4</option>
-                <option value="5">5/4</option>
-                <option value="7">7/4</option>
-            </select>
-            <div className="bpm-slider">
-                <label htmlFor="bpmSlider">Tempo</label>
-                <div>{tempo} BPM</div>
-                <input
-                    id="bpmSlider"
-                    className="Slider"
-                    type="range"
-                    min="01"
-                    max="500"
-                    value={tempo}
-                    onChange={(e) => setTempo(e.target.value)} />
-            </div>
-            <button id="startStopBtn" onClick={startStop}>
-                {playing ? 'Stop' : 'Start'}
-            </button>
-            <button>Tap</button>
-            {playing ? <h3 className="Count" style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
-            
-            </div>
-        );
-    // }
+    return (
+        <div className="metronome">
+        {playing ? <h1 style={{color: "orange"}}>met</h1> : <h1 style={{color: "white"}}>met</h1>}
+        <div>
+            <input type="checkbox" id="checkbox" value="accent" onChange={handleAccent} />
+            <label htmlFor="Accent">Accent</label>
+        </div>
+        <label htmlFor="selectTimeSig">Time signature</label>
+        <select onChange={handleTimeSig} name="selectTimeSig" id="selectTimeSig" value={timeSig}>
+            <option value="4">4/4</option>
+            <option value="3">3/4</option>
+            <option value="5">5/4</option>
+            <option value="7">7/4</option>
+        </select>
+        <div className="bpm-slider">
+            <label htmlFor="bpmSlider">Tempo</label>
+            <div>{tempo} BPM</div>
+            <input
+                id="bpmSlider"
+                className="Slider"
+                type="range"
+                min="01"
+                max="500"
+                value={tempo}
+                onChange={handleTempo} />
+        </div>
+        <button id="startStopBtn" onClick={startStop}>
+            {playing ? 'Stop' : 'Start'}
+        </button>
+        <button>Tap</button>
+        {playing ? <h3 className="Count" style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
+        
+        </div>
+    )
 }
 
 export default Metronome;
