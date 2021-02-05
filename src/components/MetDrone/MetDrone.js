@@ -15,7 +15,7 @@ export const MetDrone = ({ tempo, setTempo, playing, setPlaying, timeSig, setTim
         metDroneHeadline: {
             textAlign: "center",
             color: "#5AC18E",
-            paddingBottom: "1em",
+            paddingBottom: "0",
         },
         metDroneComponentContainer: {
             display: "flex",

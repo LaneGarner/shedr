@@ -3,12 +3,22 @@
     border-radius: 1em;
     padding: .6em;
     border: none;
-    color: white;
+    color:white;
+    margin: .5em;
+    outline: none;
+}
+
+.timerBtn:active {
+    color: #333;
 }
 
 .startBtn {
     background-color: #5AC18E;
     color: #333;
+}
+
+.startBtn:active {
+    color: white;
 }
 
 .pauseBtn {

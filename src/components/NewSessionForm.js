@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./NewSessionForm.css"
 
-export const NewSessionForm = () => {
+export const NewSessionForm = ({ activeSession, setActiveSession}) => {
     const [startDate, setStartDate] = useState(new Date());
     
     
@@ -15,6 +15,10 @@ export const NewSessionForm = () => {
     }
 
     
+    const handleCancel = () => {
+        console.log('cancel')
+        setActiveSession(false)
+    }
     
     
     
@@ -62,6 +66,7 @@ export const NewSessionForm = () => {
                     <input required id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." />
                     <br />
                     <button type="submit">Submit</button>
+                    <button onClick={handleCancel} type="reset">Cancel</button>
                 </form>
             </div>
         </div>

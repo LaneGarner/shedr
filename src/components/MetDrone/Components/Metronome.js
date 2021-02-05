@@ -28,16 +28,29 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
     // }, [accent, timeSig, tempo])
 
     const handleAccent = () => {
-        setAccent(!accent)
-        
+        if (playing) {
+            setAccent(!accent)
+            stopClick()
+            playClick()
+        } else {
+            setAccent(!accent)
+        }
     }
 
     const handleTimeSig = (e) => {
         setTimeSig(parseInt(e.target.value))
+        if (playing) {
+            stopClick()
+            playClick()
+        }
     }
     
     const handleTempo = (e) => {
         setTempo(e.target.value)
+        if (playing) {
+            stopClick()
+            playClick()
+        }
     }
     
 
@@ -89,7 +102,7 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
         <div className="metronome">
         {playing ? <h1 style={{color: "orange"}}>met</h1> : <h1 style={{color: "white"}}>met</h1>}
         <div>
-            <input type="checkbox" id="checkbox" value="accent" onChange={handleAccent} />
+            <input checked={accent} type="checkbox" id="checkbox" onChange={handleAccent} />
             <label htmlFor="Accent">Accent</label>
         </div>
         <label htmlFor="selectTimeSig">Time signature</label>

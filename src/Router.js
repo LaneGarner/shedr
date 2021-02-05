@@ -29,7 +29,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 }
 
 
-const Router = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+const Router = ({ activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
 
     // useEffect(() => {
     //     console.log(tempo)
@@ -38,14 +38,18 @@ const Router = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, pos
         <Switch>
             {/* <ProtectedRoute exact path="/" component={Listings} /> */}
             {/* <Route exact path="/" component={Listings} /> */}
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+                <Home activeSession={activeSession} setActiveSession={setActiveSession} />
+            </Route>
             <Route path="/user" component={User} />
             <Route path="/record" component={Record} />
             <Route path="/metdrone" component={MetDrone}>
                 <MetDrone tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
             </Route>
             <Route path="/fork" component={Fork} />
-            <Route path="/form" component={NewSessionForm} />
+            <Route path="/form">
+                <NewSessionForm activeSession={activeSession} setActiveSession={setActiveSession} />
+            </Route>
             {/* <Route path="/login" component={Login} /> */}
             {/* <ProtectedRoute path="/add" component={Add} /> */}
             {/* <Route exact path="/details/:id" component={Details} /> */}

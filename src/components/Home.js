@@ -2,7 +2,13 @@ import { NavLink } from 'react-router-dom'
 import { Logo } from "../icons/Logo";
 
 
-export const Home = () => {
+export const Home = ({ activeSession, setActiveSession }) => {
+
+    const startSession = () => {
+        console.log('start')
+        setActiveSession(true)
+    }
+    
 
     const styles = {
         homeContainer: {
@@ -35,11 +41,10 @@ export const Home = () => {
         <div style={styles.homeContainer}>
             <Logo height="20em"/>
             <h2 style={styles.homeSubtitle}>Musician's practice toolkit</h2>
-            <NavLink 
-                to="/form"
-                style={styles.button}>
-                New practice session
-            </NavLink>
+            {activeSession ? 
+            <NavLink onClick={startSession}  to="/form" style={styles.button}> Current practice session</NavLink> :
+            <NavLink onClick={startSession}  to="/form" style={styles.button}> New practice session</NavLink>
+            }
         </div>
     )
 }
