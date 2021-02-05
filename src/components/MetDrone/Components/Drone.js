@@ -24,11 +24,11 @@ synth.chain( filter, verb, wide, Tone.Destination)
 
 let chord;
 
-export const Drone = () => {
-    const [droning, setDroning] = useState(false)
-    const [volume, setVolume] = useState(-10)
-    const [root, setRoot] = useState("C")
-    const [chordType, setChordType] = useState("minor ninth")
+export const Drone = ({ droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+    // const [droning, setDroning] = useState(false)
+    // const [droneVolume, setDroneVolume] = useState(-10)
+    // const [root, setRoot] = useState("C")
+    // const [chordType, setChordType] = useState("minor ninth")
     
     let myChord = Chord.getChord(chordType, `${root}4`, `${root}5`);
     const chordTypes = ChordType.names()
@@ -92,9 +92,9 @@ export const Drone = () => {
 
     useEffect(() => {
         // stopDrone()
-        synth.volume.value = volume
+        synth.volume.value = droneVolume
         console.log(synth.volume.value)
-    }, [volume])
+    }, [droneVolume])
 
     return (
         <div className="Drone">
@@ -139,8 +139,8 @@ export const Drone = () => {
                     min={-100}
                     max={0}
                     step="0.1"
-                    value={volume}
-                    onChange={(e) => setVolume(e.target.value)}
+                    value={droneVolume}
+                    onChange={(e) => setDroneVolume(e.target.value)}
                 />
                 <VolumeUp />
             </div>

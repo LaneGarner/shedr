@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { PracticeTimer } from "./PracticeTimer";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,29 +7,34 @@ import "./NewSessionForm.css"
 
 export const NewSessionForm = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const [isTimerRunning, setTimerRunning] = useState(false)
+    
     
     const test = (e) => {
         e.preventDefault()
         alert('submit')
     }
+
+    
+    
+    
     
     return (
         <div className="formContainer">
             <div className="newSessionContainer">
                 <h2>Practice Timer</h2>
                 <hr />
-                <div className="timerDisplay">00:00:00</div>
-                <button onClick={() => setTimerRunning(!isTimerRunning)}>
-                    {isTimerRunning ? "Stop" : "Start"}
+                <PracticeTimer />
+                {/* <button onClick={() => setTimerRunning(!timerRunning)}>
+                    {timerRunning ? "Stop" : "Start"}
                 </button>
-                <br />
-                {isTimerRunning && <button>Pause</button>}
+                <br /> */}
+                
             </div>
 
             <div className="newSessionContainer">
                 <h2>Session</h2>
                 <hr />
+                <h4>Start time:</h4>
                 <DatePicker 
                     selected={startDate} 
                     onChange={date => setStartDate(date)} 
@@ -56,7 +61,7 @@ export const NewSessionForm = () => {
                     <label htmlFor="notes">Notes</label>
                     <input required id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." />
                     <br />
-                    <button type="submit">start</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>

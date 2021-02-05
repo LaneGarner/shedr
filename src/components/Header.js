@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { VegBurgIcon } from "../icons/VegBurgIcon";
 import VegBurg from "./VegBurg"
 
-export const Header = () => {
+export const Header = ({ tempo, playing, timeSig, droning, root, chordType }) => {
 
     const styles = {
         header: {
@@ -43,7 +43,10 @@ export const Header = () => {
                     <Link to="/user">
                         <UserIcon />
                     </Link>
+                    {/* <div>{tempo}</div> */}
             </nav>
+                    {playing && <div>{tempo}BPM {timeSig}/4</div>}
+                    {droning && <div>{root} {chordType}</div>}
             <VegBurg />
         </header>
     )

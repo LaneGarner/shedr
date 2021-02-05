@@ -12,14 +12,14 @@ const click1 = new Tone.Player(click1Sample).toDestination()
 const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = () => {
-    const [ playing, setPlaying ] = useState (false);
+const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent }) => {
+    // const [ playing, setPlaying ] = useState (false);
+    // const [ timeSig, setTimeSig ] = useState(4);
+    // const [ position, setPosition ] = useState("0:0:0");
+    // const [ accent, setAccent ] = useState(false);
+    
     const [ bpm, setBpm ] = useState(120);
-    const [ timeSig, setTimeSig ] = useState(4);
     const [ subdivision, setSubDivision ] = useState("");
-    const [ position, setPosition ] = useState("0:0:0");
-    const [ accent, setAccent ] = useState(false);
-
 
     // const handleBpmChange = e => {
     //     const newBpm = e.target.value;
@@ -47,7 +47,10 @@ const Metronome = () => {
     //         setTimeSig(newTimeSig)
     //     }
     // }
-
+    // useEffect(() => {
+    //     // console.log(tempo)
+    //     setTempo(tempo)
+    // },[])
 
 
     useEffect(() => {
@@ -57,7 +60,7 @@ const Metronome = () => {
             playClick()
         } 
 
-    }, [accent, timeSig, bpm])
+    }, [accent, timeSig, tempo])
 
     
     const startStop = () => {
@@ -75,7 +78,7 @@ const Metronome = () => {
     }
 
     const playClick = () => {
-        const bpmNum = parseInt(bpm);
+        const bpmNum = parseInt(tempo);
         
         Tone.Transport.bpm.value = bpmNum;
         Tone.Transport.timeSignature = timeSig;        
@@ -113,7 +116,7 @@ const Metronome = () => {
                 <label htmlFor="Accent">Accent</label>
             </div>
             <label htmlFor="selectTimeSig">Time signature</label>
-            <select onChange={(e) => setTimeSig(parseInt(e.target.value))} name="selectTimeSig" id="selectTimeSig">
+            <select onChange={(e) => setTimeSig(parseInt(e.target.value))} name="selectTimeSig" id="selectTimeSig" value={timeSig}>
                 <option value="4">4/4</option>
                 <option value="3">3/4</option>
                 <option value="5">5/4</option>
@@ -121,15 +124,15 @@ const Metronome = () => {
             </select>
             <div className="bpm-slider">
                 <label htmlFor="bpmSlider">Tempo</label>
-                <div>{bpm} BPM</div>
+                <div>{tempo} BPM</div>
                 <input
                     id="bpmSlider"
                     className="Slider"
                     type="range"
                     min="01"
                     max="500"
-                    value={bpm}
-                    onChange={(e) => setBpm(e.target.value)} />
+                    value={tempo}
+                    onChange={(e) => setTempo(e.target.value)} />
             </div>
             <button id="startStopBtn" onClick={startStop}>
                 {playing ? 'Stop' : 'Start'}

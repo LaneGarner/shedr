@@ -1,0 +1,21 @@
+.timerBtn {
+    font-size: 1.3em;
+    border-radius: 1em;
+    padding: .6em;
+    border: none;
+    color: white;
+}
+
+.startBtn {
+    background-color: #5AC18E;
+    color: #333;
+}
+
+.pauseBtn {
+    background-color: dodgerblue;
+
+}
+
+.stopBtn {
+    background-color: tomato;
+}

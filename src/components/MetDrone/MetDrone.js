@@ -1,7 +1,7 @@
 import Metronome from './Components/Metronome';
 import { Drone } from './Components/Drone';
 
-export const MetDrone = () => {
+export const MetDrone = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
 
     const styles = {
         metDroneContainer: {
@@ -24,16 +24,18 @@ export const MetDrone = () => {
             flexWrap: "wrap",
         }
     };
+
     return (
         // <div>
             <div style={styles.metDroneContainer}>
             <h1 style={styles.metDroneHeadline}>MetDrone</h1>
                 <div style={styles.metDroneComponentContainer}>
                     <div style={{padding: '3em'}}>
-                        <Metronome />
+                        <Metronome tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} />
                     </div>
                     <div style={{padding: '3em'}}>
-                        <Drone /></div>
+                        <Drone droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+                    </div>
                 </div>
             </div>
         // </div>
