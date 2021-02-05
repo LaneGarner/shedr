@@ -52,7 +52,7 @@ export const PracticeTimer = () => {
                             window.confirm('Are you sure? This will end your session and add current practice time to your log')
                                 {timerPaused && setTimerPaused(!timerPaused)}
                                 // setPracticeTime(Timer)
-                                console.log(inputEl.current.slice(0, 4))
+                                // console.log(inputEl.current.slice(0, 4))
                                 handleStop()
                                 stop()
                                 reset()
