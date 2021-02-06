@@ -1,21 +1,17 @@
 import React, { useState, useRef } from 'react'
 import "./PracticeTimer.css";
 
-export const PracticeTimer = () => {
-    const [timerStarted, setTimerStart] = useState(false)
+export const PracticeTimer = ({ timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState }) => {
+    // const [timerStarted, setTimerStart] = useState(false)
+    // const [timerRunning, setTimerRunning] = useState(false)
+    // const [timerPaused, setTimerPaused] = useState(false)
+    // const [tInterval, setTInterval] = useState()
+    // const [timer, setTimer] = useState("00:00:00")
+    // const [differenceState, setDifferenceState] = useState()
     
-    const [timerRunning, setTimerRunning] = useState(false)
-    const [timerPaused, setTimerPaused] = useState(false)
-    // const [startTime, setStartTime] = useState()
-    const [tInterval, setTInterval] = useState()
-
-    const [timer, setTimer] = useState("00:00:00")
-    const [differenceState, setDifferenceState] = useState()
-    // const [savedTime, setSavedTime] = useState()
-
-    let startTime, savedTime
-    // let updatedTime, difference;
-
+    
+    let startTime
+    
     const test = () => {
         // const actualTime = getTime();
         // console.log(actualTime)

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-// import { PracticeTimer } from "./PracticeTimer";
+import { PracticeTimer } from "./PracticeTimer";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./NewSessionForm.css"
 
-export const NewSessionForm = ({ PracticeTimer, startDate, setStartDate, activeSession, setActiveSession}) => {
+export const NewSessionForm = ({   timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
 
     const test = (e) => {
         e.preventDefault()
@@ -22,7 +22,7 @@ export const NewSessionForm = ({ PracticeTimer, startDate, setStartDate, activeS
             <div className="newSessionContainer">
                 <h2>Practice Timer</h2>
                 <hr />
-                <PracticeTimer />   
+                <PracticeTimer timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} />   
             </div>
 
             <div className="newSessionContainer">
