@@ -4,6 +4,8 @@ import Router from './Router'
 import {Header} from './components/Header'
 import {Footer} from './components/Footer'
 
+import { PracticeTimer } from './components/PracticeTimer'
+
 import './App.css'
 
 const App = () => {
@@ -19,12 +21,20 @@ const App = () => {
   const [chordType, setChordType] = useState("minor ninth")
 
   const [activeSession, setActiveSession] = useState()
+  const [startDate, setStartDate] = useState(new Date());
+  const [time, setTime] = useState();
+
+  // useEffect(() => {
+  //   // I want the time.. what is the time? its from the imported practice timer...
+  // },[time])
+
+  <PracticeTimer />
 
   return (
     // <Provider store={store}>
       <BrowserRouter>
         <Header activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
-        <Router activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+        <Router PracticeTimer={PracticeTimer} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
         <Footer />
       </BrowserRouter>
     // </Provider>

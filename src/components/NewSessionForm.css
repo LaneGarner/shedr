@@ -9,6 +9,30 @@
     min-height: 70vh;
 }
 
+.submitBtn:hover {
+    color: white;
+    /* border: solid 1px orange; */
+}
+
+.submitBtn {
+    background: orange;
+    color: #333;
+}
+
+.cancelBtn {
+    border: solid 1px white;
+}
+
+.cancelBtn:hover {
+    background: white
+}
+
+.cancelBtn:active {
+    background-color: tomato;
+    border: solid 1px tomato;
+}
+
+
 .practiceTimerContainer {
 
 }

@@ -21,7 +21,7 @@ export const Header = ({ activeSession, tempo, playing, timeSig, droning, root, 
                     <UserIcon />
                 </Link>
             </nav>
-                {activeSession && <Link to="/form">Practice session started</Link>}
+                {activeSession && <Link to="/form">Current practice session</Link>}
                 {playing && <Link to="./metdrone">{tempo}BPM {timeSig}/4</Link>}
                 {droning && <Link to="./metdrone">{root} {chordType}</Link>}
             <VegBurg />
