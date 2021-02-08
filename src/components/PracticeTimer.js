@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import "./PracticeTimer.css";
 
-export const PracticeTimer = ({ timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState }) => {
+export const PracticeTimer = ({ practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState }) => {
     // const [timerStarted, setTimerStart] = useState(false)
     // const [timerRunning, setTimerRunning] = useState(false)
     // const [timerPaused, setTimerPaused] = useState(false)
@@ -24,6 +24,9 @@ export const PracticeTimer = ({ timerStarted, setTimerStart, timerRunning, setTi
         setTInterval(setInterval(getTime, 1000))
         setTimerRunning(true);
         setTimerPaused(false);
+
+
+        //set start date
     }
     
     const getTime = () => {
@@ -61,6 +64,13 @@ export const PracticeTimer = ({ timerStarted, setTimerStart, timerRunning, setTi
 
     const stop = () => {
         {!timerPaused && pause()}
+        const hrs = timer.slice(0,2)
+        const min = timer.slice(3,5)
+        const sec = timer.slice(6,8)
+        const pTime= [hrs, min, sec]
+        console.log([hrs, min, sec])
+        setPracticeTime(pTime)
+        
         // pause()
         setTimerStart(false)
         // setTimerRunning(false)

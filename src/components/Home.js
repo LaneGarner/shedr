@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { NavLink } from 'react-router-dom'
 import { Logo } from "../icons/Logo";
 
 
-export const Home = ({ activeSession, setActiveSession }) => {
+export const Home = ({ setActivePage, activeSession, setActiveSession }) => {
+    
+    // useEffect(() => {
+    //     setActivePage("home")
+    // }, [])
 
     const startSession = () => {
         console.log('start')

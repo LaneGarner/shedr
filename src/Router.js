@@ -29,7 +29,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 }
 
 
-const Router = ({   timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+const Router = ({ setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
 
     // useEffect(() => {
     //     console.log(tempo)
@@ -39,22 +39,26 @@ const Router = ({   timerStarted, setTimerStart, timerRunning, setTimerRunning, 
             {/* <ProtectedRoute exact path="/" component={Listings} /> */}
             {/* <Route exact path="/" component={Listings} /> */}
             <Route exact path="/">
-                <Home activeSession={activeSession} setActiveSession={setActiveSession} />
+                {/* <Home activeSession={activeSession} setActiveSession={setActiveSession} /> */}
+                <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
             </Route>
-            <Route path="/user" component={User} />
-            <Route path="/record" component={Record} />
+            <Route path="/user">
+                <User setActivePage={setActivePage} />
+            </Route>
+            <Route path="/record">
+                <Record setActivePage={setActivePage} />
+            </Route>
+
+
             <Route path="/metdrone" component={MetDrone}>
-                <MetDrone tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+                <MetDrone setActivePage={setActivePage} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
             </Route>
-            <Route path="/fork" component={Fork} />
-            <Route path="/form">
-                <NewSessionForm timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
+            <Route path="/fork">
+                <Fork setActivePage={setActivePage} />
             </Route>
-            {/* <Route path="/login" component={Login} /> */}
-            {/* <ProtectedRoute path="/add" component={Add} /> */}
-            {/* <Route exact path="/details/:id" component={Details} /> */}
-            {/* <ProtectedRoute path="/about" component={About} /> */}
-            {/* <ProtectedRoute path="/car/:id" component={Car} /> */}
+            {/* <Route path="/form">
+                <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
+            </Route> */}
         </Switch>
     );
 };

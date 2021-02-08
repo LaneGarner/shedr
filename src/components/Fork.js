@@ -1,6 +1,7 @@
 import { ForkIcon } from "../icons/ForkIcon";
 
-export const Fork = () => {
+export const Fork = ({ setActivePage }) => {
+    setActivePage("fork")
 
     const styles = {
         forkContainer: {

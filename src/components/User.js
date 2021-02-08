@@ -1,6 +1,7 @@
 import { Logo } from "../icons/Logo";
 
-export const User = () => {
+export const User = ({ setActivePage }) => {
+    setActivePage("user")
 
     const styles = {
         userContainer: {

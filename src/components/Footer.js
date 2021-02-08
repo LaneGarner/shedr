@@ -3,7 +3,7 @@ import { MetDroneIcon } from "../icons/MetDroneIcon";
 import { ForkIcon } from "../icons/ForkIcon";
 import { Link } from 'react-router-dom'
 
-export const Footer = () => {
+export const Footer = ({ activePage, setActivePage }) => {
     const styles = {
         footer: {
             backgroundColor: "#101110",
@@ -27,18 +27,18 @@ export const Footer = () => {
     return (
         <footer style={styles.footer}>
             <div style={styles.footerIcon}>
-                <Link to="/record">
-                    <RecordIcon />
+                <Link to="record">
+                    <RecordIcon activePage={activePage} />
                 </Link>
             </div>
             <div style={styles.footerIcon}>
-                <Link to="/metdrone">
-                    <MetDroneIcon />
+                <Link to="metdrone">
+                    <MetDroneIcon activePage={activePage} />
                 </Link>
             </div>
             <div style={styles.footerIcon}>
-                <Link to="/fork">
-                    <ForkIcon />
+                <Link to="fork">
+                    <ForkIcon activePage={activePage} />
                 </Link>
             </div>
         </footer>

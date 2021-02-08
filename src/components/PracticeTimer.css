@@ -12,6 +12,10 @@
     transition: background-color .5s;
 }
 
+.timerDisplay {
+    font-weight: 100;
+}
+
 .timerBtn:hover {
     color: #333;
 }

@@ -1,4 +1,5 @@
-export const Record = () => {
+export const Record = ({setActivePage}) => {
+    setActivePage("record")
 
     const styles = {
         recordContainer: {

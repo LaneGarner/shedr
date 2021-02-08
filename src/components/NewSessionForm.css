@@ -45,6 +45,78 @@
     border-radius: 2em;
 }
 
+.newSessionContainer h1 {
+    /* font-family: sans-serif; */
+}
+
+/* .newSessionContainer h4 {
+    font-family: ;
+} */
+
 .timerDisplay {
     font-size: 4em;
+}
+
+.prForm input, .prForm textarea {
+    /* background: red; */
+    font-size: 1.2em;
+    margin: .2em;
+    padding: .3em;
+    border-radius: .2em;
+    border: none;
+    font-family: monospace;
+}
+
+.prForm input {
+    width: 3em;
+}
+
+.prForm input:nth-of-type(1) {
+    width: 5em;
+}
+
+
+
+.prForm textarea {
+    resize: none;
+    width: 80%;
+}
+
+/* .Absolute-Center {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+} */
+
+.modal {
+    background-color: #333;
+    width: 40em;
+    height: 20em;
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    padding: 2em;
+    border-radius: 2em;
+    display: none;
+}
+
+.modal-container {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    min-height: 100vh;
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    display: none;
+}
+
+.modal-container input {
+    font-size: 1.2em;
+    margin: .2em;
+    padding: .2em;
+    border-radius: .2em;
+}
+.modal-container textarea {
+    resize: none;
+    width: 80%;
 }
