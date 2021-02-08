@@ -19,7 +19,6 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
         //if timer is running or paused stop it to submit pr time
         
         const makeLog = {content: practiceTopicNotes, time:{ startDate, practiceTime}}
-
         setNewLog(makeLog)
         cancelForm()
 
@@ -93,22 +92,26 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
             <h1>Practice Log</h1>
             <h2>Session</h2>
                 <hr />
-                <h4>Start time:</h4>
-                <DatePicker 
-                    className="datepicker"
-                    selected={startDate} 
-                    onChange={date => setStartDate(date)} 
-                    showTimeSelect
-                    timeIntervals={1}
-                    dateFormat="Pp"
-                /> <br />
-                <h4>Total practice time:</h4>
-                <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                <label for="hrs">hr</label>
-                <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                <label for="totalPracticeTime">min</label>
-                <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
-                <label for="min">sec</label>
+                <div className="start-time-input">
+                    <h4>Start time:</h4>
+                    <DatePicker
+                        className="datepicker"
+                        selected={startDate}
+                        onChange={date => setStartDate(date)}
+                        showTimeSelect
+                        timeIntervals={1}
+                        dateFormat="Pp"
+                    /> <br />
+                </div>
+                <div className="pr-time-input">
+                    <h4>Total practice time:</h4>
+                    <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
+                    <label for="hrs">hr</label>
+                    <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
+                    <label for="totalPracticeTime">min</label>
+                    <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
+                    <label for="min">sec</label>
+                </div>
                 <h2>Material</h2>
                 <hr />
                     <label htmlFor="topic">Topic</label><br/>

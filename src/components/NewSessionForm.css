@@ -67,14 +67,17 @@
     font-family: monospace;
 }
 
-.prForm input {
-    width: 3em;
+.pr-time-input input {
+    width: 2.3em;
 }
 
-.prForm input:nth-of-type(1) {
-    width: 5em;
+.start-time-input input {
+    width: 13em;
 }
 
+.prForm .timerBtn {
+    margin-top: 1em;
+}
 
 
 .prForm textarea {

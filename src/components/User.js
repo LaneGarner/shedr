@@ -1,28 +1,31 @@
-import { Logo } from "../icons/Logo";
+import { Link } from 'react-router-dom'
+import "./User.css"
 
 export const User = ({ setActivePage }) => {
     setActivePage("user")
 
-    const styles = {
-        userContainer: {
-            paddingTop: "10em",
-            backgroundColor: "#333",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            // alignItems: "center",
-            color: "white",
-        },
-        userDashboard: {
-            display: "flex",
-            justifyContent: "space-around"
-        }
-    };
+    // const styles = {
+    //     userContainer: {
+    //         paddingTop: "10em",
+    //         backgroundColor: "#333",
+    //         height: "100vh",
+    //         display: "flex",
+    //         flexDirection: "column",
+    //         // alignItems: "center",
+    //         color: "white",
+    //     },
+    //     userDashboard: {
+    //         display: "flex",
+    //         justifyContent: "space-around"
+    //     }
+    // };
     return (
-        <div style={styles.userContainer}>
+        <div className="userContainer">
             <h1>User</h1>
-            <div style={styles.userDashboard}>
-                <h2>Practice log</h2>
+            <div className="userDashboard">
+                <Link to="log">
+                    <h2>Practice log</h2>
+                </Link>
                 <h2>Repertoire list</h2>
                 <h2>Practice stats</h2>
             </div>

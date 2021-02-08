@@ -10,6 +10,7 @@ import { Record } from './components/Record'
 import MetDrone from './components/MetDrone/'
 import { Fork } from './components/Fork'
 import { NewSessionForm } from './components/NewSessionForm'
+import { PracticeLog } from './components/PracticeLog'
 import cookie from 'cookie'
 
 const checkAuth = () => {
@@ -55,6 +56,9 @@ const Router = ({ setActivePage, newLog, setNewLog, practiceTopicNotes, setPract
             </Route>
             <Route path="/fork">
                 <Fork setActivePage={setActivePage} />
+            </Route>
+            <Route path="/log">
+                <PracticeLog newLog={newLog}/>
             </Route>
             {/* <Route path="/form">
                 <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />

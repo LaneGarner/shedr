@@ -1,0 +1,19 @@
+.userContainer {
+    padding-top: 10em;
+    background-color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* // alignItems: center; */
+    color: white;
+}
+
+.userContainer a {
+    text-decoration: none;
+    color: white;
+}
+
+.userDashboard {
+    display: flex;
+    justify-content: space-around;
+}
