@@ -139,7 +139,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
                 <h2>Material</h2>
                 <hr />
                     <label htmlFor="topic">Topic</label><br/>
-                    <TextareaAutosize value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" /> 
+                    <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" /> 
                     {/* <textarea value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" />  */}
                     <br />
                     <label htmlFor="notes">Notes</label><br/>

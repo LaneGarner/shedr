@@ -16,15 +16,17 @@ const showSettings = (event) => {
     // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
     return (
     <Menu right>
-        {user ?
-            <button onClick={logout}>Log Out</button>                
-            :
-            <button onClick={login}>Log In</button>              
-        }
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
-        <a id="contact" className="menu-item" href="/contact">Contact</a>
-        <a onClick={ showSettings } className="menu-item--small" href="">Settings</a>
+        <div className="burger-menu">
+            {user ?
+                <button onClick={logout}>Log Out</button>
+                :
+                <a href="/login">Log In</a>
+            }
+            <a id="home" className="menu-item" href="/">Home</a>
+            <a id="about" className="menu-item" href="/about">About</a>
+            <a id="contact" className="menu-item" href="/contact">Contact</a>
+            <a onClick={ showSettings } className="menu-item--small" href="">Settings</a>
+        </div>
     </Menu>
     );
 

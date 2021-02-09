@@ -11,6 +11,7 @@ import MetDrone from './components/MetDrone/'
 import { Fork } from './components/Fork'
 import { NewSessionForm } from './components/NewSessionForm'
 import { PracticeLog } from './components/PracticeLog'
+import { Login } from './components/Login'
 import cookie from 'cookie'
 
 const checkAuth = () => {
@@ -30,7 +31,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 }
 
 
-const Router = ({ user, removeLog, setLogs, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+const Router = ({ uiConfig, firebaseAuth, login, logout, user, removeLog, setLogs, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
 
     // useEffect(() => {
     //     console.log(tempo)
@@ -59,6 +60,9 @@ const Router = ({ user, removeLog, setLogs, logs, firebase, setActivePage, newLo
             </Route>
             <Route path="/log">
                 <PracticeLog user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} newLog={newLog}/>
+            </Route>
+            <Route>
+                <Login uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
             </Route>
             {/* <Route path="/form">
                 <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />

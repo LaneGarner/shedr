@@ -47,12 +47,10 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                     <h3>Notes:</h3>
                     <span>{log.practiceTopicNotes.notes}</span>
                     <h3>Practice time:</h3>
-                    <span>{log.practiceTime[0]}:{log.practiceTime[1]}:{log.practiceTime[2]}</span>
+                    <div>
+                        <span>{log.practiceTime[0]}:{log.practiceTime[1]}:{log.practiceTime[2]}</span>
+                    </div>
                     <button onClick={() => removeLog(log.id)}>Remove Item</button>
-                    {/* <p>{log.content.notes}</p> */}
-                    {/* <span>{log.time.practiceTime[0]}</span>:
-                    <span>{log.time.practiceTime[1]}</span>:
-                    <span>{log.time.practiceTime[2]}</span> */}
                 </div>
             ))}
         </div>
