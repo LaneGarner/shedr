@@ -11,3 +11,12 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.log-card {
+    background: white;
+    color: #333;
+    width: 25em;
+    margin: 1em;
+    border-radius: 1em;
+    padding: 2em;
+}

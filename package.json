@@ -5,10 +5,12 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@react-firebase/database": "^0.3.11",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.4",
     "@testing-library/user-event": "^12.6.3",
     "@tonaljs/tonal": "^4.6.0",
+    "firebase": "^8.2.6",
     "react": "^17.0.1",
     "react-burger-menu": "^3.0.3",
     "react-compound-timer": "^1.2.0",

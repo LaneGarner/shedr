@@ -8,18 +8,39 @@ import "./NewSessionForm.css"
 
 // const {useRef} = React;
 
-export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
+export const NewSessionForm = ({ firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
 
     setActivePage("home")
 
+    const userId = "userId"
+
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     const itemsRef = firebase.database().ref('items');
+    //     const item = {
+    //       title: this.state.currentItem,
+    //       user: this.state.username
+    //     }
+    //     itemsRef.push(item);
+    //     this.setState({
+    //       currentItem: '',
+    //       username: ''
+    //     });
+    //   }
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        alert('submit')
+        // alert('submit')
 
         //if timer is running or paused stop it to submit pr time
-        
-        const makeLog = {content: practiceTopicNotes, time:{ startDate, practiceTime}}
-        setNewLog(makeLog)
+        const itemsRef = firebase.database().ref('logs');
+        const makeLog = {userId, practiceTopicNotes, startDate, practiceTime }
+        console.log(makeLog)
+        itemsRef.push(makeLog);
+        // setNewLog(makeLog)
         cancelForm()
 
         // console.log(makeLog)
@@ -30,7 +51,7 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
     const cancelForm = () => { 
         setActiveSession(false)
         setStartDate(new Date())
-        setPracticeTime(["00", "00", "00"])
+        setPracticeTime({hrs: "00", min: "00", sec: "00"})
         setPracticeTopicNotes({topic: "", notes: ""})
         // document.getElementById("practice-log-form").reset();
     }
@@ -44,7 +65,7 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
         const hours = e.target.value
         const minutes = practiceTime[1]
         const seconds = practiceTime[2]
-        const newPracticeTime = [hours, minutes, seconds]
+        const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
         setPracticeTime(newPracticeTime)
     }
 
@@ -52,7 +73,7 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
         const hours = practiceTime[0]
         const minutes = e.target.value
         const seconds = practiceTime[2]
-        const newPracticeTime = [hours, minutes, seconds]
+        const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: seconds}
         setPracticeTime(newPracticeTime)
     }
 
@@ -130,7 +151,7 @@ export const NewSessionForm = ({ setActivePage, newLog, setNewLog, practiceTopic
                 <div className="modal">
                     <h2>What are you practicing?</h2>
                     <TextareaAutosize minRows="3" autoFocus />
-                    <h2>How long do are you practicing?</h2>
+                    <h2>How long are you practicing?</h2>
                     <TextareaAutosize minRows="3"/>
                 </div>
             </div>

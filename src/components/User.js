@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import "./User.css"
 
-export const User = ({ setActivePage }) => {
+export const User = ({ logs, setActivePage }) => {
     setActivePage("user")
 
     // const styles = {
