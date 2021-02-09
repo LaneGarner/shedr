@@ -1,10 +1,38 @@
-import React from 'react'
+import React, { useEffect} from 'react'
+import firebase from 'firebase'
 import "./PracticeLog.css";
 import dummyData from "../dummyData.json";
 
-export const PracticeLog = ({ user, removeLog, logs, newLog}) => {
+export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
+    
+    //get relevant data from db
+    useEffect(() => {
+        if(user) {        
+        const logsRef = firebase.database().ref('logs/' + user.uid);
+        // const currentId = user.uid
+        // console.log(user.uid)
+        logsRef.on('value', (snapshot) => {
+            let logs = snapshot.val();
+            let newState = [];
+            for (let log in logs) {
+              // if(log.userId === currentId) {
+                newState.push({
+                    id: log,
+                    practiceTime: logs[log].practiceTime,
+                    practiceTopicNotes: logs[log].practiceTopicNotes,
+                    userId: logs[log].userId,
+                    });
+                // }
+                }
+                setLogs(newState)
+                
+            });
+        }
 
-    console.log(logs)
+            }, [user])
+
+
+    console.log(user)
     let userLogs; 
     // {logs ? userLogs = logs.filter((log) => log.userId === user.uid) : userLogs = null}
 
@@ -22,9 +50,9 @@ export const PracticeLog = ({ user, removeLog, logs, newLog}) => {
                     <span>{log.practiceTime[0]}:{log.practiceTime[1]}:{log.practiceTime[2]}</span>
                     <button onClick={() => removeLog(log.id)}>Remove Item</button>
                     {/* <p>{log.content.notes}</p> */}
-                    {/* <span>{log.time.practiceTime[0]}</span>: */}
-                    {/* <span>{log.time.practiceTime[1]}</span>: */}
-                    {/* <span>{log.time.practiceTime[2]}</span> */}
+                    {/* <span>{log.time.practiceTime[0]}</span>:
+                    <span>{log.time.practiceTime[1]}</span>:
+                    <span>{log.time.practiceTime[2]}</span> */}
                 </div>
             ))}
         </div>

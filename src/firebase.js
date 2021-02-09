@@ -1,15 +1,48 @@
 import firebase from 'firebase'
+// import "firebase/auth"
+
+
+
+// firebase.initializeApp(config);
+
+
+// export const provider = new firebase.auth.GoogleAuthProvider();
+// export const auth = firebase.auth();
+// export default firebase;
+
+
 const config = {
-    apiKey: "AIzaSyAxAEpx1aeGd7TLcVM0qjTCDKhvLRzNNb8",
-    authDomain: "shedr-app.firebaseapp.com",
-    databaseURL: "https://shedr-app-default-rtdb.firebaseio.com",
-    projectId: "shedr-app",
-    storageBucket: "shedr-app.appspot.com",
-    messagingSenderId: "528085768566",
-    appId: "1:528085768566:web:0522a40a856867f93fc257",
-    measurementId: "G-7TPETPVZGG"
+   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+   authDomain: "shedr-app.firebaseapp.com",
+   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 firebase.initializeApp(config);
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();
 export default firebase;
+
+
+
+
+
+
+// import firebase from 'firebase'
+// const config = {
+//     apiKey: "AIzaSyAxAEpx1aeGd7TLcVM0qjTCDKhvLRzNNb8",
+//     authDomain: "shedr-app.firebaseapp.com",
+//     databaseURL: "https://shedr-app-default-rtdb.firebaseio.com",
+//     projectId: "shedr-app",
+//     storageBucket: "shedr-app.appspot.com",
+//     messagingSenderId: "528085768566",
+//     appId: "1:528085768566:web:0522a40a856867f93fc257",
+//     measurementId: "G-7TPETPVZGG"
+// };
+// firebase.initializeApp(config);
+// export const provider = new firebase.auth.GoogleAuthProvider();
+// export const auth = firebase.auth();
+// export default firebase;

@@ -63,27 +63,34 @@ const App = () => {
     });
   },[])
 
-  useEffect(() => {
+  console.log(user)
+
+  //get relevant data from db
+  // useEffect(() => {
     
-    const logsRef = firebase.database().ref('logs');
-      logsRef.on('value', (snapshot) => {
-        let logs = snapshot.val();
-        let newState = [];
-        for (let log in logs) {
-          newState.push({
-            id: log,
-            practiceTime: logs[log].practiceTime,
-            practiceTopicNotes: logs[log].practiceTopicNotes,
-            userId: logs[log].userId,
-          });
-        }
-        setLogs(newState)
+  //   const logsRef = firebase.database().ref('logs/');
+  //   // const currentId = user.uid
+  //   // console.log(user.uid)
+  //   logsRef.on('value', (snapshot) => {
+  //       let logs = snapshot.val();
+  //       let newState = [];
+  //       for (let log in logs) {
+  //         // if(log.userId === currentId) {
+  //           newState.push({
+  //             id: log,
+  //             practiceTime: logs[log].practiceTime,
+  //             practiceTopicNotes: logs[log].practiceTopicNotes,
+  //             userId: logs[log].userId,
+  //           });
+  //         // }
+  //       }
+  //       setLogs(newState)
         
-      });
-    }, [])
+  //     });
+  //   }, [])
 
   const removeLog = (logId) => {
-    const logsRef = firebase.database().ref(`/logs/${logId}`);
+    const logsRef = firebase.database().ref(`/logs/${user.uid}/${logId}`);
     logsRef.remove();
   }
 
@@ -107,7 +114,7 @@ const App = () => {
     // <FirebaseDatabaseProvider>
       <BrowserRouter>
         <Header login={login} logout={logout} user={user} activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
-        <Router user={user} removeLog={removeLog} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+        <Router user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
         <Footer activePage={activePage} setActivePage={setActivePage} />
       </BrowserRouter>
     //  </FirebaseDatabaseProvider>

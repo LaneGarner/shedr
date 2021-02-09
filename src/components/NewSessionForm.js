@@ -39,7 +39,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         // alert('submit')
 
         //if timer is running or paused stop it to submit pr time
-        const itemsRef = firebase.database().ref('logs');
+        const itemsRef = firebase.database().ref('logs/' + userId);
         const makeLog = {userId, practiceTopicNotes, startDate, practiceTime }
         console.log(makeLog)
         itemsRef.push(makeLog);
