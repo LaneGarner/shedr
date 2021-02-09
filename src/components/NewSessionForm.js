@@ -8,11 +8,14 @@ import "./NewSessionForm.css"
 
 // const {useRef} = React;
 
-export const NewSessionForm = ({ firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
+export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
 
     setActivePage("home")
 
-    const userId = "userId"
+    let userId;
+    {user ? userId = user.uid: userId = null}
+    
+    console.log(user)
 
     // handleSubmit(e) {
     //     e.preventDefault();

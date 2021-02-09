@@ -10,4 +10,6 @@ const config = {
     measurementId: "G-7TPETPVZGG"
 };
 firebase.initializeApp(config);
+export const provider = new firebase.auth.GoogleAuthProvider();
+export const auth = firebase.auth();
 export default firebase;

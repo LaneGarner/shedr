@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import "./User.css"
 
-export const User = ({ logs, setActivePage }) => {
+export const User = ({ user, logs, setActivePage }) => {
     setActivePage("user")
 
     // const styles = {
@@ -21,7 +21,7 @@ export const User = ({ logs, setActivePage }) => {
     // };
     return (
         <div className="userContainer">
-            <h1>User</h1>
+            <h1>{user.displayName}</h1>
             <div className="userDashboard">
                 <Link to="log">
                     <h2>Practice log</h2>

@@ -6,7 +6,7 @@ import {Footer} from './components/Footer'
 
 // import firebase from "firebase/app";
 // import "firebase/database"
-import firebase from "./firebase"
+import firebase, { auth, provider } from './firebase.js';
 // import { FirebaseDatabaseProvider } from "@react-firebase/database";
 // import "firebase/auth";
 
@@ -15,6 +15,7 @@ import { PracticeTimer } from './components/PracticeTimer'
 import './App.css'
 
 const App = () => {
+  const [user, setUser] = useState(null)
   const [logs, setLogs] = useState([])
 
   const [activePage, setActivePage] = useState()
@@ -54,8 +55,16 @@ const App = () => {
   // },[time])
 
   // <PracticeTimer />
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } 
+    });
+  },[])
 
-  useEffect(()=> {
+  useEffect(() => {
+    
     const logsRef = firebase.database().ref('logs');
       logsRef.on('value', (snapshot) => {
         let logs = snapshot.val();
@@ -71,19 +80,34 @@ const App = () => {
         setLogs(newState)
         
       });
-  }, [])
+    }, [])
 
   const removeLog = (logId) => {
     const logsRef = firebase.database().ref(`/logs/${logId}`);
     logsRef.remove();
   }
 
+  const logout = () => {
+    auth.signOut()
+    .then(() => {
+      setUser(null)
+    });  
+  }
+
+  const login = () => {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        setUser(user)
+      });
+  }
+
   return (
     // <Provider store={store}>
     // <FirebaseDatabaseProvider>
       <BrowserRouter>
-        <Header activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
-        <Router removeLog={removeLog} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+        <Header login={login} logout={logout} user={user} activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
+        <Router user={user} removeLog={removeLog} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
         <Footer activePage={activePage} setActivePage={setActivePage} />
       </BrowserRouter>
     //  </FirebaseDatabaseProvider>

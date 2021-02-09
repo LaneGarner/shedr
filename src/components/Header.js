@@ -10,7 +10,7 @@ import "./Header.css"
 import { VegBurgIcon } from "../icons/VegBurgIcon";
 import VegBurg from "./VegBurg"
 
-export const Header = ({ activePage, setActivePage, activeSession, tempo, playing, timeSig, droning, root, chordType }) => {
+export const Header = ({ login, logout, user, activePage, setActivePage, activeSession, tempo, playing, timeSig, droning, root, chordType }) => {
 
     return (
         <header>
@@ -26,7 +26,7 @@ export const Header = ({ activePage, setActivePage, activeSession, tempo, playin
                 {activeSession && <Link to="/form">Current practice session</Link>}
                 {playing && <Link to="./metdrone">{tempo}BPM {timeSig}/4</Link>}
                 {droning && <Link to="./metdrone">{root} {chordType}</Link>}
-            <VegBurg />
+            <VegBurg login={login} logout={logout} user={user} />
         </header>
     )
 }

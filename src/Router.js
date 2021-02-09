@@ -30,7 +30,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 }
 
 
-const Router = ({ removeLog, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+const Router = ({ user, removeLog, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
 
     // useEffect(() => {
     //     console.log(tempo)
@@ -41,10 +41,10 @@ const Router = ({ removeLog, logs, firebase, setActivePage, newLog, setNewLog, p
             {/* <Route exact path="/" component={Listings} /> */}
             <Route exact path="/">
                 {/* <Home activeSession={activeSession} setActiveSession={setActiveSession} /> */}
-                <NewSessionForm firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
+                <NewSessionForm user={user} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
             </Route>
             <Route path="/user">
-                <User logs={logs} setActivePage={setActivePage} />
+                <User user={user} logs={logs} setActivePage={setActivePage} />
             </Route>
             <Route path="/record">
                 <Record setActivePage={setActivePage} />
@@ -58,7 +58,7 @@ const Router = ({ removeLog, logs, firebase, setActivePage, newLog, setNewLog, p
                 <Fork setActivePage={setActivePage} />
             </Route>
             <Route path="/log">
-                <PracticeLog removeLog={removeLog} logs={logs} newLog={newLog}/>
+                <PracticeLog user={user} removeLog={removeLog} logs={logs} newLog={newLog}/>
             </Route>
             {/* <Route path="/form">
                 <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
