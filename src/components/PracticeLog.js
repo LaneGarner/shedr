@@ -47,9 +47,9 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                     <h3>Notes:</h3>
                     <span>{log.practiceTopicNotes.notes}</span>
                     <h3>Practice time:</h3>
-                    <div>
+                    <span>
                         <span>{log.practiceTime[0]}:{log.practiceTime[1]}:{log.practiceTime[2]}</span>
-                    </div>
+                    </span><br />
                     <button onClick={() => removeLog(log.id)}>Remove Item</button>
                 </div>
             ))}

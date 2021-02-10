@@ -16,7 +16,7 @@ const config = {
 
 export const uiConfig = {
     signInFlow: 'redirect',
-    signInSuccessUrl: '/signedIn',
+    signInSuccessUrl: '/',
     signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,

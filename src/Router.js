@@ -19,12 +19,12 @@ const checkAuth = () => {
     return cookies["loggedIn"] ? true : false
 }
 
-const ProtectedRoute = ({component: Component, ...rest}) => {
+const ProtectedRoute = ({component: Component, authenticated, ...rest}) => {
     return (
         <Route
         {...rest}
         render={(props) => checkAuth()
-            ? <Component {...props} />
+            ? <Component {...props} {...rest} />
             : <Redirect to="/login" />}
         />
     )
@@ -44,9 +44,9 @@ const Router = ({ uiConfig, firebaseAuth, login, logout, user, removeLog, setLog
                 {/* <Home activeSession={activeSession} setActiveSession={setActiveSession} /> */}
                 <NewSessionForm user={user} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
             </Route>
-            <Route path="/user">
+            <ProtectedRoute path="/user">
                 <User user={user} logs={logs} setActivePage={setActivePage} />
-            </Route>
+            </ProtectedRoute>
             <Route path="/record">
                 <Record setActivePage={setActivePage} />
             </Route>

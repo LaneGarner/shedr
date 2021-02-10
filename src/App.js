@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter, useParams } from 'react-router-dom'
 import Router from './Router'
 import {Header} from './components/Header'
@@ -13,6 +13,8 @@ import firebase, { auth, uiConfig } from './firebase.js';
 import { PracticeTimer } from './components/PracticeTimer'
 
 import './App.css'
+
+
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -102,6 +104,7 @@ const App = () => {
   }
 
   const login = () => {
+    
     // auth.signInWithRedirect(provider) 
     //   .then((result) => {
     //     const user = result.user;
