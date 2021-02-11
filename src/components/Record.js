@@ -5,13 +5,13 @@ export const Record = ({setActivePage}) => {
 
     const styles = {
         recordContainer: {
-            paddingTop: "10em",
-            backgroundColor: "#333",
-            height: "100vh",
+            // paddingTop: "10em",
+            // backgroundColor: "#333",
+            // height: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            color: "white",
+            // color: "white",
         },
     };
     return (

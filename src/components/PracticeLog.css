@@ -1,27 +1,16 @@
 .logContainer {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    color: white;
-    background-color: #333;
-    padding-top: 8em;
-    padding-bottom: 9em;
-    min-height: 70vh;
-    padding-left: 20px;
-    padding-right: 20px;
+    text-align: center;
 }
 
 .log-grid {
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .log-card {
-    background: white;
-    color: #333;
+    background: #272727;
+    color: #fff;
     width: 25em;
     margin: 1em;
     border-radius: 1em;
@@ -36,15 +25,14 @@
     color: tomato;
     font-size: 1.5em;
     right: 1em;
-    /* text-align: right; */
     top: .8em;
 }
+
 .edit-log-btn {
     position: absolute;
     cursor: pointer;
     color: tomato;
     font-size: 1.5em;
     right: 2.5em;
-    /* text-align: right; */
     top: .8em;
 }

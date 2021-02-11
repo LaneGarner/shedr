@@ -69,7 +69,6 @@ export const PracticeTimer = ({ setStartDate, practiceTime, setPracticeTime, tim
         const min = timer.slice(3,5)
         const sec = timer.slice(6,8)
         const pTime= [hrs, min, sec]
-        console.log([hrs, min, sec])
         setPracticeTime(pTime)
         
         // pause()

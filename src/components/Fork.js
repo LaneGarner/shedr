@@ -7,7 +7,7 @@ export const Fork = ({ setActivePage }) => {
         forkContainer: {
             paddingTop: "10em",
             backgroundColor: "#333",
-            height: "100vh",
+            // height: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

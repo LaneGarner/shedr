@@ -3,14 +3,16 @@
 
 
 * redux/context ?
+* reincorporate logo
+* finalize/buy icons
 * user page
   * make into protected route
   * update log
   * add photo
 * form component
   <!-- * set start time on timer start -->
-  * fix date for db
-  * stop and pause timer then set time before submit
+  <!-- * fix date for db -->
+  <!-- * stop and pause timer then set time before submit -->
   * redirect to login or practice log on submit
   * modal windows on timer
     * new session

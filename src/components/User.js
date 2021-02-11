@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
+import { LogIcon } from "../icons/LogIcon";
+import { PaperClipIcon } from "../icons/PaperClipIcon";
+import { PieChartIcon } from "../icons/PieChartIcon";
 import "./User.css"
 
 export const User = ({ user, logs, setActivePage }) => {
     setActivePage("user")
+    // {user && console.log(user)}
 
     // const styles = {
     //     userContainer: {
@@ -21,13 +25,31 @@ export const User = ({ user, logs, setActivePage }) => {
     // };
     return (
         <div className="userContainer">
-            <h1>{user && user.displayName}</h1>
+            {user && (
+                <>
+                    {user.photoURL && <img src={user.photoURL} alt="user image" className="user-thumbnail"/> }
+                    <h1>{user.displayName}</h1>
+                </> 
+            )}
             <div className="userDashboard">
                 <Link to="log">
-                    <h2>Practice log</h2>
+                    <div className="user-dashboard-card">
+                        <LogIcon />
+                        <h2>Practice log</h2>
+                    </div>
                 </Link>
-                <h2>Repertoire list</h2>
-                <h2>Practice stats</h2>
+                <Link>
+                    <div className="user-dashboard-card">
+                        <PaperClipIcon />
+                        <h2>Repertoire list</h2>
+                    </div>
+                </Link>
+                <Link>
+                    <div className="user-dashboard-card">
+                        <PieChartIcon />
+                        <h2>Practice stats</h2>
+                    </div>
+                </Link>
             </div>
         </div>
     )

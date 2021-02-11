@@ -6,6 +6,10 @@ body {
   /* font-family: monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #333;
+  color: white;
+  padding-top: 8em;
+  padding-bottom: 8em;
 }
 
 code {

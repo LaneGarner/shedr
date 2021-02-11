@@ -1,11 +1,13 @@
 .userContainer {
-    padding-top: 10em;
-    background-color: #333;
-    height: 100vh;
+    /* padding-top: 10em; */
+    /* background-color: #333; */
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
+    margin-left: 3em;
+    margin-right: 3em;
     /* // alignItems: center; */
-    color: white;
+    /* color: white; */
 }
 
 .userContainer a {
@@ -16,4 +18,24 @@
 .userDashboard {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.user-dashboard-card {
+    background: #272727;
+    padding: 2em;
+    border-radius: 2em;
+    text-align: center;
+    width: 15em;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2em 2em 2em;
+}
+
+.user-thumbnail {
+    border-radius: 50%;
+    width: 5em;
 }

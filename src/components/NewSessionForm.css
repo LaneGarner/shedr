@@ -2,11 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    color: white;
+    align-items: flex-start;
+    /* color: white;
     background-color: #333;
-    padding-top: 8em;
+    padding-top: 8em; */
     padding-bottom: 8em;
-    min-height: 70vh;
+    /* min-height: 70vh; */
 }
 
 .submitBtn:hover {
@@ -41,7 +42,7 @@
     padding: 3em;
     width: 22em;
     background-color: #272727;
-    margin: 2em;
+    margin: 0 2em;
     border-radius: 2em;
     /* z-index: 0; */
 }

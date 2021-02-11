@@ -66,10 +66,9 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                     {hover == log.id && typeof hover != undefined ? (
                         <div>
                             <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
-                            <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div> 
+                            <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
                         </div>
                     ) : <></> }
-
                         <h2>{JSON.parse(log.startDate)}</h2>
                         <h2>{JSON.parse(log.startTime)}</h2>
                         <h3>Total practice time:</h3>
@@ -80,7 +79,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                         <span>{log.practiceTopicNotes.topic}</span>
                         <h3>Notes:</h3>
                         <span>{log.practiceTopicNotes.notes}</span>
-                        
+            
                     </div>
                 ))}
             </div>

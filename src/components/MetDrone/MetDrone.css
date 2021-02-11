@@ -1,8 +1,8 @@
 .metDroneContainer {
-    padding-top: 8em;
+    /* padding-top: 8em;
     background-color: #333;
-    padding-bottom: 8em;
-    min-height: 70vh;
+    padding-bottom: 8em; */
+    /* min-height: 70vh; */
 
 }
 
@@ -14,14 +14,14 @@
 
 .metDroneComponentContainer {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .metdrone-container {
-    margin: 1em;
+    margin: auto 2em;
     padding: 5em;
     background: #272727;
     border-radius: 2em;

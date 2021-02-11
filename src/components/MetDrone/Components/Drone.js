@@ -71,7 +71,7 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
 
     return (
         <div className="Drone">
-            {droning ? <h1 style={{color: "orange"}}>Drone</h1> : <h1 style={{color: "white"}}>Drone</h1>}
+            {droning ? <h1 style={{color: "#5AC18E"}}>Drone</h1> : <h1 style={{color: "white"}}>Drone</h1>}
             <input 
                 value={root} 
                 onChange={handleRootChange}
