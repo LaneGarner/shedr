@@ -3,7 +3,7 @@ import { MetDroneIcon } from "../icons/MetDroneIcon";
 import { ForkIcon } from "../icons/ForkIcon";
 import { Link } from 'react-router-dom'
 
-export const Footer = ({ activePage, setActivePage }) => {
+export const Footer = ({ closeMenu, activePage, setActivePage }) => {
     const styles = {
         footer: {
             backgroundColor: "#101110",
@@ -16,6 +16,7 @@ export const Footer = ({ activePage, setActivePage }) => {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
+            zIndex: 1000,
         },
         footerIcon: {
             width: "4em",
@@ -27,17 +28,17 @@ export const Footer = ({ activePage, setActivePage }) => {
     return (
         <footer style={styles.footer}>
             <div style={styles.footerIcon}>
-                <Link to="record">
+                <Link onClick={closeMenu} to="record">
                     <RecordIcon activePage={activePage} />
                 </Link>
             </div>
             <div style={styles.footerIcon}>
-                <Link to="metdrone">
+                <Link onClick={closeMenu} to="metdrone">
                     <MetDroneIcon activePage={activePage} />
                 </Link>
             </div>
             <div style={styles.footerIcon}>
-                <Link to="fork">
+                <Link onClick={closeMenu} to="fork">
                     <ForkIcon activePage={activePage} />
                 </Link>
             </div>

@@ -34,7 +34,7 @@ const App = () => {
   const [chordType, setChordType] = useState("minor ninth")
 
   const [activeSession, setActiveSession] = useState()
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(Date.now());
 
   const [timerStarted, setTimerStart] = useState(false)
   const [timerRunning, setTimerRunning] = useState(false)
@@ -46,6 +46,14 @@ const App = () => {
   const [practiceTime, setPracticeTime] = useState({hours: "00", seconds: "00", minutes: "00"})
   const [practiceTopicNotes, setPracticeTopicNotes] = useState({topic: "", notes: ""})
   const [newLog, setNewLog] = useState()
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  const closeMenu = () => {
+      setIsOpen(false)
+  }
+
+
   // const [practiceTime, setPracticeTime] = useState()
 
   // timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState
@@ -116,9 +124,9 @@ const App = () => {
     // <Provider store={store}>
     // <FirebaseDatabaseProvider>
       <BrowserRouter>
-        <Header login={login} logout={logout} user={user} activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} closeMenu={closeMenu} login={login} logout={logout} user={user} activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
         <Router uiConfig={uiConfig} firebaseAuth={firebase.auth()} login={login} logout={logout} user={user} user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
-        <Footer activePage={activePage} setActivePage={setActivePage} />
+        <Footer closeMenu={closeMenu} activePage={activePage} setActivePage={setActivePage} />
       </BrowserRouter>
     //  </FirebaseDatabaseProvider>
   );

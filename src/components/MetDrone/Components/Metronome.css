@@ -12,16 +12,18 @@
 }
 
 .metronome button {
-    background: #333;
+    background: transparent;
     padding: .8em;
     margin: .5em;
-    border: none;
+    /* border: none; */
+    border: white solid 1px;
     border-radius: 2em;
     outline: 2em;
     /* width: 1em; */
     color: #fff;
     font-size: 18px;
     width: 100px;
+    cursor: pointer;
 }
 
 .Slider {
@@ -31,3 +33,21 @@
 .Count {
     margin: 0;
 }
+
+.met-settings {
+    padding: 1em;
+}
+
+.bpm-slider {
+    margin-top: 2em;
+}
+
+
+
+.metronome button:hover {
+    color: #333;
+    background: white;
+}
+/* .metronome button:nth-of-type(2):hover {
+    background: #5AC18E;
+} */

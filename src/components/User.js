@@ -21,7 +21,7 @@ export const User = ({ user, logs, setActivePage }) => {
     // };
     return (
         <div className="userContainer">
-            <h1>{user.displayName}</h1>
+            <h1>{user && user.displayName}</h1>
             <div className="userDashboard">
                 <Link to="log">
                     <h2>Practice log</h2>

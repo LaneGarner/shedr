@@ -62,7 +62,7 @@ const Router = ({ uiConfig, firebaseAuth, login, logout, user, removeLog, setLog
                 <PracticeLog user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} newLog={newLog}/>
             </Route>
             <Route>
-                <Login uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
+                <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
             </Route>
             {/* <Route path="/form">
                 <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />

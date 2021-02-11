@@ -18,6 +18,7 @@ export const Fork = ({ setActivePage }) => {
         <div style={styles.forkContainer}>
             <ForkIcon />
             <h1>fork</h1>
+            <p>Tuner coming soon...</p>
         </div>
     )
 }

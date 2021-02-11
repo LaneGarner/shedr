@@ -43,6 +43,7 @@
     background-color: #272727;
     margin: 2em;
     border-radius: 2em;
+    /* z-index: 0; */
 }
 
 .newSessionContainer h1 {
@@ -69,6 +70,7 @@
 
 .pr-time-input input {
     width: 2.3em;
+    z-index: 99;
 }
 
 .start-time-input input {
@@ -90,6 +92,17 @@
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
 } */
+
+ /* .react-datepicker__input-container {
+    z-index: -1;
+} */
+
+/* .datepicker {
+    z-index: -100;
+} */
+.react-datepicker-popper, .react-datepicker__input-container, .datepicker, .react-datepicker-wrapper { 
+    z-index: 2 !important 
+}
 
 .modal {
     background-color: #333;

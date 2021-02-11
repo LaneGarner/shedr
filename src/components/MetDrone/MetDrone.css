@@ -1,0 +1,28 @@
+.metDroneContainer {
+    padding-top: 8em;
+    background-color: #333;
+    padding-bottom: 8em;
+    min-height: 70vh;
+
+}
+
+.metDroneHeadline {
+    text-align: center;
+    color: #5AC18E;
+    padding-bottom: 0;
+}
+
+.metDroneComponentContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.metdrone-container {
+    margin: 1em;
+    padding: 5em;
+    background: #272727;
+    border-radius: 2em;
+}

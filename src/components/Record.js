@@ -1,3 +1,5 @@
+import { RecordIcon } from "../icons/RecordIcon";
+
 export const Record = ({setActivePage}) => {
     setActivePage("record")
 
@@ -14,11 +16,13 @@ export const Record = ({setActivePage}) => {
     };
     return (
         <div style={styles.recordContainer}>
+            <RecordIcon />
             <h1>Record</h1>
-            <h2>My recordings</h2>
+            <p>Looper and audio/video recording coming soon...</p>
+            {/* <h2>My recordings</h2>
             <h2>Audio</h2>
             <h2>Video</h2>
-            <h2>Looper</h2>
+            <h2>Looper</h2> */}
         </div>
     )
 }

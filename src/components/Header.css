@@ -26,3 +26,17 @@ header a {
     text-decoration: none;
     color: white;
 }
+
+.burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    /* left: 1em; */
+    top: 1em;
+    right: 3em;
+    /* padding-bottom: 2em; */
+}
+
+header {
+    z-index: 1000,
+}

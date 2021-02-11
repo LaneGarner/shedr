@@ -13,6 +13,7 @@
     "firebase": "^8.2.6",
     "firebaseui": "^4.7.3",
     "react": "^17.0.1",
+    "react-animated-burgers": "^1.2.8",
     "react-burger-menu": "^3.0.3",
     "react-compound-timer": "^1.2.0",
     "react-datepicker": "^3.4.1",
@@ -23,6 +24,7 @@
     "react-scripts": "4.0.1",
     "react-textarea-autosize": "^8.3.0",
     "startaudiocontext": "^1.2.1",
+    "styled-components": "^5.2.1",
     "tone": "^14.7.77",
     "web-vitals": "^0.2.4"
   },

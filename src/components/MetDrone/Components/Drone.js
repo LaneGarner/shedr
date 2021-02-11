@@ -71,12 +71,12 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
 
     return (
         <div className="Drone">
-            {droning ? <h1 style={{color: "orange"}}>drone</h1> : <h1 style={{color: "white"}}>drone</h1>}
+            {droning ? <h1 style={{color: "orange"}}>Drone</h1> : <h1 style={{color: "white"}}>Drone</h1>}
             <input 
                 value={root} 
                 onChange={handleRootChange}
                 type="text" 
-                placeholder="root"/>
+                placeholder="Enter root"/>
             <select value={chordType} onChange={handleChordTypeChange} name="selectDroneRoot" id="selectDroneRoot">
                 {chordTypes.map((chord, id) => <option key={id} value={chord}>{chord}</option>)}
             </select>

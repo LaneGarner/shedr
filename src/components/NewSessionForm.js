@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
 import DatePicker from "react-datepicker";
 import TextareaAutosize from 'react-textarea-autosize';
@@ -8,9 +9,15 @@ import "./NewSessionForm.css"
 
 // const {useRef} = React;
 
+
 export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
 
     setActivePage("home")
+    // useEffect(() => {
+        // window.scrollTo(0, 0);
+    // }, [])
+    let history = useHistory();
+
 
     let userId;
     {user ? userId = user.uid: userId = null}
@@ -31,24 +38,57 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     //     });
     //   }
 
-
+    // const handleTimerPauseStop = () => {
+    //     if (timerRunning || timerPaused){
+    //         setTimerPaused(true)
+    //         setTimerRunning(false)
+    //         // setTimerPaused(true)
+    //         const hrs = timer.slice(0,2)
+    //         const min = timer.slice(3,5)
+    //         const sec = timer.slice(6,8)
+    //         const pTime= [hrs, min, sec]
+    //         setPracticeTime(pTime)
+    //         clearInterval(tInterval)
+    //         setTimerStart(false)
+    //     // setTimerRunning(false)
+    //         setTimer("00:00:00")
+    //         // setPracticeTime()
+    //     }
+    // }
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        let pTime;
         // alert('submit')
+        if (timerRunning || timerPaused){
+            setTimerPaused(true)
+            setTimerRunning(false)
+            // setTimerPaused(true)
+            const hrs = timer.slice(0,2)
+            const min = timer.slice(3,5)
+            const sec = timer.slice(6,8)
+            pTime= [hrs, min, sec]
+            // setPracticeTime(pTime)
+            clearInterval(tInterval)
+            // setTimerStart(false)
+        // setTimerRunning(false)
+            setTimer("00:00:00")
+            // setPracticeTime()
+        } else {
+            pTime = practiceTime;
+        }
+        // if (!timerRunning && !timerPaused) {
 
-        //if timer is running or paused stop it to submit pr time
-        const itemsRef = firebase.database().ref('logs/' + userId);
-        const makeLog = {userId, practiceTopicNotes, startDate, practiceTime }
-        console.log(makeLog)
-        itemsRef.push(makeLog);
-        // setNewLog(makeLog)
-        cancelForm()
+            //if timer is running or paused stop it to submit pr time
+            const itemsRef = firebase.database().ref('logs/' + userId);
+            const makeLog = {userId, practiceTopicNotes, startDate, practiceTime: pTime }
+            itemsRef.push(makeLog);
+            // setNewLog(makeLog)
+            cancelForm()
+            history.push("/log");
+        // }
 
-        // console.log(makeLog)
-
-        // setTotal()
     }
 
     const cancelForm = () => { 
@@ -56,7 +96,6 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         setStartDate(new Date())
         setPracticeTime({hrs: "00", min: "00", sec: "00"})
         setPracticeTopicNotes({topic: "", notes: ""})
-        // document.getElementById("practice-log-form").reset();
     }
 
     const handleCancel = () => {
@@ -102,20 +141,19 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         setPracticeTopicNotes(newTopicNotes)
     }
     
-    
     return (
         <div className="formContainer">
             <div className="newSessionContainer">
                 <h1>Practice Timer</h1>
                 <hr />
-                <PracticeTimer practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} />   
+                <PracticeTimer setStartDate={setStartDate} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} />   
             </div>
 
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={handleSubmit} >
             <h1>Practice Log</h1>
+            <hr />
             <h2>Session</h2>
-                <hr />
                 <div className="start-time-input">
                     <h4>Start time:</h4>
                     <DatePicker
@@ -137,14 +175,11 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
                     <label for="min">sec</label>
                 </div>
                 <h2>Material</h2>
-                <hr />
                     <label htmlFor="topic">Topic</label><br/>
                     <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" /> 
-                    {/* <textarea value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" />  */}
                     <br />
                     <label htmlFor="notes">Notes</label><br/>
                     <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." rows="5" />
-                    {/* <textarea value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." rows="5" /> */}
                     <br />
                     <button type="submit" className="timerBtn submitBtn">Submit</button>
                     <button onClick={handleCancel} type="reset" className="timerBtn cancelBtn">Cancel</button>

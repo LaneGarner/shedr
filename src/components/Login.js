@@ -8,7 +8,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 
 // const ui = new auth.AuthUI(firebase.auth());
-export const Login = ({ uiConfig, firebaseAuth }) => {
+export const Login = ({ setActivePage, uiConfig, firebaseAuth }) => {
+    setActivePage()
 
     useEffect(() => {
         // startFirebaseUI ('#firebaseui')
@@ -17,6 +18,7 @@ export const Login = ({ uiConfig, firebaseAuth }) => {
     return (
         <div className="Login-container">
             <h1>Login</h1>
+            <p>Login or create an account<br/> to save your practice sessions to our database</p>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseAuth}/>
         </div>
     )
