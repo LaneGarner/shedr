@@ -14,7 +14,7 @@
     width: 25em;
     margin: 1em;
     border-radius: 1em;
-    padding: 2em;
+    /* padding: 2em; */
     padding-bottom: 4em;
     position: relative;
 }
@@ -35,4 +35,11 @@
     font-size: 1.5em;
     right: 2.5em;
     top: .8em;
+}
+
+.log-card-header {
+    background: #222;
+    padding: 2em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }

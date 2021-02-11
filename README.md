@@ -7,8 +7,10 @@
 * finalize/buy icons
 * user page
   * make into protected route
-  * update log
-  * add photo
+  * adjust styles
+  * adjust log styles
+  <!-- * update log -->
+  <!-- * add photo -->
 * form component
   <!-- * set start time on timer start -->
   <!-- * fix date for db -->

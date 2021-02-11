@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
+import { LogIcon } from "../icons/LogIcon"
 import dummyData from "../dummyData.json";
 
 export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
@@ -53,23 +54,22 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
         alert('edit feature coming soon...')
     }
     
-    
-    
-    // {logs ? userLogs = logs.filter((log) => log.userId === user.uid) : userLogs = null}
-
     return (
         <div className="logContainer">
             <h1>Practice log</h1>
+            <LogIcon />
             <div className="log-grid">
                 {logs.map((log, idx) => (
-                    <div key={log.id} id={log.id} onMouseEnter={showLogOptions}  onMouseLeave={hideLogOptions} className="log-card">
-                    {hover == log.id && typeof hover != undefined ? (
-                        <div>
-                            <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
-                            <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
-                        </div>
-                    ) : <></> }
-                        <h2>{JSON.parse(log.startDate)}</h2>
+                    <div key={log.id} id={log.id} onMouseEnter={showLogOptions} onMouseLeave={hideLogOptions} className="log-card">
+                        <div className="log-card-header">
+                        {hover == log.id && typeof hover != undefined ? (
+                            <div>
+                                <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
+                                <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
+                            </div>
+                        ) : <></> }
+                            <h2>{JSON.parse(log.startDate)}</h2>
+                    </div>
                         <h2>{JSON.parse(log.startTime)}</h2>
                         <h3>Total practice time:</h3>
                         <span>

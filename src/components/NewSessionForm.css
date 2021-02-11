@@ -3,16 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    /* color: white;
-    background-color: #333;
-    padding-top: 8em; */
     padding-bottom: 8em;
-    /* min-height: 70vh; */
 }
 
 .submitBtn:hover {
     color: white;
-    /* border: solid 1px orange; */
 }
 
 .submitBtn {
@@ -33,26 +28,17 @@
     border: solid 1px tomato;
 }
 
-
-.practiceTimerContainer {
-
-}
-
 .newSessionContainer {
     padding: 3em;
     width: 22em;
     background-color: #272727;
-    margin: 0 2em;
+    margin: 0 2em 2em 2em;
     border-radius: 2em;
-    /* z-index: 0; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);;
 }
-
-.newSessionContainer h1 {
-    /* font-family: sans-serif; */
-}
-
-/* .newSessionContainer h4 {
-    font-family: ;
+/* 
+.newSessionContainer:hover {
+    transform: translate(.3em, -.3em);
 } */
 
 .timerDisplay {
@@ -60,7 +46,6 @@
 }
 
 .prForm input, .prForm textarea {
-    /* background: red; */
     font-size: 1.2em;
     margin: .2em;
     padding: .3em;
@@ -82,27 +67,9 @@
     margin-top: 1em;
 }
 
-
 .prForm textarea {
     resize: none;
     width: 80%;
-}
-
-/* .Absolute-Center {
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-} */
-
- /* .react-datepicker__input-container {
-    z-index: -1;
-} */
-
-/* .datepicker {
-    z-index: -100;
-} */
-.react-datepicker-popper, .react-datepicker__input-container, .datepicker, .react-datepicker-wrapper { 
-    z-index: 2 !important 
 }
 
 .modal {
@@ -133,6 +100,7 @@
     padding: .2em;
     border-radius: .2em;
 }
+
 .modal-container textarea {
     resize: none;
     width: 80%;

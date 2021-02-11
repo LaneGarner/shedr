@@ -27,9 +27,9 @@ export const User = ({ user, logs, setActivePage }) => {
         <div className="userContainer">
             {user && (
                 <>
-                    {user.photoURL && <img src={user.photoURL} alt="user image" className="user-thumbnail"/> }
-                    <h1>{user.displayName}</h1>
-                </> 
+                    <h1>Hello {user.displayName.split(" ")[0]}, welcome to Shedr</h1>
+                    <p>Choose an option below to access your personalized content</p>
+                </>
             )}
             <div className="userDashboard">
                 <Link to="log">

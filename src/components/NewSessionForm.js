@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
+import { LogIcon } from "../icons/LogIcon"
 import DatePicker from "react-datepicker";
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -151,6 +152,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
 
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={handleSubmit} >
+            {/* <LogIcon /> */}
             <h1>Practice Log</h1>
             <hr />
             <h2>Session</h2>

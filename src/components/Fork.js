@@ -11,9 +11,10 @@ export const Fork = ({ setActivePage }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            // justifyItems: "center",
             color: "white",
         },
-    };
+    }
     return (
         <div style={styles.forkContainer}>
             <ForkIcon />

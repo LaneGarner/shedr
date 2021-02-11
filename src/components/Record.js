@@ -5,7 +5,7 @@ export const Record = ({setActivePage}) => {
 
     const styles = {
         recordContainer: {
-            // paddingTop: "10em",
+            paddingTop: "10em",
             // backgroundColor: "#333",
             // height: "100vh",
             display: "flex",
