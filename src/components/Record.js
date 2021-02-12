@@ -5,6 +5,9 @@ export const Record = ({setActivePage}) => {
     
     useEffect(() => {
         setActivePage("record")
+    })
+
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 

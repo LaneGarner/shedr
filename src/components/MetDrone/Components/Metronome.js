@@ -108,6 +108,15 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
 
 
     const didMountRef = useRef(false)
+
+    // useEffect(() => {
+    //     if (didMountRef.current) {
+    //         if (playing) {
+    //             stopClick()
+    //             playClick()
+    //         }
+    //     } else didMountRef.current = true
+    // }, [accent, timeSig, tempo])
     useEffect(() => {
         if (didMountRef.current) {
             if (playing) {

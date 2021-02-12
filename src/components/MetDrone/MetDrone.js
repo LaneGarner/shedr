@@ -7,6 +7,9 @@ export const MetDrone = ({ setActivePage, tempo, setTempo, playing, setPlaying, 
     
     useEffect(() => {
         setActivePage("metdrone")
+    })
+
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
