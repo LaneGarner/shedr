@@ -27,7 +27,8 @@
 * animate burger menu in from right
 * sign in- 
   * add sign up page?
-  * auth - facebook, apple
+  * facebook
+  * apple
   <!-- * try popup to login because losing state with redirect -->
 * UI/design
 * remove netlify
