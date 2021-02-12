@@ -1,20 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Metronome.css';
 import * as Tone from 'tone'
-import { TimeSigSelect } from "./TimeSigSelect";
-import { Accent } from "./Accent"
+// import { TimeSigSelect } from "./TimeSigSelect";
+// import { Accent } from "./Accent"
 import click1Sample from '../click1.flac';
-import click2Sample from '../click2.wav';
+// import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
 import StartAudioContext from 'startaudiocontext'
 
 const click1 = new Tone.Player(click1Sample).toDestination()
-const click2 = new Tone.Player(click2Sample).toDestination()
+// const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent }) => {    
-    const [ bpm, setBpm ] = useState(120);
-    const [ subdivision, setSubDivision ] = useState("");
+const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
+    // const [ bpm, setBpm ] = useState(120);
+    // const [ subdivision, setSubDivision ] = useState("");
+    const [clickVolume, setClickVolume] = useState()
+
+    const handleClickVolume = (e) => {
+        setClickVolume(e.target.value)
+    }
+    
+
+    
 
 
 
@@ -29,8 +37,8 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
 
     const handleAccent = () => {
         if (playing) {
-            setAccent(!accent)
             stopClick()
+            setAccent(!accent)
             playClick()
         } else {
             setAccent(!accent)
@@ -98,6 +106,17 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
 
     const newPosition = parseInt(Tone.Transport.position.split(':')[1])
 
+
+    const didMountRef = useRef(false)
+    useEffect(() => {
+        if (didMountRef.current) {
+            if (playing) {
+                stopClick()
+                playClick()
+            }
+        } else didMountRef.current = true
+    }, [accent, timeSig, tempo])
+
     return (
         <div className="metronome">
         {playing ? <h1 style={{color: "#5AC18E"}}>Met</h1> : <h1 style={{color: "white"}}>Met</h1>}
@@ -124,6 +143,15 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
                     max="500"
                     value={tempo}
                     onChange={handleTempo} />
+            </div>
+            <div>
+                <label htmlFor="bpmSlider">Volume</label>
+                <input 
+                id="volumeSlider"
+                type="range"
+                value={clickVolume}
+                onChange={handleClickVolume}
+                />
             </div>
         </div>
         <button id="startStopBtn" onClick={startStop}>

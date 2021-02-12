@@ -1,19 +1,22 @@
+import React, { useEffect } from "react";
 import { RecordIcon } from "../icons/RecordIcon";
 
 export const Record = ({setActivePage}) => {
     setActivePage("record")
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     const styles = {
         recordContainer: {
             paddingTop: "10em",
-            // backgroundColor: "#333",
-            // height: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            // color: "white",
         },
-    };
+    }
+
     return (
         <div style={styles.recordContainer}>
             <RecordIcon />

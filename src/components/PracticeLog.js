@@ -4,21 +4,18 @@ import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
 import { LogIcon } from "../icons/LogIcon"
-import dummyData from "../dummyData.json";
+import { Link } from 'react-router-dom'
 
-export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
+export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
     const [hover, setHover] = useState()
-    //get relevant data from db
+
     useEffect(() => {
         if(user) {        
         const logsRef = firebase.database().ref('logs/' + user.uid);
-        // const currentId = user.uid
-        // console.log(user.uid)
         logsRef.on('value', (snapshot) => {
             let logs = snapshot.val();
             let newState = [];
             for (let log in logs) {
-              // if(log.userId === currentId) {
                 let thisDate = new Date(logs[log].startDate).toLocaleDateString()
                 thisDate = thisDate.replace(/"/g,"")
                 let thisTime = new Date(logs[log].startDate).toLocaleTimeString()
@@ -30,17 +27,15 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                     practiceTopicNotes: logs[log].practiceTopicNotes,
                     userId: logs[log].userId,
                     });
-                // }
                 }
                 setLogs(newState)
-                
             });
         }
+    }, [user])
 
-            }, [user])
-
-    console.log(user)
-    let userLogs; 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const showLogOptions = (e) => {
         setHover(e.target.id)
@@ -56,18 +51,20 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
     
     return (
         <div className="logContainer">
-            <h1>Practice log</h1>
             <LogIcon />
+            <h1>Practice log</h1>
+            {logs.length === 0 && <Link to="/">Click here to create your first log</Link>}
             <div className="log-grid">
                 {logs.map((log, idx) => (
                     <div key={log.id} id={log.id} onMouseEnter={showLogOptions} onMouseLeave={hideLogOptions} className="log-card">
-                        <div className="log-card-header">
-                        {hover == log.id && typeof hover != undefined ? (
+                        <div id={log.id} className="log-card-header">
+                        {hover == log.id && typeof hover !== undefined ? (
                             <div>
                                 <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
                                 <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
                             </div>
                         ) : <></> }
+                            <span className="cal-emoji">🗓</span>
                             <h2>{JSON.parse(log.startDate)}</h2>
                     </div>
                         <h2>{JSON.parse(log.startTime)}</h2>
@@ -79,7 +76,6 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs, newLog}) => {
                         <span>{log.practiceTopicNotes.topic}</span>
                         <h3>Notes:</h3>
                         <span>{log.practiceTopicNotes.notes}</span>
-            
                     </div>
                 ))}
             </div>

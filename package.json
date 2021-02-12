@@ -26,6 +26,7 @@
     "startaudiocontext": "^1.2.1",
     "styled-components": "^5.2.1",
     "tone": "^14.7.77",
+    "use-state-with-callback": "^2.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

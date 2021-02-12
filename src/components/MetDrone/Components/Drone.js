@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './Drone.css'
 import * as Tone from 'tone'
 import StartAudioContext from 'startaudiocontext'
@@ -81,7 +81,7 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
                 {chordTypes.map((chord, id) => <option key={id} value={chord}>{chord}</option>)}
             </select>
 
-            {!droning ? <button onClick={startDrone}>Start</button> : <button onClick={() => setDroning(!droning)}>Stop</button> }
+            {!droning ? <button className="start-drone-btn" onClick={startDrone}>Start</button> : <button className="stop-drone-btn" onClick={() => setDroning(!droning)}>Stop</button> }
             
             
             <div>

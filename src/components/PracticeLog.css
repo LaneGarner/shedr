@@ -12,11 +12,15 @@
     background: #272727;
     color: #fff;
     width: 25em;
-    margin: 1em;
+    margin: 3em 1em;
     border-radius: 1em;
-    /* padding: 2em; */
     padding-bottom: 4em;
     position: relative;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.log-card:hover {
+    transform: translate(.3em, -.3em);
 }
 
 .remove-log-btn {
@@ -42,4 +46,13 @@
     padding: 2em;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
+}
+
+.cal-emoji {
+    font-size: 3em;
+}
+
+.logContainer a {
+    color: white;
+    text-decoration: none;
 }

@@ -1,7 +1,12 @@
+import React, { useEffect } from "react";
 import { ForkIcon } from "../icons/ForkIcon";
 
 export const Fork = ({ setActivePage }) => {
     setActivePage("fork")
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const styles = {
         forkContainer: {

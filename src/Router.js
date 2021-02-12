@@ -1,10 +1,10 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router'
+import { Switch, Route } from 'react-router'
 // import Listings from './containers/Listings'
 // import Login from './containers/Login'
 // import Details from './containers/Details'
 // import Add from './containers/Add'
-import { Home } from './components/Home'
+// import { Home } from './components/Home'
 import { User } from './components/User'
 import { Record } from './components/Record'
 import MetDrone from './components/MetDrone/'
@@ -12,23 +12,23 @@ import { Fork } from './components/Fork'
 import { NewSessionForm } from './components/NewSessionForm'
 import { PracticeLog } from './components/PracticeLog'
 import { Login } from './components/Login'
-import cookie from 'cookie'
+// import cookie from 'cookie'
 
-const checkAuth = () => {
-    const cookies = cookie.parse(document.cookie)
-    return cookies["loggedIn"] ? true : false
-}
+// const checkAuth = () => {
+//     const cookies = cookie.parse(document.cookie)
+//     return cookies["loggedIn"] ? true : false
+// }
 
-const ProtectedRoute = ({component: Component, authenticated, ...rest}) => {
-    return (
-        <Route
-        {...rest}
-        render={(props) => checkAuth()
-            ? <Component {...props} {...rest} />
-            : <Redirect to="/login" />}
-        />
-    )
-}
+// const ProtectedRoute = ({component: Component, authenticated, ...rest}) => {
+//     return (
+//         <Route
+//         {...rest}
+//         render={(props) => checkAuth()
+//             ? <Component {...props} {...rest} />
+//             : <Redirect to="/login" />}
+//         />
+//     )
+// }
 
 
 const Router = ({ uiConfig, firebaseAuth, login, logout, user, removeLog, setLogs, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
@@ -44,9 +44,9 @@ const Router = ({ uiConfig, firebaseAuth, login, logout, user, removeLog, setLog
                 {/* <Home activeSession={activeSession} setActiveSession={setActiveSession} /> */}
                 <NewSessionForm user={user} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
             </Route>
-            <ProtectedRoute path="/user">
-                <User user={user} logs={logs} setActivePage={setActivePage} />
-            </ProtectedRoute>
+            <Route path="/user">
+                <User uiConfig={uiConfig} firebaseAuth={firebaseAuth} user={user} logs={logs} setActivePage={setActivePage} />
+            </Route>
             <Route path="/record">
                 <Record setActivePage={setActivePage} />
             </Route>

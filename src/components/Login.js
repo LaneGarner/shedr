@@ -1,19 +1,8 @@
-import React, { useEffect } from 'react'
 import './Login.css'
-import firebase from '../firebase';
-import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import { startFirebaseUI } from '../firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-
-// const ui = new auth.AuthUI(firebase.auth());
-export const Login = ({ setActivePage, uiConfig, firebaseAuth }) => {
-    setActivePage()
-
-    useEffect(() => {
-        // startFirebaseUI ('#firebaseui')
-    },[])
+export const Login = ({ uiConfig, firebaseAuth }) => {
 
     return (
         <div className="Login-container">
@@ -23,4 +12,3 @@ export const Login = ({ setActivePage, uiConfig, firebaseAuth }) => {
         </div>
     )
 }
-

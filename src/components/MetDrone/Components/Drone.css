@@ -12,20 +12,29 @@
 }
 
 .Drone button {
-    background: transparent;
     padding: .8em;
     margin: .5em;
-    border: #fff 1px solid;
     border-radius: 2em;
     outline: 2em;
-    /* width: 1em; */
-    color: #fff;
     font-size: 18px;
     width: 100px;
     cursor: pointer;
 }
 
-.Drone button:hover {
+
+.start-drone-btn:hover {
     background: #fff;
     color: #333;
+}
+
+.stop-drone-btn {
+    background: #5AC18E;
+    border: #5AC18E solid 1px;
+    color: #333;
+}
+
+.start-drone-btn {
+    background: transparent;
+    color: #fff;
+    border: #fff 1px solid;
 }

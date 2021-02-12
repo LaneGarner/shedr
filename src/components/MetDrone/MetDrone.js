@@ -10,11 +10,9 @@ export const MetDrone = ({ setActivePage, tempo, setTempo, playing, setPlaying, 
         window.scrollTo(0, 0);
     }, [])
 
-    {droneVolume === undefined && setDroneVolume(-10)}
-
-    const styles = {
-        
-    };
+    if(droneVolume === undefined) {
+        setDroneVolume(-10)
+    }
 
     return (
         // <div>

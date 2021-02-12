@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
 import { LogIcon } from "../icons/LogIcon"
@@ -11,85 +11,52 @@ import "./NewSessionForm.css"
 // const {useRef} = React;
 
 
-export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession}) => {
+export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, setActiveSession}) => {
 
     setActivePage("home")
-    // useEffect(() => {
-        // window.scrollTo(0, 0);
-    // }, [])
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     let history = useHistory();
 
 
     let userId;
-    {user ? userId = user.uid: userId = null}
+    
+    if(user) {
+        userId = user.uid
+    } else {
+        userId = null
+    }
     
     console.log(user)
 
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     const itemsRef = firebase.database().ref('items');
-    //     const item = {
-    //       title: this.state.currentItem,
-    //       user: this.state.username
-    //     }
-    //     itemsRef.push(item);
-    //     this.setState({
-    //       currentItem: '',
-    //       username: ''
-    //     });
-    //   }
-
-    // const handleTimerPauseStop = () => {
-    //     if (timerRunning || timerPaused){
-    //         setTimerPaused(true)
-    //         setTimerRunning(false)
-    //         // setTimerPaused(true)
-    //         const hrs = timer.slice(0,2)
-    //         const min = timer.slice(3,5)
-    //         const sec = timer.slice(6,8)
-    //         const pTime= [hrs, min, sec]
-    //         setPracticeTime(pTime)
-    //         clearInterval(tInterval)
-    //         setTimerStart(false)
-    //     // setTimerRunning(false)
-    //         setTimer("00:00:00")
-    //         // setPracticeTime()
-    //     }
-    // }
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        let pTime;
-        // alert('submit')
-        if (timerRunning || timerPaused){
-            setTimerPaused(true)
-            setTimerRunning(false)
-            // setTimerPaused(true)
-            const hrs = timer.slice(0,2)
-            const min = timer.slice(3,5)
-            const sec = timer.slice(6,8)
-            pTime= [hrs, min, sec]
-            // setPracticeTime(pTime)
+        
+        if (user) {
+            let pTime;
+            if (timerRunning || timerPaused){
+                setTimerPaused(true)
+                setTimerRunning(false)
+                const hrs = timer.slice(0,2)
+                const min = timer.slice(3,5)
+                const sec = timer.slice(6,8)
+                pTime= [hrs, min, sec]
+            } else {
+                pTime = practiceTime;
+            }
             clearInterval(tInterval)
-            // setTimerStart(false)
-        // setTimerRunning(false)
             setTimer("00:00:00")
-            // setPracticeTime()
-        } else {
-            pTime = practiceTime;
-        }
-        // if (!timerRunning && !timerPaused) {
-
-            //if timer is running or paused stop it to submit pr time
             const itemsRef = firebase.database().ref('logs/' + userId);
             const makeLog = {userId, practiceTopicNotes, startDate, practiceTime: pTime }
             itemsRef.push(makeLog);
-            // setNewLog(makeLog)
             cancelForm()
             history.push("/log");
-        // }
-
+        } else {
+            history.push("/user");
+        }
     }
 
     const cancelForm = () => { 
@@ -152,7 +119,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
 
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={handleSubmit} >
-            {/* <LogIcon /> */}
+            <LogIcon />
             <h1>Practice Log</h1>
             <hr />
             <h2>Session</h2>
