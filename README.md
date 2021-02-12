@@ -23,12 +23,12 @@
     * are you sure you want to stop?
     * are you sure you want to submit? show contents of log
 * Metronome
-  * slider- when you click it doesn't adjust tempo.. only sliding works
+  <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
 * sign in- 
   * add sign up page?
   * auth - facebook, apple
-  * try popup to login because losing state with redirect
+  <!-- * try popup to login because losing state with redirect -->
 * UI/design
 * remove netlify
 * fix firebase hosting/github 
