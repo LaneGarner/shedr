@@ -32,7 +32,7 @@
   <!-- * try popup to login because losing state with redirect -->
 * UI/design
 * remove netlify
-* fix firebase hosting/github ?
+* fix firebase hosting/github 
 * record components
 * tuner component
 * rep list
