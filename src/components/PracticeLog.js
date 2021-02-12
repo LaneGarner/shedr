@@ -31,7 +31,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
                 setLogs(newState)
             });
         }
-    }, [user])
+    }, [user, setLogs])
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -58,7 +58,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
                 {logs.map((log, idx) => (
                     <div key={log.id} id={log.id} onMouseEnter={showLogOptions} onMouseLeave={hideLogOptions} className="log-card">
                         <div id={log.id} className="log-card-header">
-                        {hover == log.id && typeof hover !== undefined ? (
+                        {hover === log.id && typeof hover !== undefined ? (
                             <div>
                                 <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
                                 <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>

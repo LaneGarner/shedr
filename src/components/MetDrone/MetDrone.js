@@ -4,9 +4,9 @@ import { Drone } from './Components/Drone';
 import './MetDrone.css'
 
 export const MetDrone = ({ setActivePage, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
-    setActivePage("metdrone")
     
     useEffect(() => {
+        setActivePage("metdrone")
         window.scrollTo(0, 0);
     }, [])
 

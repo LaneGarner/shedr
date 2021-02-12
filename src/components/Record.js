@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { RecordIcon } from "../icons/RecordIcon";
 
 export const Record = ({setActivePage}) => {
-    setActivePage("record")
-
+    
     useEffect(() => {
+        setActivePage("record")
         window.scrollTo(0, 0);
     }, [])
 

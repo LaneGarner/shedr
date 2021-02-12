@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { ForkIcon } from "../icons/ForkIcon";
 
 export const Fork = ({ setActivePage }) => {
-    setActivePage("fork")
-
+    
     useEffect(() => {
+        setActivePage("fork")
         window.scrollTo(0, 0);
     }, [])
 
