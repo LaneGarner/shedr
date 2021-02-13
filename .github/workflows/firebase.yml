@@ -5,9 +5,10 @@ name: Firebase CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
+
 
 jobs:
   build:
@@ -25,8 +26,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: CI=false npm run build
+      run: npm ci && CI=false npm run build
     - name: Archive Build
       uses: actions/upload-artifact@v2
       with:
