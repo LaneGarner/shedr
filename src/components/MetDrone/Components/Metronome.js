@@ -131,7 +131,7 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
         {playing ? <h1 style={{color: "#5AC18E"}}>Met</h1> : <h1 style={{color: "white"}}>Met</h1>}
         <div>
             <input checked={accent} type="checkbox" id="checkbox" onChange={handleAccent} />
-            <label htmlFor="Accent">Accent</label>
+            <label htmlFor="Accent">Accent!</label>
         </div>
         <div className="met-settings">
             <label htmlFor="selectTimeSig">Time signature</label>
