@@ -14,6 +14,8 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
         const logsRef = firebase.database().ref('logs/' + user.uid);
         logsRef.on('value', (snapshot) => {
             let logs = snapshot.val();
+            console.log(logs)
+            // const sortedActivities = logs.sort((a, b) => b.startDate - a.startDate)
             let newState = [];
             for (let log in logs) {
                 let thisDate = new Date(logs[log].startDate).toLocaleDateString()

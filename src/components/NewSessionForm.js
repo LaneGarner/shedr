@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
 import { LogIcon } from "../icons/LogIcon"
+import { ClockIcon } from "../icons/ClockIcon"
 import DatePicker from "react-datepicker";
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -112,6 +113,9 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     return (
         <div className="formContainer">
             <div className="newSessionContainer">
+                <div className="practice-card-icon">
+                    <ClockIcon />
+                </div>
                 <h1>Practice Timer</h1>
                 <hr />
                 <PracticeTimer setStartDate={setStartDate} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} />   
@@ -119,7 +123,9 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
 
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={handleSubmit} >
-            <LogIcon />
+            <div className="practice-card-icon">
+                <LogIcon />
+            </div>
             <h1>Practice Log</h1>
             <hr />
             <h2>Session</h2>
