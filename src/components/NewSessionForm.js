@@ -14,6 +14,15 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     const [stopSessionModal, setStopSessionModal] = useState(false)
     const [submitSessionModal, setSubmitSessionModal] = useState(false)
     const [cancelSessionModal, setCancelSessionModal] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+
+    useEffect(()=> {
+        if (startSessionModal || stopSessionModal || submitSessionModal || cancelSessionModal) {
+            setModalOpen(true)
+        } else {
+            setModalOpen(false)
+        }
+    }, [startSessionModal, stopSessionModal, submitSessionModal, cancelSessionModal])
     
     //set active page for header/footer
     setActivePage("home")
@@ -202,14 +211,8 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         setCancelSessionModal(true)
     }
 
-
-    
-    
-
-
-    
     return (
-        <div className="formContainer">
+        <div className={`formContainer ${modalOpen ? "modal-open" : ""}`}>
             <div className="newSessionContainer">
                 <div className="practice-card-icon">
                     <ClockIcon />
