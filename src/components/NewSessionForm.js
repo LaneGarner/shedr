@@ -24,6 +24,15 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         }
     }, [startSessionModal, stopSessionModal, submitSessionModal, cancelSessionModal])
     
+    useEffect(() => {
+        if (modalOpen) {
+        document.body.style.overflow = 'hidden';
+        } else {
+        document.body.style.overflow = 'unset';
+        }
+    }, [modalOpen]);
+
+
     //set active page for header/footer
     setActivePage("home")
     
@@ -212,7 +221,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     }
 
     return (
-        <div className={`formContainer ${modalOpen ? "modal-open" : ""}`}>
+        <div className="formContainer">
             <div className="newSessionContainer">
                 <div className="practice-card-icon">
                     <ClockIcon />

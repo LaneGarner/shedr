@@ -143,8 +143,3 @@
     font-weight: 300;
     margin-bottom: 0;
 }
-
-.modal-open {
-    height: 50vh;
-    overflow-y: hidden;
-}
