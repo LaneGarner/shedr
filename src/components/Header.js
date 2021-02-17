@@ -17,15 +17,21 @@ export const Header = ({ isOpen, setIsOpen, closeMenu, login, logout, user, acti
                     <UserIcon activePage={activePage} />
                 </Link>
             </nav>
-                {activeSession && <Link onClick={closeMenu} to="/form">Current practice session</Link>}
-                {playing && <Link onClick={closeMenu} to="./metdrone">{tempo}BPM {timeSig}/4</Link>}
-                {droning && <Link onClick={closeMenu} to="./metdrone">{root} {chordType}</Link>}
 
             <div className="burger-button" onClick={() => setIsOpen(!isOpen)}>
                 <HamburgerVortex barColor="white" isActive={isOpen} />
             </div>
             <VegBurg closeMenu={closeMenu} isOpen={isOpen} setIsOpen={setIsOpen} login={login} logout={logout} user={user} />
-                
+            { playing || droning ? (
+                <div className="header-alert">
+                    {activeSession && <Link onClick={closeMenu} to="/form">Current practice session</Link>}
+                    {playing && <Link onClick={closeMenu} to="./metdrone">{tempo}BPM {timeSig}/4</Link>}
+                    {droning && <Link onClick={closeMenu} to="./metdrone">{root} {chordType}</Link>}
+                    {/* {user && user.photo} */}
+                </div>
+            ) :
+            <></>
+            }
         </header>
     )
 }

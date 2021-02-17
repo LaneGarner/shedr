@@ -19,9 +19,9 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.log-card:hover {
+/* .log-card:hover {
     transform: translate(.3em, -.3em);
-}
+} */
 
 .remove-log-btn {
     position: absolute;

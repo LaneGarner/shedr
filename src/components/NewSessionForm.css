@@ -75,14 +75,35 @@
 
 .modal {
     background-color: #333;
-    width: 40em;
+    width: 30em;
     height: 20em;
     margin: auto;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     padding: 2em;
     border-radius: 2em;
-    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding-bottom: 6em;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    /* display: none; */
+}
+
+.modal .timerBtn {
+    margin: 1em;
+}
+
+.modal input[type="number"] {
+    font-family: monospace;
+    /* padding: 1em; */
+    border: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.modal h2 {
+    font-weight: 100;
 }
 
 .modal-container {
@@ -92,7 +113,7 @@
     margin: auto;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
-    display: none;
+    /* display: none; */
 }
 
 .modal-container input {
@@ -111,4 +132,14 @@
     position: absolute;
     right: 1.5em;
     top: 1.5em;
+}
+
+.newSessionContainer h1 {
+    margin-bottom: 0;
+    font-weight: 100;
+}
+
+.newSessionContainer h4 {
+    font-weight: 300;
+    margin-bottom: 0;
 }

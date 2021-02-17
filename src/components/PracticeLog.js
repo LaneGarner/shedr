@@ -12,7 +12,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
     useEffect(() => {
         if(user) {        
         const logsRef = firebase.database().ref('logs/' + user.uid);
-        logsRef.on('value', (snapshot) => {
+        logsRef.orderByChild("startDate").on('value', (snapshot) => {
             let logs = snapshot.val();
             console.log(logs)
             // const sortedActivities = logs.sort((a, b) => b.startDate - a.startDate)
@@ -51,6 +51,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
         alert('edit feature coming soon...')
     }
     
+    console.log(typeof logs)
     return (
         <div className="logContainer">
             <LogIcon />
