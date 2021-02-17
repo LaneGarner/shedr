@@ -1,12 +1,13 @@
 # shedr
 ## Musician's practice toolkit
 
+### TODO:
 
-* redux/context ?
+* redux/context 
 * reincorporate logo
 * finalize/buy icons
 * user page
-  * if no logs show "you have no logs make some"
+  <!-- * if no logs show "you have no logs make some" -->
   * make into protected route
   * adjust styles
   * adjust log styles
@@ -18,10 +19,10 @@
   <!-- * fix date for db -->
   <!-- * stop and pause timer then set time before submit -->
   <!-- * redirect to login or practice log on submit -->
-  * modal windows on timer
+  <!-- * modal windows on timer
     * new session
     * are you sure you want to stop?
-    * are you sure you want to submit? show contents of log
+    * are you sure you want to submit? show contents of log -->
 * Metronome
   <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
@@ -31,7 +32,7 @@
   * apple
   <!-- * try popup to login because losing state with redirect -->
 * UI/design
-* remove netlify
+<!-- * remove netlify -->
 * fix firebase hosting/github 
 * record components
 * tuner component
