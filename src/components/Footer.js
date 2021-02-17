@@ -12,7 +12,7 @@ export const Footer = ({ closeMenu, activePage, setActivePage }) => {
             width: "100%",
             bottom: 0,
             left: 0,
-            height: "8em",
+            height: "7.2em",
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
