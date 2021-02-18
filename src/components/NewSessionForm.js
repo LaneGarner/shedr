@@ -55,8 +55,10 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     console.log(user)
 
     const handleSubmit = () => {
+        setModalOpen(false)
+        document.body.style.overflow = 'unset'
         if (user) {
-            let pTime;
+            let pTime
             if (timerRunning || timerPaused){
                 setTimerPaused(true)
                 setTimerRunning(false)
@@ -131,18 +133,6 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
         setPracticeTopicNotes(newTopicNotes)
     }
 
-    // const setDatePicker = (e) => {
-    //     const newDate = Date.now(e)
-    //     console.log(newDate)
-
-    //     setStartDate(newDate)
-    // }
-
-    // const handleValue = (e) => {
-    //     const newValue = (new Date(startDate))
-    //     return newValue
-    // }
-
     let startTime
 
     const startTimer = () => {
@@ -180,9 +170,6 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
     }
 
     const stopTimer = () => {
-        // if(!timerPaused) {
-        //     pause()
-        // }
         setStopSessionModal(false)
         const hrs = timer.slice(0,2)
         const min = timer.slice(3,5)
@@ -236,7 +223,7 @@ export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLo
             <div className="practice-card-icon">
                 <LogIcon />
             </div>
-            <h1>Practice Log</h1>
+            <h1>New Practice Log</h1>
             <hr />
             <h2>Session</h2>
                 <div className="start-time-input">

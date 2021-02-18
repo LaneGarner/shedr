@@ -24,6 +24,15 @@
     * are you sure you want to stop?
     * are you sure you want to submit? show contents of log -->
 * Metronome
+  * volume
+  * meters
+  * multiple voices
+  * tap tempo
+  * panning
+* Drone
+  * multiple chords... piano notation 
+  * chord names
+  * panning
   <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
 * sign in- 

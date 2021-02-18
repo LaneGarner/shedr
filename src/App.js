@@ -16,9 +16,10 @@ const App = () => {
   const [ timeSig, setTimeSig ] = useState(4)
   const [ position, setPosition ] = useState("0:0:0")
   const [ accent, setAccent ] = useState(true)
+  const [clickVolume, setClickVolume] = useState(1)
   
   const [droning, setDroning] = useState()
-  const [droneVolume, setDroneVolume] = useState(-10)
+  const [droneVolume, setDroneVolume] = useState(1)
   const [root, setRoot] = useState("C")
   const [chordType, setChordType] = useState("minor ninth")
 
@@ -67,7 +68,7 @@ const App = () => {
     // <FirebaseDatabaseProvider>
       <BrowserRouter>
         <Header isOpen={isOpen} setIsOpen={setIsOpen} closeMenu={closeMenu} logout={logout} user={user} activePage={activePage} setActivePage={setActivePage} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} playing={playing} timeSig={timeSig} droning={droning} root={root} chordType={chordType} />
-        <Router uiConfig={uiConfig} firebaseAuth={firebase.auth()} logout={logout} user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+        <Router setClickVolume={setClickVolume} clickVolume={clickVolume} uiConfig={uiConfig} firebaseAuth={firebase.auth()} logout={logout} user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
         <Footer closeMenu={closeMenu} activePage={activePage} setActivePage={setActivePage} />
       </BrowserRouter>
     //  </FirebaseDatabaseProvider>

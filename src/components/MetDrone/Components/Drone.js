@@ -6,6 +6,9 @@ import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import { Chord, ChordType } from "@tonaljs/tonal";
 
+console.log(ChordType.symbols())
+
+
 const synth = new Tone.PolySynth({
     oscillator: {
         type: "sine"
@@ -43,15 +46,27 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
         setDroning(true)
         synth.triggerAttack(chord)
     }
-
+    
     useEffect(() => {
         !droning && synth.releaseAll();
     }, [droning])
     
 
+    const gainToDecibels = (value) => {
+        if (value == null) return 0
+        return 20 * (0.43429 * Math.log(value))
+    }
+
+    
     useEffect(() => {
-        synth.volume.value = droneVolume
-        console.log(synth.volume.value)
+        
+        console.log(gainToDecibels(droneVolume))
+        synth.volume.value = gainToDecibels(droneVolume);
+        // synth.volume.value = dB;
+        // synth.volume.value = droneVolume;
+        // synth.volume.value = Math.pow(10, (droneVolume / 20));
+
+        // console.log(synth.volume.value)
     }, [droneVolume])
 
     const handleChordTypeChange = (e) => {
@@ -68,7 +83,6 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
         chord = myChord.notes
     }
     
-
     return (
         <div className="Drone">
             {droning ? <h1 style={{color: "#5AC18E"}}>Drone</h1> : <h1 style={{color: "white"}}>Drone</h1>}
@@ -81,16 +95,18 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
                 {chordTypes.map((chord, id) => <option key={id} value={chord}>{chord}</option>)}
             </select>
 
-            {!droning ? <button className="start-drone-btn" onClick={startDrone}>Start</button> : <button className="stop-drone-btn" onClick={() => setDroning(!droning)}>Stop</button> }
+            {!droning ? 
+            <button className="start-drone-btn" onClick={startDrone}>Start</button> : 
+            <button className="stop-drone-btn" onClick={() => setDroning(!droning)}>Stop</button> }
             
             
             <div>
                 <VolumeDown />
                 <input 
                     type="range"
-                    min={-100}
-                    max={0}
-                    step="0.1"
+                    min="0"
+                    max="1"
+                    step="0.01"
                     value={droneVolume}
                     onChange={(e) => setDroneVolume(e.target.value)}
                 />
@@ -99,3 +115,5 @@ export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root,
         </div>
     )
 }
+
+// Math.round(Math.exp((Math.log(1000)/100) * droneVolume

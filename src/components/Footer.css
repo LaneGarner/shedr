@@ -1,0 +1,20 @@
+footer {
+    background-color: #101110;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 7.2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.footer-icon {
+    width: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

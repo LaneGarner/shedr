@@ -12,14 +12,31 @@ const click1 = new Tone.Player(click1Sample).toDestination()
 // const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
+const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
     // const [ bpm, setBpm ] = useState(120);
     // const [ subdivision, setSubDivision ] = useState("");
-    const [clickVolume, setClickVolume] = useState()
+    
 
     const handleClickVolume = (e) => {
         setClickVolume(e.target.value)
     }
+
+    const gainToDecibels = (value) => {
+        if (value == null) return 0
+        return 20 * (0.43429 * Math.log(value))
+    }
+
+    useEffect(() => {
+        // console.log(click1.volume.value)
+        click1.volume.value = gainToDecibels(clickVolume)
+        // click3.volume.value = clickVolume
+    }, [clickVolume])
+
+    useEffect(() => {
+        // console.log(click1.volume.value)
+        // click1.volume.value = clickVolume
+        click3.volume.value = gainToDecibels(clickVolume)
+    }, [clickVolume])
     
 
     
@@ -60,8 +77,6 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
             playClick()
         }
     }
-    
-
     
     const startStop = () => {
         StartAudioContext(Tone.context)
@@ -149,15 +164,18 @@ const Metronome = ({ tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, 
                     className="Slider"
                     type="range"
                     min="01"
-                    max="500"
+                    max="400"
                     value={tempo}
                     onChange={handleTempo} />
             </div>
             <div>
-                <label htmlFor="bpmSlider">Volume</label>
+                <label htmlFor="volumeSlider">Volume</label>
                 <input 
                 id="volumeSlider"
                 type="range"
+                min="0"
+                max="1"
+                step="0.01"
                 value={clickVolume}
                 onChange={handleClickVolume}
                 />
