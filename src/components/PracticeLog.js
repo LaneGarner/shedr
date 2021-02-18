@@ -7,7 +7,6 @@ import { LogIcon } from "../icons/LogIcon"
 import { Link } from 'react-router-dom'
 
 export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
-    const [hover, setHover] = useState()
 
     useEffect(() => {
         if(user) {        
@@ -39,13 +38,7 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
         window.scrollTo(0, 0);
     }, [])
 
-    const showLogOptions = (e) => {
-        setHover(e.target.id)
-    }
-
-    const hideLogOptions = (e) => {
-        setHover(undefined)
-    }
+    
 
     const editLog = (params) => {
         alert('edit feature coming soon...')
@@ -59,14 +52,14 @@ export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
             {logs.length === 0 && <Link to="/">Click here to create your first log</Link>}
             <div className="log-grid">
                 {logs.map((log, idx) => (
-                    <div key={log.id} id={log.id} onMouseEnter={showLogOptions} onMouseLeave={hideLogOptions} className="log-card">
+                    <div key={log.id} id={log.id} className="log-card">
                         <div id={log.id} className="log-card-header">
-                        {hover === log.id && typeof hover !== undefined ? (
+                        
                             <div>
                                 <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
                                 <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
                             </div>
-                        ) : <></> }
+
                             <span className="cal-emoji">🗓</span>
                             <h2>{JSON.parse(log.startDate)}</h2>
                     </div>

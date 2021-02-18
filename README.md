@@ -15,6 +15,7 @@
   <!-- * add photo -->
 * form component
   * if timer not set to 0 and timer and form inputs/state are not equal => prompt which time would you like to use?
+  * or add to confirm page what you'll be logging
   <!-- * set start time on timer start -->
   <!-- * fix date for db -->
   <!-- * stop and pause timer then set time before submit -->
@@ -25,13 +26,13 @@
     * are you sure you want to submit? show contents of log -->
 * Metronome
   <!-- * volume -->
-  * meters
+  * more meters
   * multiple voices
   <!-- * tap tempo -->
   * panning
 * Drone
   * multiple chords... piano notation 
-  * chord names
+  * chord names?
   * panning 
   <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
