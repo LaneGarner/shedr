@@ -32,7 +32,7 @@
 * Drone
   * multiple chords... piano notation 
   * chord names
-  * panning
+  * panning 
   <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
 * sign in- 
@@ -56,3 +56,4 @@
   * display all logs marked as public
   * can include short recording
 * more elegant login component (custom styled like rest of app)
+* meta tags (social, favicon, etc)

@@ -15,7 +15,40 @@ const click3 = new Tone.Player(click3Sample).toDestination()
 const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
     // const [ bpm, setBpm ] = useState(120);
     // const [ subdivision, setSubDivision ] = useState("");
+    const [taps, setTaps] = useState([])
+
+    const handleTapTempo = () => {
+        if(!playing) {
+            click3.start()
+        }
+        let time = Date.now()
+        const newTaps = [...taps, time]
+        if (newTaps.length === 3) {
+            newTaps.unshift()
+        }
+        setTaps(newTaps)
+    }
+
+    useEffect(() => {
+        if (taps.length > 1) {
+            let newTaps = []
+
+            taps.map((tap, i) => {
+                const tapMath = 60000 / (taps[i] - taps[i - 1])
+                newTaps.push(tapMath)
+            })
+            newTaps.shift()
+            let avgBpm = newTaps = newTaps.reduce((a,b) => a + b, 0) / newTaps.length
+            avgBpm = Math.round(avgBpm)
+            setTempo(avgBpm)
+            console.log(avgBpm)
+
+            // setTaps(newTaps)
+        }
+    }, [taps])
     
+    
+
 
     const handleClickVolume = (e) => {
         setClickVolume(e.target.value)
@@ -27,30 +60,17 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
     }
 
     useEffect(() => {
-        // console.log(click1.volume.value)
         click1.volume.value = gainToDecibels(clickVolume)
-        // click3.volume.value = clickVolume
+        // click3.volume.value = gainToDecibels(clickVolume)
+        console.log(click1.volume.value)
     }, [clickVolume])
 
     useEffect(() => {
-        // console.log(click1.volume.value)
-        // click1.volume.value = clickVolume
+        // click1.volume.value = gainToDecibels(clickVolume)
         click3.volume.value = gainToDecibels(clickVolume)
+        console.log(click3.volume.value)
     }, [clickVolume])
-    
 
-    
-
-
-
-    // useEffect(() => {
-        
-    //     if (playing) {
-    //         stopClick()
-    //         playClick()
-    //     } 
-
-    // }, [accent, timeSig, tempo])
 
     const handleAccent = () => {
         if (playing) {
@@ -107,7 +127,7 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
         Tone.Transport.scheduleRepeat((time) => {
             setPosition(Tone.Transport.position)
             click3.start(time)
-            console.log(Tone.Transport.position)
+            // console.log(Tone.Transport.position)
         }, "4n");
         
         Tone.Transport.start();
@@ -149,7 +169,7 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
             <label htmlFor="Accent">Accent</label>
         </div>
         <div className="met-settings">
-            <label htmlFor="selectTimeSig">Time signature</label>
+            <label className="time-sig-label" htmlFor="selectTimeSig">Time signature</label><br/>
             <select onChange={handleTimeSig} name="selectTimeSig" id="selectTimeSig" value={timeSig}>
                 <option value="4">4/4</option>
                 <option value="3">3/4</option>
@@ -169,7 +189,7 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
                     onChange={handleTempo} />
             </div>
             <div>
-                <label htmlFor="volumeSlider">Volume</label>
+                <label htmlFor="volumeSlider">Volume</label><br/>
                 <input 
                 id="volumeSlider"
                 type="range"
@@ -184,9 +204,8 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
         <button id="startStopBtn" onClick={startStop}>
             {playing ? 'Stop' : 'Start'}
         </button>
-        <button>Tap</button>
+        <button onClick={handleTapTempo}>Tap</button>
         {playing ? <h3 className="Count" style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
-        
         </div>
     )
 }
