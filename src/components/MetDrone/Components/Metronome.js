@@ -13,8 +13,7 @@ const click1 = new Tone.Player(click1Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
 const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
-    // const [ bpm, setBpm ] = useState(120);
-    // const [ subdivision, setSubDivision ] = useState("");
+
     const [taps, setTaps] = useState([])
 
     const handleTapTempo = () => {
@@ -24,8 +23,9 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
         let time = Date.now()
         const newTaps = [...taps, time]
         if (newTaps.length === 3) {
-            newTaps.unshift()
+            newTaps.shift()
         }
+        console.log(newTaps)
         setTaps(newTaps)
     }
 
@@ -41,9 +41,6 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
             let avgBpm = newTaps = newTaps.reduce((a,b) => a + b, 0) / newTaps.length
             avgBpm = Math.round(avgBpm)
             setTempo(avgBpm)
-            console.log(avgBpm)
-
-            // setTaps(newTaps)
         }
     }, [taps])
     
@@ -204,7 +201,7 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
         <button id="startStopBtn" onClick={startStop}>
             {playing ? 'Stop' : 'Start'}
         </button>
-        <button onClick={handleTapTempo}>Tap</button>
+        <button onMouseDown={handleTapTempo}>Tap</button>
         {playing ? <h3 className="Count" style={{"fontSize": "6em", "color":"#FFF"}}>{newPosition + 1}</h3> : <div></div>}
         </div>
     )

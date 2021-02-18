@@ -24,10 +24,10 @@
     * are you sure you want to stop?
     * are you sure you want to submit? show contents of log -->
 * Metronome
-  * volume
+  <!-- * volume -->
   * meters
   * multiple voices
-  * tap tempo
+  <!-- * tap tempo -->
   * panning
 * Drone
   * multiple chords... piano notation 
