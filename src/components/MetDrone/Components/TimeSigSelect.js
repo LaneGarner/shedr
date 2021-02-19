@@ -1,4 +1,4 @@
-export const TimeSigSelect = ({ setTimeSig, handleTimeSigChange }) => {
+export const TimeSigSelect = ({ setTimeSig }) => {
 
     return (
         <>

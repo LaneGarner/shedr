@@ -10,6 +10,5 @@ ReactDOM.render(
   <StoreProvider>
     <App />
   </StoreProvider>,
-
   document.getElementById('root')
 );

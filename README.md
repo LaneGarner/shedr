@@ -3,7 +3,7 @@
 
 ### TODO:
 
-* redux/context 
+<!-- * redux/context  -->
 * reincorporate logo
 * finalize/buy icons
 * user page
@@ -17,6 +17,7 @@
 * form component
   * if timer not set to 0 and timer and form inputs/state are not equal => prompt which time would you like to use?
   * or add to confirm page what you'll be logging
+  * countdown timer option
   <!-- * set start time on timer start -->
   <!-- * fix date for db -->
   <!-- * stop and pause timer then set time before submit -->
