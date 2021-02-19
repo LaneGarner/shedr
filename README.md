@@ -4,7 +4,7 @@
 ### TODO:
 
 <!-- * redux/context  -->
-* reincorporate logo
+<!-- * reincorporate logo -->
 * finalize/buy icons
 * user page
   <!-- * if no logs show "you have no logs make some" -->

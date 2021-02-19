@@ -13,9 +13,6 @@ export const Header = () => {
     const { activePage, tempo, playing, timeSig, droning, root, chordType, activeSession, isOpen, setIsOpen, closeMenu } = useContext(StoreContext)
     return (
         <header style={{zIndex: 1000}}>
-            <div className="header-icon">
-                <LogoIconSmall />
-            </div>
             <nav>
                 <Link onClick={closeMenu} to="/">
                     <HomeIcon activePage={activePage} />
@@ -24,6 +21,9 @@ export const Header = () => {
                     <UserIcon activePage={activePage} />
                 </Link>
             </nav>
+            <div className="header-icon">
+                <LogoIconSmall />
+            </div>
 
             <div className="burger-button" onClick={() => setIsOpen(!isOpen)}>
                 <HamburgerVortex barColor="white" isActive={isOpen} />

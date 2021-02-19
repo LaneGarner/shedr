@@ -54,8 +54,6 @@ export const NewSessionForm = () => {
     } else {
         userId = null
     }
-    
-    console.log(user)
 
     const handleSubmit = () => {
         setModalOpen(false)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
