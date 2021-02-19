@@ -1,13 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Login } from "./Login";
 import { LogIcon } from "../icons/LogIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { PieChartIcon } from "../icons/PieChartIcon";
-
+import { StoreContext } from '../Store'
 import "./User.css"
 
-export const User = ({ uiConfig, firebaseAuth, user, setActivePage }) => {
+export const User = () => {
+    const { user, setActivePage, uiConfig, firebaseAuth } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("user")

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
 import { LogIcon } from "../icons/LogIcon"
 import { Link } from 'react-router-dom'
+import { StoreContext } from '../Store'
 
-export const PracticeLog = ({ user, removeLog, setLogs, logs}) => {
+export const PracticeLog = () => {
+    const { user, logs, setLogs, removeLog } = useContext(StoreContext)
 
     useEffect(() => {
         if(user) {        
         const logsRef = firebase.database().ref('logs/' + user.uid);
         logsRef.orderByChild("startDate").on('value', (snapshot) => {
             let logs = snapshot.val();
-            console.log(logs)
             // const sortedActivities = logs.sort((a, b) => b.startDate - a.startDate)
             let newState = [];
             for (let log in logs) {

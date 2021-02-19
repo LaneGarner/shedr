@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import firebase, { auth, uiConfig } from './firebase.js';
 
 export const StoreContext = React.createContext(null)
 
@@ -35,46 +36,65 @@ export default ({ children }) => {
 
     const [practiceTime, setPracticeTime] = useState({hours: "00", seconds: "00", minutes: "00"})
     const [practiceTopicNotes, setPracticeTopicNotes] = useState({topic: "", notes: ""})
-    const [newLog, setNewLog] = useState()
+    // const [newLog, setNewLog] = useState()
 
-    const [isOpen, setIsOpen] = useState(false)  
+    const [isOpen, setIsOpen] = useState(false)
+
+    const closeMenu = () => {
+        setIsOpen(false)
+    }
+
+    const removeLog = (logId) => {
+        const logsRef = firebase.database().ref(`/logs/${user.uid}/${logId}`);
+        logsRef.remove();
+    }
+    
+    const logout = () => {
+        auth.signOut()
+        .then(() => {
+        setUser(null)
+        });  
+    }
 
     const store = {
-        user: [user, setUser],
-        logs: [logs, setLogs],
+        user, setUser,
+        logs, setLogs,
 
-        activePage: [activePage, setActivePage],
-        setActivePage: setActivePage,
+        activePage, setActivePage,
 
-        tempo: [tempo, setTempo],
-        playing: [ playing, setPlaying ],
-        timeSig: [ timeSig, setTimeSig ],
-        position: [ position, setPosition ],
-        accent: [ accent, setAccent ],
-        clickVolume: [clickVolume, setClickVolume],
-        polyrhythmMode: [polyrhythmMode, setPolyrhythmMode],
-        polyrhythm: [polyrhythm, setPolyrhythm],
+        tempo, setTempo,
+        playing, setPlaying ,
+        timeSig, setTimeSig ,
+        position, setPosition ,
+        accent, setAccent ,
+        clickVolume, setClickVolume,
+        polyrhythmMode, setPolyrhythmMode,
+        polyrhythm, setPolyrhythm,
         
-        droning: [droning, setDroning],
-        droneVolume: [droneVolume, setDroneVolume],
-        root: [root, setRoot],
-        chordType: [chordType, setChordType],
+        droning, setDroning,
+        droneVolume, setDroneVolume,
+        root, setRoot,
+        chordType, setChordType,
     
-        activeSession: [activeSession, setActiveSession],
-        startDate: [startDate, setStartDate],
+        activeSession, setActiveSession,
+        startDate, setStartDate,
     
-        timerStarted: [timerStarted, setTimerStart],
-        timerRunning: [timerRunning, setTimerRunning],
-        timerPaused: [timerPaused, setTimerPaused],
-        tInterval: [tInterval, setTInterval],
-        timer: [timer, setTimer],
-        differenceState: [differenceState, setDifferenceState],
+        timerStarted, setTimerStart,
+        timerRunning, setTimerRunning,
+        timerPaused, setTimerPaused,
+        tInterval, setTInterval,
+        timer, setTimer,
+        differenceState, setDifferenceState,
     
-        practiceTime: [practiceTime, setPracticeTime],
-        practiceTopicNotes: [practiceTopicNotes, setPracticeTopicNotes],
-        newLog: [newLog, setNewLog],
+        practiceTime, setPracticeTime,
+        practiceTopicNotes, setPracticeTopicNotes,
+        // newLog, setNewLog,
     
-        isOpen: [isOpen, setIsOpen],
+        isOpen, setIsOpen,
+
+        closeMenu, removeLog, logout,
+
+        firebase, auth, uiConfig
 
     }
 

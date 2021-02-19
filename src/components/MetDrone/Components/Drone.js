@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import './Drone.css'
 import * as Tone from 'tone'
 import StartAudioContext from 'startaudiocontext'
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import { Chord, ChordType } from "@tonaljs/tonal";
+import { StoreContext } from '../../../Store'
+
 
 console.log(ChordType.symbols())
 
@@ -27,11 +29,12 @@ synth.chain( filter, verb, wide, Tone.Destination)
 
 let chord;
 
-// const [droneVolume, setDroneVolume] = useState(-10)
-// const [root, setRoot] = useState("C")
-// const [chordType, setChordType] = useState("minor ninth")
+export const Drone = () => {
+    
+    const { droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType } = useContext(StoreContext)
 
-export const Drone = ({  droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+
+
     let myChord = Chord.getChord(chordType, `${root}4`, `${root}5`);
     const chordTypes = ChordType.names()
     chord = myChord.notes

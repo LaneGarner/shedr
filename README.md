@@ -11,6 +11,7 @@
   * make into protected route
   * adjust styles
   * adjust log styles
+  * organize logs by date
   <!-- * update log -->
   <!-- * add photo -->
 * form component

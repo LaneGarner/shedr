@@ -1,8 +1,10 @@
 import React from 'react'
 import './VegBurg.css'
 import { Link } from 'react-router-dom'
+import { StoreContext } from "../Store";
 
-const VegBurg = ({ closeMenu, isOpen, logout, user }) =>{
+const VegBurg = () => {
+    const { user, isOpen, closeMenu, logout } = React.useContext(StoreContext)
 
     const logoutBtn = () => {
         closeMenu()

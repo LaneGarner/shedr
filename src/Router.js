@@ -31,7 +31,7 @@ import { Login } from './components/Login'
 // }
 
 
-const Router = ({ polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm, setClickVolume, clickVolume, uiConfig, firebaseAuth, login, logout, user, removeLog, setLogs, logs, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, activeSession, setActiveSession, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, position, setPosition, accent, setAccent, droning, setDroning, droneVolume, setDroneVolume, root, setRoot, chordType, setChordType }) => {
+const Router = () => {
 
     // useEffect(() => {
     //     console.log(tempo)
@@ -42,31 +42,28 @@ const Router = ({ polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm, 
             {/* <Route exact path="/" component={Listings} /> */}
             <Route exact path="/">
                 {/* <Home activeSession={activeSession} setActiveSession={setActiveSession} /> */}
-                <NewSessionForm user={user} firebase={firebase} setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
+                <NewSessionForm />
             </Route>
             <Route path="/user">
-                <User uiConfig={uiConfig} firebaseAuth={firebaseAuth} user={user} logs={logs} setActivePage={setActivePage} />
+                <User />
             </Route>
             <Route path="/record">
-                <Record setActivePage={setActivePage} />
+                <Record />
             </Route>
 
 
             <Route path="/metdrone" component={MetDrone}>
-                <MetDrone polyrhythmMode={polyrhythmMode} setPolyrhythmMode={setPolyrhythmMode} polyrhythm={polyrhythm} setPolyrhythm={setPolyrhythm} setClickVolume={setClickVolume} clickVolume={clickVolume} setActivePage={setActivePage} tempo={tempo} setTempo={setTempo} playing={playing} setPlaying={setPlaying} timeSig={timeSig} setTimeSig={setTimeSig} position={position} setPosition={setPosition} accent={accent} setAccent={setAccent} droning={droning} setDroning={setDroning} droneVolume={droneVolume} setDroneVolume={setDroneVolume} root={root} setRoot={setRoot} chordType={chordType} setChordType={setChordType} />
+                <MetDrone />
             </Route>
             <Route path="/fork">
-                <Fork setActivePage={setActivePage} />
+                <Fork />
             </Route>
             <Route path="/log">
-                <PracticeLog user={user} removeLog={removeLog} setLogs={setLogs} logs={logs} newLog={newLog}/>
+                <PracticeLog />
             </Route>
             <Route>
-                <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
+                <Login />
             </Route>
-            {/* <Route path="/form">
-                <NewSessionForm setActivePage={setActivePage} newLog={newLog} setNewLog={setNewLog} practiceTopicNotes={practiceTopicNotes} setPracticeTopicNotes={setPracticeTopicNotes} practiceTime={practiceTime} setPracticeTime={setPracticeTime} timerStarted={timerStarted} setTimerStart={setTimerStart} timerRunning={timerRunning} setTimerRunning={setTimerRunning} timerPaused={timerPaused} setTimerPaused={setTimerPaused} tInterval={tInterval} setTInterval={setTInterval} timer={timer} setTimer={setTimer} differenceState={differenceState} setDifferenceState={setDifferenceState} startDate={startDate} setStartDate={setStartDate} activeSession={activeSession} setActiveSession={setActiveSession} />
-            </Route> */}
         </Switch>
     );
 };

@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { StoreContext } from '../Store'
 import { ForkIcon } from "../icons/ForkIcon";
 
-export const Fork = ({ setActivePage }) => {
+export const Fork = () => {
+    const { activePage, setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("fork")

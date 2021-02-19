@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { StoreContext } from '../Store'
 import { RecordIcon } from "../icons/RecordIcon";
 
-export const Record = ({setActivePage}) => {
+export const Record = () => {
+    const { setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("record")

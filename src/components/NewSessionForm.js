@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
 import { LogIcon } from "../icons/LogIcon"
@@ -9,10 +9,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./NewSessionForm.css"
 import { StoreContext } from '../Store'
 
-export const NewSessionForm = ({ firebase, activePage, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, setActiveSession }) => {
+export const NewSessionForm = () => {
     
-    const { user } = React.useContext(StoreContext)
-    console.log(user)
+    const { user, setActivePage, setActiveSession,  startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused,  tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
 
     const [startSessionModal, setStartSessionModal] = useState(false)
     const [stopSessionModal, setStopSessionModal] = useState(false)

@@ -1,17 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef , useContext} from 'react';
 import './Metronome.css';
 import * as Tone from 'tone'
 import click1Sample from '../click1.flac';
 import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
 import StartAudioContext from 'startaudiocontext'
+import { StoreContext } from '../../../Store'
 
 const click1 = new Tone.Player(click1Sample).toDestination()
 const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm, setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
-
+const Metronome = () => {    
+    const { tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent, setClickVolume, clickVolume, polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm } = useContext(StoreContext)
     const [taps, setTaps] = useState([])
 
     const three = 0.6666666666666666666666666666666666666666666666666666667
