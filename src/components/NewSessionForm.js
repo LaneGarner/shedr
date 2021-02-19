@@ -7,9 +7,13 @@ import DatePicker from "react-datepicker";
 import TextareaAutosize from 'react-textarea-autosize';
 import "react-datepicker/dist/react-datepicker.css";
 import "./NewSessionForm.css"
+import { StoreContext } from '../Store'
 
-export const NewSessionForm = ({ user, firebase, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, setActiveSession}) => {
+export const NewSessionForm = ({ firebase, activePage, setActivePage, newLog, setNewLog, practiceTopicNotes, setPracticeTopicNotes, practiceTime, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState, startDate, setStartDate, setActiveSession }) => {
     
+    const { user } = React.useContext(StoreContext)
+    console.log(user)
+
     const [startSessionModal, setStartSessionModal] = useState(false)
     const [stopSessionModal, setStopSessionModal] = useState(false)
     const [submitSessionModal, setSubmitSessionModal] = useState(false)

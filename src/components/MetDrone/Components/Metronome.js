@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Metronome.css';
 import * as Tone from 'tone'
-// import { TimeSigSelect } from "./TimeSigSelect";
-// import { Accent } from "./Accent"
 import click1Sample from '../click1.flac';
 import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
@@ -12,14 +10,13 @@ const click1 = new Tone.Player(click1Sample).toDestination()
 const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const three = 0.6666666666666666666666666666666666666666666666666666667
-const five = 0.4
-// console.log(three)
-const seven = 0.285714285714286
-
 const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm, setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
 
     const [taps, setTaps] = useState([])
+
+    const three = 0.6666666666666666666666666666666666666666666666666666667
+    const five = 0.4
+    const seven = 0.285714285714286
 
     const handleTapTempo = () => {
         if(!playing) {
@@ -49,9 +46,6 @@ const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm
         }
     }, [taps])
     
-    
-
-
     const handleClickVolume = (e) => {
         setClickVolume(e.target.value)
     }
@@ -72,7 +66,6 @@ const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm
     useEffect(() => {
         click3.volume.value = gainToDecibels(clickVolume)
     }, [clickVolume])
-
 
     const handleAccent = () => {
         if (playing) {
@@ -148,18 +141,8 @@ const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm
     }
 
     const newPosition = parseInt(Tone.Transport.position.split(':')[1])
-
-
     const didMountRef = useRef(false)
 
-    // useEffect(() => {
-    //     if (didMountRef.current) {
-    //         if (playing) {
-    //             stopClick()
-    //             playClick()
-    //         }
-    //     } else didMountRef.current = true
-    // }, [accent, timeSig, tempo])
     useEffect(() => {
         if (didMountRef.current) {
             if (playing) {
