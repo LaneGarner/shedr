@@ -27,7 +27,7 @@
 * Metronome
   <!-- * volume -->
   * more meters
-  * multiple voices
+  * implement polyrhythm UI
   <!-- * tap tempo -->
   * panning
 * Drone
@@ -58,3 +58,5 @@
   * can include short recording
 * more elegant login component (custom styled like rest of app)
 * meta tags (social, favicon, etc)
+* keyboard shortcuts
+* tooltips

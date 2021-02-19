@@ -4,15 +4,20 @@ import * as Tone from 'tone'
 // import { TimeSigSelect } from "./TimeSigSelect";
 // import { Accent } from "./Accent"
 import click1Sample from '../click1.flac';
-// import click2Sample from '../click2.wav';
+import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
 import StartAudioContext from 'startaudiocontext'
 
 const click1 = new Tone.Player(click1Sample).toDestination()
-// const click2 = new Tone.Player(click2Sample).toDestination()
+const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
+const three = 0.6666666666666666666666666666666666666666666666666666667
+const five = 0.4
+// console.log(three)
+const seven = 0.285714285714286
+
+const Metronome = ({polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm, setClickVolume, clickVolume, tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent }) => {    
 
     const [taps, setTaps] = useState([])
 
@@ -58,14 +63,14 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
 
     useEffect(() => {
         click1.volume.value = gainToDecibels(clickVolume)
-        // click3.volume.value = gainToDecibels(clickVolume)
-        console.log(click1.volume.value)
     }, [clickVolume])
 
     useEffect(() => {
-        // click1.volume.value = gainToDecibels(clickVolume)
+        click2.volume.value = gainToDecibels(clickVolume)
+    }, [clickVolume])
+
+    useEffect(() => {
         click3.volume.value = gainToDecibels(clickVolume)
-        console.log(click3.volume.value)
     }, [clickVolume])
 
 
@@ -124,9 +129,15 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
         Tone.Transport.scheduleRepeat((time) => {
             setPosition(Tone.Transport.position)
             click3.start(time)
-            // console.log(Tone.Transport.position)
-        }, "4n");
-        
+        }, ".5");
+
+        if(polyrhythmMode) {
+            setTimeSig(4)
+            Tone.Transport.scheduleRepeat((time) => {
+                setPosition(Tone.Transport.position)
+                click2.start(time)
+            }, polyrhythm);
+        }
         Tone.Transport.start();
     }
 
@@ -156,16 +167,22 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
                 playClick()
             }
         } else didMountRef.current = true
-    }, [accent, timeSig, tempo])
+    }, [accent, timeSig, tempo, polyrhythm, polyrhythmMode])
 
     return (
         <div className="metronome">
         {playing ? <h1 style={{color: "#5AC18E"}}>Met</h1> : <h1 style={{color: "white"}}>Met</h1>}
         <div>
-            <input checked={accent} type="checkbox" id="checkbox" onChange={handleAccent} />
-            <label htmlFor="Accent">Accent</label>
+            <input checked={accent} type="checkbox" id="accent" onChange={handleAccent} />
+            <label htmlFor="accent">Accent</label>
+        </div>
+        <div>
+            <input checked={polyrhythmMode} type="checkbox" id="poly" onChange={()=>setPolyrhythmMode(!polyrhythmMode)} />
+            <label htmlFor="poly">Polyrhythm mode</label>
         </div>
         <div className="met-settings">
+            {!polyrhythmMode ? (
+            <>
             <label className="time-sig-label" htmlFor="selectTimeSig">Time signature</label><br/>
             <select onChange={handleTimeSig} name="selectTimeSig" id="selectTimeSig" value={timeSig}>
                 <option value="4">4/4</option>
@@ -173,6 +190,19 @@ const Metronome = ({ setClickVolume, clickVolume, tempo, setTempo, playing, setP
                 <option value="5">5/4</option>
                 <option value="7">7/4</option>
             </select>
+            </>
+            ) : (
+                <>
+                <label className="time-sig-label" htmlFor="selectPoly">Polyrhythm</label><br/>
+                <select onChange={(e)=>setPolyrhythm(e.target.value)} name="selectPoly" id="selectPoly" value={polyrhythm}>
+                    {/* <option value="3:2">3:2</option> */}
+                    <option value={three}>3:4</option>
+                    <option value={five}>5:4</option>
+                    <option value={seven}>7:4</option>
+                    {/* <option value="7:8">7:8</option> */}
+                </select>
+                </>
+            )}
             <div className="bpm-slider">
                 <label htmlFor="bpmSlider">Tempo</label>
                 <div>{tempo} BPM</div>
