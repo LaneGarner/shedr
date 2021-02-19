@@ -53,3 +53,8 @@ header {
     border: 1px solid white;
     /* border-radius: 1em; */
 }
+
+.header-icon {
+    position: fixed;
+    left: 50%;
+}

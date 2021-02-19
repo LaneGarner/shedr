@@ -6,12 +6,16 @@ import { HamburgerVortex } from 'react-animated-burgers'
 import { StoreContext } from '../Store'
 import VegBurg from "./VegBurg"
 import "./Header.css"
+import { LogoIconSmall } from "../icons/LogoIconSmall";
 
 export const Header = () => {
 
     const { activePage, tempo, playing, timeSig, droning, root, chordType, activeSession, isOpen, setIsOpen, closeMenu } = useContext(StoreContext)
     return (
         <header style={{zIndex: 1000}}>
+            <div className="header-icon">
+                <LogoIconSmall />
+            </div>
             <nav>
                 <Link onClick={closeMenu} to="/">
                     <HomeIcon activePage={activePage} />
