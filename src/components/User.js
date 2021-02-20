@@ -5,10 +5,14 @@ import { LogIcon } from "../icons/LogIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { PieChartIcon } from "../icons/PieChartIcon";
 import { StoreContext } from '../Store'
+import firebase, { uiConfig } from '../firebase';
+
 import "./User.css"
 
+const firebaseAuth = firebase.auth()
+
 export const User = () => {
-    const { user, setActivePage, uiConfig, firebaseAuth } = useContext(StoreContext)
+    const { user, setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("user")

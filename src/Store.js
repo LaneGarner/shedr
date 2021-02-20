@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import firebase, { auth, uiConfig } from './firebase.js';
+import firebase, { auth } from './firebase.js';
 
 export const StoreContext = React.createContext(null)
 
