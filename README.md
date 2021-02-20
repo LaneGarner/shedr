@@ -34,7 +34,7 @@
   * panning
 * Drone
   * multiple chords... piano notation 
-  * chord names?
+  * chord names- organize by type
   * panning 
   <!-- * slider- when you click it doesn't adjust tempo.. only sliding works -->
 * animate burger menu in from right
@@ -59,6 +59,7 @@
   * display all logs marked as public
   * can include short recording
 * more elegant login component (custom styled like rest of app)
-* meta tags (social, favicon, etc)
+<!-- * meta tags (social, favicon, etc) -->
+* SEO meta tags
 * keyboard shortcuts
 * tooltips

@@ -16,7 +16,7 @@ const VegBurg = () => {
             {user ?
                 <>
                     <Link onClick={logoutBtn} className="menu-item" to="/user">Log Out</Link>
-                    <Link onClick={closeMenu} className="menu-item" to="/user">User</Link>
+                    <Link onClick={closeMenu} className="menu-item" to="/user">Dashboard</Link>
                 </>
                 :
                 <Link onClick={closeMenu} className="menu-item" to="/user">Log In</Link>

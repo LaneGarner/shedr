@@ -4,9 +4,11 @@ import Router from './Router'
 import {Header} from './components/Header'
 import {Footer} from './components/Footer'
 import { StoreContext } from './Store'
+import { auth } from './firebase.js';
+
 
 const App = () => {
-  const { setUser, auth } = useContext(StoreContext)
+  const { setUser } = useContext(StoreContext)
   
   useEffect(() => {
     auth.onAuthStateChanged((user) => {

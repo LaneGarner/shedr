@@ -11,16 +11,16 @@ export default ({ children }) => {
     const [activePage, setActivePage] = useState()
 
     const [tempo, setTempo] = useState(120)
-    const [ playing, setPlaying ] = useState (false)
-    const [ timeSig, setTimeSig ] = useState(4)
-    const [ position, setPosition ] = useState("0:0:0")
-    const [ accent, setAccent ] = useState(true)
-    const [clickVolume, setClickVolume] = useState(1)
+    const [playing, setPlaying] = useState (false)
+    const [timeSig, setTimeSig] = useState(4)
+    const [position, setPosition] = useState("0:0:0")
+    const [accent, setAccent] = useState(true)
+    const [clickVolume, setClickVolume] = useState(.99)
     const [polyrhythmMode, setPolyrhythmMode] = useState(false)
     const [polyrhythm, setPolyrhythm] = useState(.6666666666666666666666666666666666666666666666666666667)
 
     const [droning, setDroning] = useState()
-    const [droneVolume, setDroneVolume] = useState(1)
+    const [droneVolume, setDroneVolume] = useState(.99)
     const [root, setRoot] = useState("C")
     const [chordType, setChordType] = useState("minor ninth")
 
@@ -94,7 +94,7 @@ export default ({ children }) => {
 
         closeMenu, removeLog, logout,
 
-        firebase, auth, uiConfig
+        // firebase, auth, uiConfig
 
     }
 

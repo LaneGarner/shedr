@@ -21,6 +21,7 @@ export const Header = () => {
                     <UserIcon activePage={activePage} />
                 </Link>
             </nav>
+
             <div className="header-icon">
                 <LogoIconSmall />
             </div>

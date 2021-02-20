@@ -31,10 +31,8 @@ header a {
     position: fixed;
     width: 36px;
     height: 30px;
-    /* left: 1em; */
     top: 1em;
     right: 3em;
-    /* padding-bottom: 2em; */
 }
 
 header {
@@ -51,7 +49,6 @@ header {
     flex-direction: column;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border: 1px solid white;
-    /* border-radius: 1em; */
 }
 
 .header-icon {

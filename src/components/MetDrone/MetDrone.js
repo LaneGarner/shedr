@@ -20,15 +20,15 @@ export const MetDrone = () => {
     }
 
     return (
-            <div className="metDroneContainer">
-                <div className="metDroneComponentContainer">
-                    <div className="metdrone-container">
-                        <Metronome />
-                    </div>
-                    <div className="metdrone-container">
-                        <Drone />
-                    </div>
+        // <div className="metDroneContainer">
+            <div className="metdrone-container">
+                <div className="metdrone-component">
+                    <Metronome />
+                </div>
+                <div className="metdrone-component">
+                    <Drone />
                 </div>
             </div>
+        // </div>
     )
 }

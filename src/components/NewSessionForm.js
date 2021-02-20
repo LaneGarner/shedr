@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import { PracticeTimer } from "./PracticeTimer";
-import { LogIcon } from "../icons/LogIcon"
+import { LogIconSmall } from "../icons/LogIconSmall"
 import { ClockIcon } from "../icons/ClockIcon"
 import DatePicker from "react-datepicker";
 import TextareaAutosize from 'react-textarea-autosize';
@@ -222,7 +222,7 @@ export const NewSessionForm = () => {
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={confirmSubmit} >
             <div className="practice-card-icon">
-                <LogIcon />
+                <LogIconSmall />
             </div>
             <h1>New Practice Log</h1>
             <hr />

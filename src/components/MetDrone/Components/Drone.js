@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from 'react'
-import './Drone.css'
-import * as Tone from 'tone'
-import StartAudioContext from 'startaudiocontext'
-import VolumeDown from '@material-ui/icons/VolumeDown';
-import VolumeUp from '@material-ui/icons/VolumeUp';
+import React, { useEffect, useContext } from "react"
+import "./Drone.css"
+import * as Tone from "tone"
+import StartAudioContext from "startaudiocontext"
+import VolumeDown from "@material-ui/icons/VolumeDown";
+import VolumeUp from "@material-ui/icons/VolumeUp";
 import { Chord, ChordType } from "@tonaljs/tonal";
-import { StoreContext } from '../../../Store'
+import { StoreContext } from "../../../Store"
 
 
 console.log(ChordType.symbols())
@@ -62,14 +62,7 @@ export const Drone = () => {
 
     
     useEffect(() => {
-        
-        console.log(gainToDecibels(droneVolume))
         synth.volume.value = gainToDecibels(droneVolume);
-        // synth.volume.value = dB;
-        // synth.volume.value = droneVolume;
-        // synth.volume.value = Math.pow(10, (droneVolume / 20));
-
-        // console.log(synth.volume.value)
     }, [droneVolume])
 
     const handleChordTypeChange = (e) => {
@@ -89,23 +82,23 @@ export const Drone = () => {
     return (
         <div className="Drone">
             {droning ? <h1 style={{color: "#5AC18E"}}>Drone</h1> : <h1 style={{color: "white"}}>Drone</h1>}
+            <label htmlFor="droneRoot">Root</label><br/>
             <input 
+                id="droneRoot"
                 value={root} 
                 onChange={handleRootChange}
                 type="text" 
                 placeholder="Enter root"/>
-            <select value={chordType} onChange={handleChordTypeChange} name="selectDroneRoot" id="selectDroneRoot">
+            <label htmlFor="droneChord">Chord type</label><br/>
+            <select id="droneChord" value={chordType} onChange={handleChordTypeChange} name="selectDroneRoot" id="selectDroneRoot">
                 {chordTypes.map((chord, id) => <option key={id} value={chord}>{chord}</option>)}
             </select>
 
-            {!droning ? 
-            <button className="start-drone-btn" onClick={startDrone}>Start</button> : 
-            <button className="stop-drone-btn" onClick={() => setDroning(!droning)}>Stop</button> }
-            
-            
-            <div>
-                <VolumeDown />
+            <div className="bpm-slider">
+                <label htmlFor="droneVolumeSlider">Volume</label><br/>
+                <div>{droneVolume != 1 ? Math.round(droneVolume * 10): 11}</div>
                 <input 
+                    id="droneVolumeSlider"
                     type="range"
                     min="0"
                     max="1"
@@ -113,10 +106,12 @@ export const Drone = () => {
                     value={droneVolume}
                     onChange={(e) => setDroneVolume(e.target.value)}
                 />
-                <VolumeUp />
             </div>
+
+            {!droning ? 
+            <button className="start-drone-btn" onClick={startDrone}>Start</button> : 
+            <button className="stop-drone-btn" onClick={() => setDroning(!droning)}>Stop</button> }
+            
         </div>
     )
 }
-
-// Math.round(Math.exp((Math.log(1000)/100) * droneVolume
