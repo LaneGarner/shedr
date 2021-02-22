@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
@@ -7,8 +7,11 @@ import { LogIcon } from "../icons/LogIcon"
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../Store'
 
+let selectedLog;
+
 export const PracticeLog = () => {
     const { user, logs, setLogs, removeLog } = useContext(StoreContext)
+    const [ deleteLogModal, setDeleteLogModal] = useState(false)
 
     useEffect(() => {
         if(user) {        
@@ -39,13 +42,25 @@ export const PracticeLog = () => {
         window.scrollTo(0, 0);
     }, [])
 
-    
+    useEffect(() => {
+        console.log(selectedLog)
+    })
 
-    const editLog = (params) => {
+    const handleDeleteLog = (log) => {
+        setDeleteLogModal(true)
+        selectedLog = log;
+    }
+
+    const confirmDeleteLog = () => {
+        // console.log(selectedLog)
+        removeLog(selectedLog)
+        setDeleteLogModal(false)
+    }
+
+    const editLog = () => {
         alert('edit feature coming soon...')
     }
     
-    console.log(typeof logs)
     return (
         <div className="logContainer">
             <LogIcon />
@@ -58,7 +73,7 @@ export const PracticeLog = () => {
                         
                             <div>
                                 <div className="edit-log-btn" onClick={() => editLog(log.id)}><EditIcon /></div>
-                                <div className="remove-log-btn" onClick={() => removeLog(log.id)}><CloseIcon /></div>
+                                <div className="remove-log-btn" onClick={() => handleDeleteLog(log.id)}><CloseIcon /></div>
                             </div>
 
                             <span className="cal-emoji">🗓</span>
@@ -76,6 +91,16 @@ export const PracticeLog = () => {
                     </div>
                 ))}
             </div>
+            {deleteLogModal && (
+                <div className="modal-container">
+                    <div className="modal">
+                        <h2>Are you sure?</h2>
+                        <p>This will delete this item from your practice log</p>
+                        <button className="timerBtn startBtn" onClick={confirmDeleteLog}>Delete</button>
+                        <button className="timerBtn stopBtn" onClick={()=>setDeleteLogModal(false)}>Cancel</button>
+                    </div>
+                </div>) 
+            }
         </div>
     )
 }
