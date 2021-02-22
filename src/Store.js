@@ -92,7 +92,7 @@ export default ({ children }) => {
     
         isOpen, setIsOpen,
 
-        closeMenu, removeLog, logout,
+        closeMenu, removeLog, logout, firebase
 
         // firebase, auth, uiConfig
 

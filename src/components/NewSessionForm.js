@@ -8,6 +8,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import "react-datepicker/dist/react-datepicker.css";
 import "./NewSessionForm.css"
 import { StoreContext } from '../Store'
+// import firebase from '../firebase';
+
 
 export const NewSessionForm = () => {
     

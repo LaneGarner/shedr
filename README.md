@@ -45,7 +45,7 @@
   <!-- * try popup to login because losing state with redirect -->
 * UI/design
 <!-- * remove netlify -->
-* fix firebase hosting/github 
+* fix firebase hosting/github actions
 * record components
 * tuner component
 * rep list
@@ -63,3 +63,4 @@
 * SEO meta tags
 * keyboard shortcuts
 * tooltips
+* google analytics
