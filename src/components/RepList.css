@@ -1,0 +1,21 @@
+.rep-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rep-table {
+    border-collapse: collapse
+}
+
+.rep-table td, .rep-table th {
+    border: 1px solid white;
+    padding: 1em;
+    width: 10em;
+}
+
+.rep-search-field {
+    width: 20em;
+    border: none;
+    padding: .5em;
+}

@@ -96,8 +96,8 @@ export const PracticeLog = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>This will delete this item from your practice log</p>
-                        <button className="timerBtn startBtn" onClick={confirmDeleteLog}>Delete</button>
                         <button className="timerBtn stopBtn" onClick={()=>setDeleteLogModal(false)}>Cancel</button>
+                        <button className="timerBtn startBtn" onClick={confirmDeleteLog}>Delete</button>
                     </div>
                 </div>) 
             }

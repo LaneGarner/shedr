@@ -1,0 +1,55 @@
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feedback-form p {
+    margin: .5em;
+}
+
+.feedback-form span {
+    color: orange;
+}
+
+.feedback-form p:nth-of-type(3) {
+    margin-bottom: 2em;
+}
+
+.feedback-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-form input {
+    display: block;
+    margin-bottom: 2em;
+    padding: .3em;
+    border-radius: .2em;
+    border: none;
+    font-family: monospace;
+    width: 20em;
+}
+
+.feedback-form label {
+    margin-bottom: .5em;
+}
+
+#message {
+    resize: none;
+    padding: .3em;
+    border-radius: .2em;
+    border: none;
+    font-family: monospace;
+    width: 20em;
+}
+
+.feedback-form button {
+    margin-top: 1.5em;
+}
+
+.checkmark {
+    font-size: 50px;
+}

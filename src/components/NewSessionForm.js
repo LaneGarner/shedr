@@ -223,40 +223,40 @@ export const NewSessionForm = () => {
 
             <div className="newSessionContainer">
             <form className="prForm" onSubmit={confirmSubmit} >
-            <div className="practice-card-icon">
-                <LogIconSmall />
-            </div>
-            <h1>New Practice Log</h1>
-            <hr />
-            <h2>Session</h2>
-                <div className="start-time-input">
-                    <h4>Start time:</h4>
-                    <DatePicker
-                        className="datepicker"
-                        selected={new Date(startDate)}
-                        onChange={(e) => setStartDate(Date.parse(e))}
-                        // value={handleValue}
-                        showTimeSelect
-                        timeIntervals={1}
-                        dateFormat="Pp"
-                    /> 
-                    <br />
+                <div className="practice-card-icon">
+                    <LogIconSmall />
                 </div>
-                <div className="pr-time-input">
-                    <h4>Total practice time:</h4>
-                    <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                    <label for="hrs">hr</label>
-                    <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                    <label for="totalPracticeTime">min</label>
-                    <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
-                    <label for="min">sec</label>
-                </div>
-                <h2>Material</h2>
+                <h1>New Practice Log</h1>
+                <hr />
+                <h2>Session</h2>
+                    <div className="start-time-input">
+                        <label htmlFor="datepicker">Start time:</label><br/>
+                        <DatePicker
+                            className="datepicker"
+                            selected={new Date(startDate)}
+                            onChange={(e) => setStartDate(Date.parse(e))}
+                            id="datepicker"
+                            showTimeSelect
+                            timeIntervals={1}
+                            dateFormat="Pp"
+                        /> 
+                        <br />
+                    </div>
+                    <div className="pr-time-input">
+                        <h4>Total practice time:</h4>
+                        <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
+                        <label for="hrs">hr</label>
+                        <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
+                        <label for="totalPracticeTime">min</label>
+                        <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
+                        <label for="min">sec</label>
+                    </div>
+                    <h2>Material</h2>
                     <label htmlFor="topic">Topic</label><br/>
-                    <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" rows="2" /> 
+                    <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" /> 
                     <br />
                     <label htmlFor="notes">Notes</label><br/>
-                    <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." rows="5" />
+                    <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." minRows="5" />
                     <br />
                     <button type="submit" className="timerBtn submitBtn">Submit</button>
                     <button onClick={cancelSubmit} type="reset" className="timerBtn cancelBtn">Cancel</button>

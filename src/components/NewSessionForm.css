@@ -71,6 +71,7 @@
 .prForm textarea {
     resize: none;
     width: 80%;
+    /* border: none; */
 }
 
 .modal {
@@ -142,4 +143,8 @@
 .newSessionContainer h4 {
     font-weight: 300;
     margin-bottom: 0;
+}
+
+.newSessionContainer h4, .label-margin {
+    margin-bottom: .3em;
 }

@@ -46,7 +46,6 @@ export default ({ children }) => {
 
     const removeLog = (logId) => {
         const logsRef = firebase.database().ref(`/logs/${user.uid}/${logId}`);
-        // console.log(logId)
         logsRef.remove();
     }
     

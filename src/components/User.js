@@ -36,8 +36,8 @@ export const User = () => {
                             <h2>Practice log</h2>
                         </div>
                     </Link>
-                    <Link to="/user">
-                        <div onClick={()=>alert('feature coming soon')} className="user-dashboard-card">
+                    <Link to="/rep">
+                        <div className="user-dashboard-card">
                             <PaperClipIcon />
                             <h2>Repertoire list</h2>
                         </div>

@@ -6,6 +6,8 @@ import MetDrone from './components/MetDrone/'
 import { Fork } from './components/Fork'
 import { NewSessionForm } from './components/NewSessionForm'
 import { PracticeLog } from './components/PracticeLog'
+import { RepList } from './components/RepList'
+import { Feedback } from './components/Feedback'
 
 const Router = () => {
 
@@ -17,6 +19,8 @@ const Router = () => {
             <Route path="/metdrone" component={MetDrone} />
             <Route path="/fork" component={Fork} />
             <Route path="/log" component={PracticeLog} />
+            <Route path="/rep" component={RepList} />
+            <Route path="/feedback" component={Feedback} />
         </Switch>
     )
 }
