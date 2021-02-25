@@ -49,6 +49,7 @@
 * record components
 * tuner component
 * rep list
+  * filter
 * stats
 * settings
   * remove account

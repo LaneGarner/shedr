@@ -82,7 +82,6 @@ export const NewSessionForm = () => {
             history.push("/user");
         }
     }
-
     
     const handleCancel = () => {
         setCancelSessionModal(false)
@@ -98,26 +97,29 @@ export const NewSessionForm = () => {
     }
 
     const setHrs = (e) => {
-        const hours = e.target.value
+        const hours = e.target.value.padStart(2, "0")
         const minutes = practiceTime[1]
         const seconds = practiceTime[2]
-        const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        // const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        const newPracticeTime = [hours, minutes, seconds]
         setPracticeTime(newPracticeTime)
     }
 
     const setMin = (e) => {
         const hours = practiceTime[0]
-        const minutes = e.target.value
+        const minutes = e.target.value.value.padStart(2, "0")
         const seconds = practiceTime[2]
-        const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        // const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        const newPracticeTime = [hours, minutes, seconds]
         setPracticeTime(newPracticeTime)
     }
 
     const setSec = (e) => {
         const hours = practiceTime[0]
-        const minutes = practiceTime[2]
-        const seconds = e.target.value
-        const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        const minutes = practiceTime[1]
+        const seconds = e.target.value.value.padStart(2, "0")
+        // const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
+        const newPracticeTime = [hours, minutes, seconds]
         setPracticeTime(newPracticeTime)
     }
 
@@ -244,11 +246,11 @@ export const NewSessionForm = () => {
                     <div className="pr-time-input">
                         <h4>Total practice time:</h4>
                         <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                        <label for="hrs">hr</label>
+                        <label htmlFor="hrs">hr</label>
                         <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                        <label for="totalPracticeTime">min</label>
+                        <label htmlFor="totalPracticeTime">min</label>
                         <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
-                        <label for="min">sec</label>
+                        <label htmlFor="min">sec</label>
                     </div>
                     <h2>Material</h2>
                     <label htmlFor="topic">Topic</label><br/>
@@ -292,8 +294,8 @@ export const NewSessionForm = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>Submitting now will clear this form and submit your session to our database</p>
-                        <button className="timerBtn startBtn" onClick={handleSubmit}>Submit</button>
                         <button className="timerBtn stopBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
+                        <button className="timerBtn startBtn" onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>) 
             }
@@ -302,8 +304,8 @@ export const NewSessionForm = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>Canceling now will clear this form and reset your session</p>
-                        <button className="timerBtn startBtn" onClick={handleCancel}>Cancel Session</button>
-                        <button className="timerBtn stopBtn" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
+                        <button className="timerBtn cancelBtn" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
+                        <button className="timerBtn stopBtn" onClick={handleCancel}>Cancel Session</button>
                     </div>
                 </div>) 
             }
