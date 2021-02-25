@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import firebase from 'firebase'
+// import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
@@ -10,7 +10,7 @@ import { StoreContext } from '../Store'
 let selectedLog;
 
 export const PracticeLog = () => {
-    const { user, logs, setLogs, removeLog } = useContext(StoreContext)
+    const { user, logs, setLogs, removeLog, firebase } = useContext(StoreContext)
     const [ deleteLogModal, setDeleteLogModal] = useState(false)
 
     useEffect(() => {

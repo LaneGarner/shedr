@@ -8,7 +8,7 @@
 * finalize/buy icons
 * user page
   <!-- * if no logs show "you have no logs make some" -->
-  * make into protected route
+  <!-- * make into protected route -->
   * adjust styles
   * adjust log styles
   * organize logs by date
@@ -29,7 +29,7 @@
 * Metronome
   <!-- * volume -->
   * more meters
-  * implement polyrhythm UI
+  <!-- * implement polyrhythm UI -->
   <!-- * tap tempo -->
   * panning
 * Drone

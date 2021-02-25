@@ -6,7 +6,7 @@ export default function ProtectedRoute(props){
 
     const authValue=useContext(AuthContext)
     if (authValue.userDataPresent){
-        if(authValue.user==null){
+        if(authValue.User==null){
             return(<Redirect to={props.redirectTo}></Redirect>)
         }
         else{

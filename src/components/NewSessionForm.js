@@ -46,11 +46,10 @@ export const NewSessionForm = () => {
         window.scrollTo(0, 0);
     }, [])
 
+    //useHistory hook to redirect on submit
     let history = useHistory();
 
-
     let userId;
-    
     if(user) {
         userId = user.uid
     } else {

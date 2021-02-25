@@ -5,7 +5,8 @@
 }
 
 .rep-table {
-    border-collapse: collapse
+    border-collapse: collapse;
+    margin: 2em;
 }
 
 .rep-table td, .rep-table th {
@@ -19,3 +20,16 @@
     border: none;
     padding: .5em;
 }
+
+.add-rep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-rep input {
+    display: block;
+    border: none;
+    margin-bottom: .5em;
+}
+

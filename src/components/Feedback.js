@@ -21,12 +21,10 @@ export const Feedback = () => {
 
         Axios.post("https://us-central1-shedr-app.cloudfunctions.net/submit", data)
         .then(res => {
-            // if (firebase) {
             return firebase
                 .database()
                 .ref("feedback")
                 .push(data);
-            // }
         })
         .catch(error => {
             console.log(error);
@@ -47,7 +45,7 @@ export const Feedback = () => {
                 <h1>Feedback</h1>
                 <p>Thanks for checking out shedr!</p>
                 <p>What do you think of the app? What would you add? What would you change?</p>
-                <p>Your feedback is <span>highly appreciated</span>, Thanks!</p>
+                <p>Your feedback is <span>highly appreciated</span>, thanks!</p>
                 <form onSubmit={handleFeedbackSubmit}>
                     <label htmlFor="name">Name*</label>
                     <input value={name} onChange={e=>setName(e.target.value)} type="text" id="name" placeholder="Your name" required/>
