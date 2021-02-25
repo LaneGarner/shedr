@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StoreContext } from '../Store';
+import { TrashIcon } from "../icons/TrashIcon";
+import { EditIcon } from "../icons/EditIcon";
 
 import "./RepList.css"
+
+let selectedRep;
 
 export const RepList = () => {
     const [ newTitle, setNewTitle ] = useState("");
@@ -13,6 +17,8 @@ export const RepList = () => {
     const [ filterRepertoire, setFilterRepertoire ] = useState(false)
     const [ filterSearch, setFilterSearch ] = useState("");
     const [ rep, setRep ] = useState([]);
+    const [ deleteRepModal, setDeleteRepModal] = useState(false)
+
 
     const { user, firebase, setActivePage } = useContext(StoreContext)
 
@@ -35,14 +41,33 @@ export const RepList = () => {
         setNewNotes("");
         setAddRepModal(false);
     }
+
+    // const removeRepHover = (id) => {
+    //     console.log('id')
+    // }
+
+    const handleDeleteRep = (id) => {
+        setDeleteRepModal(true)
+        selectedRep = id;
+    }
+    
+    const confirmDeleteRep = () => {
+        removeRep(selectedRep)
+        setDeleteRepModal(false)
+    }
+
+    const removeRep = (logId) => {
+        const songRef = firebase.database().ref(`/repertoire/${user.uid}/${logId}`);
+        songRef.remove();
+    }
     
     useEffect(()=> {
-        if (addRepModal) {
+        if (addRepModal || deleteRepModal) {
             setModalOpen(true)
         } else {
             setModalOpen(false)
         }
-    }, [addRepModal]);
+    }, [addRepModal, deleteRepModal]);
     
     useEffect(() => {
         if (modalOpen) {
@@ -60,6 +85,7 @@ export const RepList = () => {
                 let newState = [];
                 for (let song in songs) {
                     newState.push({
+                        id: song,
                         title: songs[song].title,
                         artist: songs[song].artist,
                         style: songs[song].style,
@@ -70,13 +96,6 @@ export const RepList = () => {
             });
         }
     }, [user]);
-
-    useEffect(()=>{
-        if(rep.length != 0) {
-
-            console.log(rep)
-        }
-    }, [rep])
     
     //set active page for header/footer
     // setActivePage("user");
@@ -110,12 +129,22 @@ export const RepList = () => {
                 </thead>
                 <tbody>
                     {rep.length !== 0 && (
-                        rep.map((song, id)=> (
-                            <tr key={id}>
+                        rep.map((song)=> (
+                            <tr key={song.id}>
                                 <td>{song.title}</td>
                                 <td>{song.artist}</td>
                                 <td>{song.style}</td>
-                                <td>{song.notes}</td>
+                                <td>
+                                    <div className="remove-edit-rep">
+                                        <div className="rep-icon">
+                                            <EditIcon  />
+                                        </div>
+                                        <div className="rep-icon" onClick={()=>handleDeleteRep(song.id)}>
+                                            <TrashIcon />
+                                        </div>
+                                    </div>
+                                    <div className="rep-notes">{song.notes}</div>
+                                </td>
                             </tr>
                         ))
                     )}
@@ -139,6 +168,16 @@ export const RepList = () => {
                                 <button type="submit" className="timerBtn startBtn">Add</button>
                             </div>
                         </form>
+                    </div>
+                </div>) 
+            }
+            {deleteRepModal && (
+                <div className="modal-container">
+                    <div className="modal">
+                        <h2>Are you sure?</h2>
+                        <p>This will delete this item from your repertoire list</p>
+                        <button className="timerBtn cancelBtn" onClick={()=>setDeleteRepModal(false)}>Cancel</button>
+                        <button className="timerBtn stopBtn" onClick={confirmDeleteRep}>Delete</button>
                     </div>
                 </div>) 
             }

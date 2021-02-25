@@ -7,6 +7,7 @@
 .rep-table {
     border-collapse: collapse;
     margin: 2em;
+    table-layout: fixed;
 }
 
 .rep-table td, .rep-table th {
@@ -33,3 +34,18 @@
     margin-bottom: .5em;
 }
 
+.remove-edit-rep {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rep-icon {
+    margin: .3em;
+    cursor: pointer;
+    position: relative;
+    transform: translate(.5em, -.6em);
+}
+
+.rep-notes {
+    transform: translateY(-1em);
+}

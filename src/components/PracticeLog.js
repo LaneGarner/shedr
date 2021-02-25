@@ -52,7 +52,6 @@ export const PracticeLog = () => {
     }
 
     const confirmDeleteLog = () => {
-        // console.log(selectedLog)
         removeLog(selectedLog)
         setDeleteLogModal(false)
     }
@@ -95,9 +94,9 @@ export const PracticeLog = () => {
                 <div className="modal-container">
                     <div className="modal">
                         <h2>Are you sure?</h2>
-                        <p>This will delete this item from your practice log</p>
-                        <button className="timerBtn stopBtn" onClick={()=>setDeleteLogModal(false)}>Cancel</button>
-                        <button className="timerBtn startBtn" onClick={confirmDeleteLog}>Delete</button>
+                        <p>This will remove this item from your practice log</p>
+                        <button className="timerBtn cancelBtn" onClick={()=>setDeleteLogModal(false)}>Cancel</button>
+                        <button className="timerBtn stopBtn" onClick={confirmDeleteLog}>Delete</button>
                     </div>
                 </div>) 
             }
