@@ -148,3 +148,7 @@
 .newSessionContainer h4, .label-margin {
     margin-bottom: .3em;
 }
+
+.confirm-log-list li {
+    margin: .5em;
+}

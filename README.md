@@ -6,7 +6,7 @@
 <!-- * redux/context  -->
 <!-- * reincorporate logo -->
 * finalize/buy icons
-* user page
+* user dashboard
   <!-- * if no logs show "you have no logs make some" -->
   <!-- * make into protected route -->
   * adjust styles

@@ -18,11 +18,9 @@ export const PracticeLog = () => {
     const [ editLogModal, setEditLogModal] = useState(false)
     const [ modalOpen, setModalOpen ] = useState(false)
     const [ newStartDate, setNewStartDate ] = useState()
-    const [ newStartTime, setNewStartTime ] = useState()
     const [ newTopic, setNewTopic ] = useState()
     const [ newNotes, setNewNotes ] = useState()
     const [ newPracticeTime, setNewPracticeTime ] = useState()
-
 
     useEffect(() => {
         if(user) {        
@@ -69,7 +67,6 @@ export const PracticeLog = () => {
         }
     }, [modalOpen]);
 
-
     const handleDeleteLog = (log) => {
         setDeleteLogModal(true)
         selectedLog = log;
@@ -79,10 +76,6 @@ export const PracticeLog = () => {
         removeLog(selectedLog)
         setDeleteLogModal(false)
     }
-
-    // const editLog = () => {
-    //     alert('edit feature coming soon...')
-    // }
 
     const handleEditLog = (log) => {
         const startDateTime = `${log.startDate} ${log.startTime}`
@@ -150,7 +143,7 @@ export const PracticeLog = () => {
                         <h2>{JSON.parse(log.startTime)}</h2>
                         <h3>Total practice time:</h3>
                         <span>
-                            <span>{log.practiceTime[0]}:{log.practiceTime[1]}:{log.practiceTime[2]}</span>
+                            <span>{log.practiceTime[0]}hrs {log.practiceTime[1]}min {log.practiceTime[2]}sec</span>
                         </span><br />
                         <h3>Topic:</h3>
                         <span>{log.practiceTopicNotes.topic}</span>

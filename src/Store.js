@@ -34,7 +34,7 @@ export default ({ children }) => {
     const [timer, setTimer] = useState("00:00:00")
     const [differenceState, setDifferenceState] = useState()
 
-    const [practiceTime, setPracticeTime] = useState({hours: "00", seconds: "00", minutes: "00"})
+    const [practiceTime, setPracticeTime] = useState(["00", "00", "00"])
     const [practiceTopicNotes, setPracticeTopicNotes] = useState({topic: "", notes: ""})
     // const [newLog, setNewLog] = useState()
 

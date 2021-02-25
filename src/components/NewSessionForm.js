@@ -13,7 +13,7 @@ import { StoreContext } from '../Store'
 
 export const NewSessionForm = () => {
     
-    const { user, setActivePage, setActiveSession,  startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused,  tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
+    const { user, setActivePage, setActiveSession, startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused,  tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
 
     const [startSessionModal, setStartSessionModal] = useState(false)
     const [stopSessionModal, setStopSessionModal] = useState(false)
@@ -107,7 +107,7 @@ export const NewSessionForm = () => {
 
     const setMin = (e) => {
         const hours = practiceTime[0]
-        const minutes = e.target.value.value.padStart(2, "0")
+        const minutes = e.target.value.padStart(2, "0")
         const seconds = practiceTime[2]
         // const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
         const newPracticeTime = [hours, minutes, seconds]
@@ -117,7 +117,7 @@ export const NewSessionForm = () => {
     const setSec = (e) => {
         const hours = practiceTime[0]
         const minutes = practiceTime[1]
-        const seconds = e.target.value.value.padStart(2, "0")
+        const seconds = e.target.value.padStart(2, "0")
         // const newPracticeTime = {hours: {hours}, minutes: {minutes}, seconds: {seconds}}
         const newPracticeTime = [hours, minutes, seconds]
         setPracticeTime(newPracticeTime)
@@ -293,8 +293,14 @@ export const NewSessionForm = () => {
                 <div className="modal-container">
                     <div className="modal">
                         <h2>Are you sure?</h2>
-                        <p>Submitting now will clear this form and submit your session to our database</p>
-                        <button className="timerBtn stopBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
+                        <p>Submitting now will clear this form and submit your session as shown below:</p>
+                        <ul className="confirm-log-list">
+                            <li><strong>Start time:</strong> {new Date(startDate).toLocaleString()}</li>
+                            <li><strong>Total practice time:</strong> {practiceTime[0]}hrs {practiceTime[1]}min {practiceTime[2]}sec</li>
+                            <li><strong>Topic:</strong> {practiceTopicNotes.topic}</li>
+                            <li><strong>Notes:</strong> {practiceTopicNotes.notes}</li>
+                        </ul>
+                        <button className="timerBtn pauseBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
                         <button className="timerBtn startBtn" onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>) 
