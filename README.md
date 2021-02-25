@@ -14,7 +14,7 @@
   * organize logs by date
   <!-- * update log -->
   <!-- * add photo -->
-* form component
+* new session form component
   <!-- * if timer not set to 0 and timer and form inputs/state are not equal => prompt which time would you like to use?
   * or add to confirm page what you'll be logging -->
   * countdown timer option
@@ -65,3 +65,4 @@
 * keyboard shortcuts
 * tooltips
 * google analytics
+* landing page

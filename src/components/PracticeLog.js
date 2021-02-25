@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react'
-// import firebase from 'firebase'
 import "./PracticeLog.css";
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
@@ -7,7 +6,7 @@ import { LogIcon } from "../icons/LogIcon"
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../Store'
 import DatePicker from "react-datepicker";
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from "react-textarea-autosize";
 
 
 let selectedLog;
@@ -195,60 +194,12 @@ export const PracticeLog = () => {
                                     <TextareaAutosize value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text" minRows="5" />
                                     <br />
                             </div>
-                            
                             }
                             <div>
                                 <button className="timerBtn cancelBtn" onClick={()=>setEditLogModal(false)}>Cancel</button>
-                                <button type="submit" className="timerBtn pauseBtn">Edit</button>
+                                <button type="submit" className="timerBtn startBtn">Edit</button>
                             </div>
                         </form>
-                    
-
-                        {/* <form className="prForm" onSubmit={confirmSubmit} >
-                            <div className="practice-card-icon">
-                                <LogIconSmall />
-                            </div>
-                            <h1>New Practice Log</h1>
-                            <hr />
-                            <h2>Session</h2>
-                            <div className="start-time-input">
-                                
-                            </div>
-                            <div className="pr-time-input">
-                                <h4>Total practice time:</h4>
-                                <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                                <label htmlFor="hrs">hr</label>
-                                <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                                <label htmlFor="totalPracticeTime">min</label>
-                                <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
-                                <label htmlFor="min">sec</label>
-                            </div>
-                            <h2>Material</h2>
-                            <label htmlFor="topic">Topic</label><br/>
-                            <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" /> 
-                            <br />
-                            <label htmlFor="notes">Notes</label><br/>
-                            <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." minRows="5" />
-                            <br />
-                            <button type="submit" className="timerBtn submitBtn">Submit</button>
-                            <button onClick={cancelSubmit} type="reset" className="timerBtn cancelBtn">Cancel</button>
-                        </form> */}
-
-
-{/* <form className="add-rep" onSubmit={confirmAddRep}>
-                        <h2>Edit Log</h2>
-                            <label htmlFor="title">Title</label>
-                            <input value={newTitle} onChange={e=>setNewTitle(e.target.value)} id="title" type="text"/>
-                            <label htmlFor="artistComposer">Artist/Composer</label>
-                            <input value={newArtist} onChange={e=>setNewArtist(e.target.value)} id="artistComposer" type="text"/>
-                            <label htmlFor="style">Style</label>
-                            <input value={newStyle} onChange={e=>setNewStyle(e.target.value)} id="style" type="text"/>
-                            <label htmlFor="title">Notes</label>
-                            <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
-                            
-                        </form> */}
-
-
                     </div>
                 </div>)
             }

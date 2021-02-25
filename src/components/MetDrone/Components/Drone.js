@@ -8,7 +8,7 @@ import { Chord, ChordType } from "@tonaljs/tonal";
 import { StoreContext } from "../../../Store"
 
 
-console.log(ChordType.symbols())
+// console.log(ChordType.symbols())
 
 
 const synth = new Tone.PolySynth({

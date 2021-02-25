@@ -12,10 +12,6 @@ export const RepList = () => {
     const [ newArtist, setNewArtist ] = useState("");
     const [ newStyle, setNewStyle ] = useState("");
     const [ newNotes, setNewNotes ] = useState("");
-    // const [ editTitle, setEditTitle ] = useState("");
-    // const [ editArtist, setEditArtist ] = useState("");
-    // const [ editStyle, setEditStyle ] = useState("");
-    // const [ editNotes, setEditNotes ] = useState("");
     const [ addRepModal, setAddRepModal ] = useState(false);
     const [ modalOpen, setModalOpen ] = useState(false)
     const [ filterRepertoire, setFilterRepertoire ] = useState(false)
@@ -227,7 +223,7 @@ export const RepList = () => {
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
                                 <button className="timerBtn cancelBtn" onClick={()=>setEditRepModal(false)}>Cancel</button>
-                                <button className="timerBtn pauseBtn" onClick={confirmEditRep}>Edit</button>
+                                <button className="timerBtn startBtn" onClick={confirmEditRep}>Edit</button>
                             </div>
                         </form>
                     </div>

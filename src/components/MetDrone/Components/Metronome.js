@@ -28,7 +28,6 @@ const Metronome = () => {
         if (newTaps.length === 3) {
             newTaps.shift()
         }
-        console.log(newTaps)
         setTaps(newTaps)
     }
     
