@@ -47,6 +47,7 @@
 <!-- * remove netlify -->
 * fix firebase hosting/github actions
 * record components
+  * save to firebase
 * tuner component
 * rep list
   * filter

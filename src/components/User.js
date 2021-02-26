@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Login } from "./Login";
 import { LogIcon } from "../icons/LogIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
+import { RecordIcon } from "../icons/RecordIcon";
 import { PieChartIcon } from "../icons/PieChartIcon";
 import { StoreContext } from '../Store'
 import firebase, { uiConfig } from '../firebase';
@@ -34,6 +35,12 @@ export const User = () => {
                         <div className="user-dashboard-card">
                             <LogIcon />
                             <h2>Practice log</h2>
+                        </div>
+                    </Link>
+                    <Link to="recordings">
+                        <div className="user-dashboard-card">
+                            <RecordIcon />
+                            <h2>My Recordings</h2>
                         </div>
                     </Link>
                     <Link to="/rep">

@@ -13,6 +13,7 @@ export default ({ children }) => {
     const [ isRecording, setIsRecording ] = useState(false)
     const [ blobURL, setBlobURL ] = useState("")
     const [ isBlocked, setIsBlocked ] = useState(false)
+    const [ recordingCreated, setRecordingCreated ] = useState(false)
 
     const [tempo, setTempo] = useState(120)
     const [playing, setPlaying] = useState (false)
@@ -66,7 +67,10 @@ export default ({ children }) => {
 
         activePage, setActivePage,
 
-        isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked,
+        isRecording, setIsRecording, 
+        blobURL, setBlobURL, 
+        isBlocked, setIsBlocked,
+        recordingCreated, setRecordingCreated,
 
         tempo, setTempo,
         playing, setPlaying ,

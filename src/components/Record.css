@@ -1,6 +1,23 @@
 .record-container {
-    padding-top: 10em;
+    /* padding-top: 10em; */
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.record-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.save-recording-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record-buttons {
+    margin-top: 1em;
 }
