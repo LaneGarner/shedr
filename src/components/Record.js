@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from '../Store'
 import { RecordIconLarge } from "../icons/RecordIconLarge";
 import MicRecorder from 'mic-recorder-to-mp3';
-// import { storage } from "../firebase";
 import "./Record.css";
 
 const recorder = new MicRecorder({ bitRate: 128 });
-let userRef
+let userRef;
 
 export const Record = () => {
     const { setActivePage, isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user } = useContext(StoreContext)
@@ -20,14 +19,12 @@ export const Record = () => {
     if(user) {
         userId = user.uid
         console.log(userId)
-    } else {
-        userId = null
-    }
+    } 
     
     useEffect(()=> {
-        // if(user){
+        if(user){
             userRef = audioRef.child(userId)
-        // }
+        }
     }, [user])
 
     useEffect(() => {
