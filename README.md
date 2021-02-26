@@ -66,3 +66,4 @@
 * tooltips
 * google analytics
 * landing page
+* active page function to useEffect

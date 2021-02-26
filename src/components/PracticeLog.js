@@ -196,8 +196,8 @@ export const PracticeLog = () => {
                             </div>
                             }
                             <div>
+                                <button type="submit" className="timerBtn pauseBtn">Save</button>
                                 <button className="timerBtn cancelBtn" onClick={()=>setEditLogModal(false)}>Cancel</button>
-                                <button type="submit" className="timerBtn startBtn">Edit</button>
                             </div>
                         </form>
                     </div>

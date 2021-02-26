@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router";
 import ProtectedRoute from "./ProtectedRoute";
 import { User } from "./components/User";
+// import Record from "./components/Record";
 import { Record } from "./components/Record";
 import MetDrone from "./components/MetDrone/";
 import { Fork } from "./components/Fork";

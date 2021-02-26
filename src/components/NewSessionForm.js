@@ -267,51 +267,59 @@ export const NewSessionForm = () => {
                 <div className="modal-container">
                     <div className="modal">
                         <button className="timerBtn pauseBtn" onClick={startTimer}>Skip</button>
-                        <h2>What are you practicing?</h2>
-                        <TextareaAutosize style={{padding: "1em", fontSize: "16px"}} value={practiceTopicNotes.topic} onChange={setTopic} autoFocus />
-                        <h2>How long are you practicing?</h2>
-                        <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                        <label for="hrs">hr</label>
-                        <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                        <label for="totalPracticeTime">min</label><br/>
-                        <button className="timerBtn startBtn" onClick={startTimer}>Confirm</button>
-                        <button className="timerBtn stopBtn" onClick={()=>setStartSessionModal(false)}>Cancel</button>
+                        <form onSubmit={startTimer}>
+                            <h2>What are you practicing?</h2>
+                            <TextareaAutosize style={{padding: "1em", fontSize: "16px"}} value={practiceTopicNotes.topic} onChange={setTopic} autoFocus />
+                            <h2>How long are you practicing?</h2>
+                            <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
+                            <label for="hrs">hr</label>
+                            <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
+                            <label for="totalPracticeTime">min</label><br/>
+                            <button className="timerBtn startBtn" type="submit">Confirm</button>
+                            <button className="timerBtn stopBtn" onClick={()=>setStartSessionModal(false)}>Cancel</button>
+                        </form>
                     </div>
                 </div>) 
             }
             {stopSessionModal && (
                 <div className="modal-container">
                     <div className="modal">
-                        <h2>Are you sure?</h2>
-                        <p>Stopping now will end your practice timer and log your practice time</p>
-                        <button className="timerBtn startBtn" onClick={stopTimer}>Confirm</button>
-                        <button className="timerBtn stopBtn" onClick={cancelStop}>Cancel</button>
+                        <form onSubmit={stopTimer}>
+                            <h2>Are you sure?</h2>
+                            <p>Stopping now will end your practice timer and log your practice time</p>
+                            <button type="submit" className="timerBtn startBtn">Confirm</button>
+                            <button className="timerBtn stopBtn" onClick={cancelStop}>Cancel</button>
+                        </form>
                     </div>
                 </div>) 
             }
             {submitSessionModal && (
                 <div className="modal-container">
                     <div className="modal">
-                        <h2>Are you sure?</h2>
-                        <p>Submitting now will clear this form and submit your session as shown below:</p>
-                        <ul className="confirm-log-list">
-                            <li><strong>Start time:</strong> {new Date(startDate).toLocaleString()}</li>
-                            <li><strong>Total practice time:</strong> {practiceTime[0]}hrs {practiceTime[1]}min {practiceTime[2]}sec</li>
-                            <li><strong>Topic:</strong> {practiceTopicNotes.topic}</li>
-                            <li><strong>Notes:</strong> {practiceTopicNotes.notes}</li>
-                        </ul>
-                        <button className="timerBtn pauseBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
-                        <button className="timerBtn startBtn" onClick={handleSubmit}>Submit</button>
+                        <form onSubmit={handleSubmit}>
+                            <h2>Are you sure?</h2>
+                            <p>Submitting now will clear this form and submit your session as shown below:</p>
+                            <ul className="confirm-log-list">
+                                <li><strong>Start time:</strong> {new Date(startDate).toLocaleString()}</li>
+                                <li><strong>Total practice time:</strong> {practiceTime[0]}hrs {practiceTime[1]}min {practiceTime[2]}sec</li>
+                                <li><strong>Topic:</strong> {practiceTopicNotes.topic}</li>
+                                <li><strong>Notes:</strong> {practiceTopicNotes.notes}</li>
+                            </ul>
+                            <button className="timerBtn startBtn" type="submit">Submit</button>
+                            <button className="timerBtn pauseBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
+                        </form>
                     </div>
                 </div>) 
             }
             {cancelSessionModal && (
                 <div className="modal-container">
                     <div className="modal">
-                        <h2>Are you sure?</h2>
-                        <p>Canceling now will clear this form and reset your session</p>
-                        <button className="timerBtn cancelBtn" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
-                        <button className="timerBtn stopBtn" onClick={handleCancel}>Cancel Session</button>
+                        <form onSubmit={handleCancel}>
+                            <h2>Are you sure?</h2>
+                            <p>Canceling now will clear this form and reset your session</p>
+                            <button type="submit" className="timerBtn stopBtn">Cancel Session</button>
+                            <button className="timerBtn cancelBtn" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
+                        </form>
                     </div>
                 </div>) 
             }

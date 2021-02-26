@@ -15,6 +15,7 @@
     "firebase": "^8.2.6",
     "firebaseui": "^4.7.3",
     "googleapis": "^67.1.0",
+    "mic-recorder-to-mp3": "^2.2.2",
     "react": "^17.0.1",
     "react-animated-burgers": "^1.2.8",
     "react-burger-menu": "^3.0.3",

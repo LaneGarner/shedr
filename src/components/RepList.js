@@ -75,7 +75,11 @@ export const RepList = () => {
     const editRep = (songId) => {
         const songRef = firebase.database().ref(`/repertoire/${user.uid}/${songId}`);
         const updatedSong = { title: newTitle, artist: newArtist, style: newStyle, notes: newNotes };
-        songRef.update(updatedSong);        
+        songRef.update(updatedSong); 
+        setNewTitle("");
+        setNewArtist("");
+        setNewStyle("");
+        setNewNotes("");       
     }
     
     
@@ -138,7 +142,7 @@ export const RepList = () => {
                     {filterRepertoire && (
                         <div>
                             <label className="sr-only" htmlFor="filterRep">Filter</label>
-                            <input value={filterSearch} onChange={e=>setFilterSearch(e.target.value)} className="rep-search-field" type="text" id="filterRep" placeholder="Filter by song by title, artist, composer, etc..." rows="5" />
+                            <input value={filterSearch} onChange={e=>setFilterSearch(e.target.value)} className="rep-search-field" type="text" id="filterRep" placeholder="Filter song by title, artist, composer, etc..." rows="5" />
                         </div>
                     )}
                     <table className="rep-table">
@@ -222,8 +226,8 @@ export const RepList = () => {
                             <label htmlFor="title">Notes</label>
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
+                                <button className="timerBtn startBtn" onClick={confirmEditRep}>Save</button>
                                 <button className="timerBtn cancelBtn" onClick={()=>setEditRepModal(false)}>Cancel</button>
-                                <button className="timerBtn startBtn" onClick={confirmEditRep}>Edit</button>
                             </div>
                         </form>
                     </div>

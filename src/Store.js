@@ -9,6 +9,10 @@ export default ({ children }) => {
     const [logs, setLogs] = useState([])
 
     const [activePage, setActivePage] = useState()
+    
+    const [ isRecording, setIsRecording ] = useState(false)
+    const [ blobURL, setBlobURL ] = useState("")
+    const [ isBlocked, setIsBlocked ] = useState(false)
 
     const [tempo, setTempo] = useState(120)
     const [playing, setPlaying] = useState (false)
@@ -61,6 +65,8 @@ export default ({ children }) => {
         logs, setLogs,
 
         activePage, setActivePage,
+
+        isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked,
 
         tempo, setTempo,
         playing, setPlaying ,
