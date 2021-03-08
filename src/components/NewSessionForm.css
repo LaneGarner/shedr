@@ -76,14 +76,14 @@
 
 .modal {
     background-color: #333;
-    width: 30em;
-    height: 20em;
+    width: 20em;
+    height: 25em;
     margin: auto;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     padding: 2em;
     border-radius: 2em;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.322);
     padding-bottom: 6em;
     /* display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@
 }
 
 .modal-container {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     width: 100vw;
     min-height: 100vh;
     margin: auto;

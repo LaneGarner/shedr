@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { StoreContext } from '../Store'
-import { RecordIconLarge } from "../icons/RecordIconLarge";
+import { RecordIcon } from "../icons/RecordIcon";
 import MicRecorder from 'mic-recorder-to-mp3';
 import "./Record.css";
 
@@ -18,7 +18,7 @@ export const Record = () => {
     let userId;
     if(user) {
         userId = user.uid
-        console.log(userId)
+        // console.log(userId)
     } 
     
     useEffect(()=> {
@@ -70,26 +70,31 @@ export const Record = () => {
             }).catch((e) => console.log(e));
     }
 
-    const handleSaveRecording = (params) => {
-        setSaveRecordingModal(false)
-        setRecordingCreated(false)
-        saveRecording()
-    }
+    useEffect(() => {
+        console.log(blobURL)
+    },[blobURL])
+
     
     const discardRecording = () => {
         setRecordingCreated(false)
         setBlobURL("")
     }
     
+    const handleSaveRecording = () => {
+        // console.log(blobURL)
+        setSaveRecordingModal(false)
+        setRecordingCreated(false)
+        saveRecording()
+    }
+    
     const saveRecording = () => {
         if(user) {
             console.log(userRef)
-            const recordingRef = userRef.child(recordingTitle)
+            const recordingRef = userRef.child(`${recordingTitle}.mp3`)
             recordingRef.put(blobURL).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
         }
-        
         setRecordingTitle("")
     }
 
@@ -101,11 +106,11 @@ export const Record = () => {
             <h1>Record</h1>
             {isRecording ? (
             <div className="record-icon" onClick={stopRecording}>
-                <RecordIconLarge isRecording={isRecording} />
+                <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
                 <p>Click mic to stop recording</p> 
             </div>) : (
             <div className="record-icon" onClick={record}>
-                <RecordIconLarge isRecording={isRecording} />
+                <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
                 <p>Click mic to start recording</p> 
             </div> )
             // <button className="timerBtn stopBtn" onClick={stopRecording}>Stop</button> :

@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { HomeIcon } from "../icons/HomeIcon";
 import { UserIcon } from "../icons/UserIcon";
 import { Link } from 'react-router-dom'
-import { HamburgerVortex } from 'react-animated-burgers'
+import { HamburgerSqueeze } from 'react-animated-burgers'
 import { StoreContext } from '../Store'
 import VegBurg from "./VegBurg"
 import "./Header.css"
@@ -27,7 +27,7 @@ export const Header = () => {
             </div>
 
             <div className="burger-button" onClick={() => setIsOpen(!isOpen)}>
-                <HamburgerVortex barColor="white" isActive={isOpen} />
+                <HamburgerSqueeze barColor="white" isActive={isOpen} buttonWidth={40} />
             </div>
             <VegBurg closeMenu={closeMenu} isOpen={isOpen} setIsOpen={setIsOpen} />
             { playing || droning ? (

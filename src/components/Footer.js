@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom'
 import "./Footer.css";
 
 export const Footer = () => {
-    const { closeMenu, activePage } = useContext(StoreContext)
+    const { closeMenu, activePage, isRecording } = useContext(StoreContext)
 
     return (
         <footer>
             <div className="footer-icon">
                 <Link onClick={closeMenu} to="record">
-                    <RecordIcon activePage={activePage} />
+                    <RecordIcon width="27.181" height="40.772" isRecording={isRecording} activePage={activePage} />
                 </Link>
             </div>
             <div className="footer-icon">

@@ -29,3 +29,11 @@
     display: block;
     padding: 1em;
 }
+
+.menu-item {
+    transition: color .3s;
+}
+
+.menu-item:hover {
+    color: orange;
+}
