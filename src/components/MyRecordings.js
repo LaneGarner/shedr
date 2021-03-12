@@ -15,11 +15,10 @@ export const MyRecordings = () => {
     const [ myRecordingsMetadata, setMyRecordingsMetadata ] = useState([])
     const [ loadingComplete, setLoadingComplete] = useState(false)
     
-    let userId, storage, listRef, recordingsList
+    let userId, storage, listRef
 
     useEffect(() => {
         if(user) {
-            const URLs = []
             userId = user.uid
             storage = firebase.storage().ref(`audio/${userId}`)
             listRef = storage.child(`audio/${userId}`)
@@ -32,7 +31,6 @@ export const MyRecordings = () => {
                 snap.items.map(itemRef => urlPromise.push(itemRef.getDownloadURL()))
                 Promise.all(metadataPromise).then((data) => {
                     setMyRecordingsMetadata(data)
-                    setLoadingComplete(true)
                 })
                 Promise.all(urlPromise).then((data) => {
                     setMyRecordingsURL(data)
