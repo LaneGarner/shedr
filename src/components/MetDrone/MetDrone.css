@@ -1,6 +1,6 @@
 .metdrone-container {
     display: flex;
-    align-items: stretch;
+    /* align-items: center; */
     /* justify-items: center; */
     justify-content: center;
     flex-wrap: wrap;

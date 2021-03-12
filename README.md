@@ -6,7 +6,7 @@
 <!-- * redux/context  -->
 <!-- * reincorporate logo -->
 * finalize/buy icons
-* user dashboard
+<!-- * user dashboard -->
   <!-- * if no logs show "you have no logs make some" -->
   <!-- * make into protected route -->
   <!-- * adjust styles
@@ -46,8 +46,9 @@
 * UI/design
 <!-- * remove netlify -->
 * fix firebase hosting/github actions
-* record components
-  * save to firebase
+* record component
+  * update, delete
+  <!-- * save to firebase -->
 * tuner component
 * rep list
   * filter

@@ -141,6 +141,7 @@ const Metronome = () => {
     }
     
     const newPosition = parseInt(Tone.Transport.position.split(':')[1])
+    
     const didMountRef = useRef(false)
     
     useEffect(() => {

@@ -21,3 +21,21 @@
 .record-buttons {
     margin-top: 1em;
 }
+
+.is-recording {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    40% {
+        opacity: 100;
+    }
+    80% {
+    opacity: 0;
+    }
+}
+
+.recording-timer {
+    font-weight: 100;
+    font-size: 3em;
+}

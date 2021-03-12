@@ -13,7 +13,7 @@ import { StoreContext } from '../Store'
 
 export const NewSessionForm = () => {
     
-    const { user, setActivePage, setActiveSession, startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused,  tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
+    const { user, setActivePage, setActiveSession, startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
 
     const [startSessionModal, setStartSessionModal] = useState(false)
     const [stopSessionModal, setStopSessionModal] = useState(false)
@@ -257,7 +257,7 @@ export const NewSessionForm = () => {
                     <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" /> 
                     <br />
                     <label htmlFor="notes">Notes</label><br/>
-                    <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." minRows="5" />
+                    <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." />
                     <br />
                     <button type="submit" className="timerBtn submitBtn">Submit</button>
                     <button onClick={cancelSubmit} type="reset" className="timerBtn cancelBtn">Cancel</button>

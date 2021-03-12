@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import { StoreContext } from '../Store'
 import { RecordIcon } from "../icons/RecordIcon";
+
 import MicRecorder from 'mic-recorder-to-mp3';
+
 import "./Record.css";
 
 const recorder = new MicRecorder({ bitRate: 128 });
 let userRef;
 
 export const Record = () => {
-    const { setActivePage, isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user } = useContext(StoreContext)
+    const { setActivePage, isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, recordTimerRunning, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState, } = useContext(StoreContext)
     const [ saveRecordingModal, setSaveRecordingModal ] = useState(false)
     const [ recordingTitle, setRecordingTitle ] = useState("")
+
+    const [ recordingFile, setRecordingFile] = useState("")
+    
+    let startTime
+
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 600); // 10 minutes recordTimer
 
     const storageRef = firebase.storage().ref();
     const audioRef = storageRef.child("audio");
@@ -18,7 +28,6 @@ export const Record = () => {
     let userId;
     if(user) {
         userId = user.uid
-        // console.log(userId)
     } 
     
     useEffect(()=> {
@@ -54,19 +63,28 @@ export const Record = () => {
             .start()
             .then(() => {
                 setIsRecording(true);
+                startTimer()
             }).catch((e) => console.error(e));
         }
     }
 
     const stopRecording = () => {
         setRecordingCreated(true)
+        stopTimer()
         recorder
             .stop()
             .getMp3()
             .then(([buffer, blob]) => {
+                const file = new File(buffer, 'me-at-thevoice.mp3', {
+                    type: blob.type,
+                    lastModified: Date.now()
+                });
+                setRecordingFile(file)
+
                 const newBlobURL = URL.createObjectURL(blob)
                 setBlobURL(newBlobURL)
                 setIsRecording(false)
+                // stopTimer()
             }).catch((e) => console.log(e));
     }
 
@@ -79,6 +97,30 @@ export const Record = () => {
         setRecordingCreated(false)
         setBlobURL("")
     }
+
+    // const getFileBlob = (url, cb) => {
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open("GET", url);
+    //     xhr.responseType = "blob";
+    //     xhr.addEventListener('load', function() {
+    //     cb(xhr.response);
+    //     });
+    //     xhr.send();
+    // };
+
+    // const uploadToStorage = (audioURL) =>{
+
+    //     getFileBlob(audioURL, blob =>{
+    //         const recordingRef = userRef.child(`${recordingTitle}.mp3`)
+    //         recordingRef.put(blob).then((snapshot) => {
+    //             console.log('Uploaded a blob or file!');
+    //         });
+
+    //     // firebase.storage().ref().put(blob).then(function(snapshot) {
+    //     //     console.log('Uploaded a blob or file!');
+    //     // })
+    // })
+    // }
     
     const handleSaveRecording = () => {
         // console.log(blobURL)
@@ -89,36 +131,94 @@ export const Record = () => {
     
     const saveRecording = () => {
         if(user) {
-            console.log(userRef)
+            // uploadToStorage()
+            // console.log(userRef)
             const recordingRef = userRef.child(`${recordingTitle}.mp3`)
-            recordingRef.put(blobURL).then((snapshot) => {
+            recordingRef.put(recordingFile).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
         }
         setRecordingTitle("")
     }
 
-    
-    
-    
+    const startTimer = () => {
+        if(!recordTimerStarted){
+            setRecordTimerStart(true)
+        } 
+        startTime = new Date().getTime()
+        setRecordTInterval(setInterval(getTime, 1000))
+        setRecordTimerRunning(true);
+        setRecordTimerPaused(false);
+    }
+
+    const getTime = () => {
+        let difference;
+        const updatedTime = new Date().getTime();
+            if (recordDifferenceState){
+                difference = (updatedTime - startTime) + recordDifferenceState
+                setRecordDifferenceState(difference)
+            } else {
+                difference = (updatedTime - startTime)
+                setRecordDifferenceState(difference)
+            }
+
+            let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            hours = (hours < 10) ? `0${hours}` : hours;
+            minutes = (minutes < 10) ? `0${minutes}` : minutes;
+            seconds = (seconds < 10) ? `0${seconds}` : seconds;
+
+            setRecordTimer(`${hours}:${minutes}:${seconds}`)
+    }
+
+    const stopTimer = () => {
+        console.log('stop timer')
+        // const hrs = recordTimer.slice(0,2)
+        // const min = recordTimer.slice(3,5)
+        // const sec = recordTimer.slice(6,8)
+        // const pTime= [hrs, min, sec]
+        pause()
+        setRecordTimerStart(false)
+        setRecordTimer("00:00:00")
+        setRecordTimerPaused(false)
+        setRecordDifferenceState(null)
+    }
+
+    const pause = () => {
+        if (!recordTimerPaused) {
+            setRecordTimerRunning(false)
+            setRecordTimerPaused(true)
+            clearInterval(recordTInterval)
+        } else {
+            setRecordTimerPaused(!recordTimerPaused)
+            startTimer()
+        }
+    }
+
     return (
-        <div className="record-container">
-            <h1>Record</h1>
+        <div className="record-container">            
             {isRecording ? (
-            <div className="record-icon" onClick={stopRecording}>
-                <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
-                <p>Click mic to stop recording</p> 
-            </div>) : (
-            <div className="record-icon" onClick={record}>
-                <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
-                <p>Click mic to start recording</p> 
-            </div> )
-            // <button className="timerBtn stopBtn" onClick={stopRecording}>Stop</button> :
-            // <button className="timerBtn stopBtn" onClick={record}>Record</button>
+                <div className="record-icon" onClick={stopRecording}>
+                    <h1 className="recording-text">Recording</h1>
+                    <div className="is-recording">
+                        <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
+                    </div>
+                    <p>Click mic to stop recording</p>
+                    <div className="recording-timer">
+                        {recordTimer}
+                    </div>
+                </div>) : (
+                <div className="record-icon" onClick={record}>
+                    <h1 className="recording-text">Record</h1>
+                    <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
+                    <p>Click mic to start recording</p> 
+                </div> )
         }
         {recordingCreated &&
         <>
-            <p>Preview recording:</p>
+            <p style={{fontWeight: 800}}>Preview recording:</p>
             <audio src={blobURL} controls="controls" />
             <div className="record-buttons">
                 <button className="timerBtn cancelBtn" onClick={discardRecording}>Discard</button>

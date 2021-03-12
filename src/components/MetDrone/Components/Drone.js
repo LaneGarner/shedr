@@ -2,14 +2,8 @@ import React, { useEffect, useContext } from "react"
 import "./Drone.css"
 import * as Tone from "tone"
 import StartAudioContext from "startaudiocontext"
-import VolumeDown from "@material-ui/icons/VolumeDown";
-import VolumeUp from "@material-ui/icons/VolumeUp";
 import { Chord, ChordType } from "@tonaljs/tonal";
 import { StoreContext } from "../../../Store"
-
-
-// console.log(ChordType.symbols())
-
 
 const synth = new Tone.PolySynth({
     oscillator: {

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 import firebase, { auth } from './firebase.js';
 
-export const StoreContext = React.createContext(null)
+export const StoreContext = createContext(null)
 
 export default ({ children }) => {
 
@@ -38,6 +38,14 @@ export default ({ children }) => {
     const [tInterval, setTInterval] = useState()
     const [timer, setTimer] = useState("00:00:00")
     const [differenceState, setDifferenceState] = useState()
+
+    const [recordTimerStarted, setRecordTimerStart] = useState(false)
+    const [recordTimerRunning, setRecordTimerRunning] = useState(false)
+    const [recordTimerPaused, setRecordTimerPaused] = useState(false)
+    const [recordTInterval, setRecordTInterval] = useState()
+    const [recordTimer, setRecordTimer] = useState("00:00:00")
+    const [recordDifferenceState, setRecordDifferenceState] = useState()
+
 
     const [practiceTime, setPracticeTime] = useState(["00", "00", "00"])
     const [practiceTopicNotes, setPracticeTopicNotes] = useState({topic: "", notes: ""})
@@ -95,6 +103,13 @@ export default ({ children }) => {
         tInterval, setTInterval,
         timer, setTimer,
         differenceState, setDifferenceState,
+
+        recordTimerStarted, setRecordTimerStart, 
+        recordTimerRunning, setRecordTimerRunning, 
+        recordTimerPaused, setRecordTimerPaused, 
+        recordTInterval, setRecordTInterval, 
+        recordTimer, setRecordTimer, 
+        recordDifferenceState, setRecordDifferenceState,
     
         practiceTime, setPracticeTime,
         practiceTopicNotes, setPracticeTopicNotes,
