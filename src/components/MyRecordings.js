@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -23,15 +24,16 @@ export const MyRecordings = () => {
             storage = firebase.storage().ref(`audio/${userId}`)
             listRef = storage.child(`audio/${userId}`)
             storage.list().then(snap => {
-                
                 let metadataPromise = []
                 let urlPromise = []
 
                 snap.items.map(itemRef => metadataPromise.push(itemRef.getMetadata()))
                 snap.items.map(itemRef => urlPromise.push(itemRef.getDownloadURL()))
+                
                 Promise.all(metadataPromise).then((data) => {
                     setMyRecordingsMetadata(data)
                 })
+                
                 Promise.all(urlPromise).then((data) => {
                     setMyRecordingsURL(data)
                     setLoadingComplete(true)
@@ -64,25 +66,36 @@ export const MyRecordings = () => {
 
     return (
         <div className="recordings-container">
-            <h1>My Recordings</h1>
-            <ul>
-                {loadingComplete === true && (
-                    myRecordings.map((recording, index) => (
-                        <li className="recording-card" key={index}>
-                            {console.log(recording)}
-                            <h2>{recording.meta.name.substring(0, recording.meta.name.length - 4)}</h2>
-                            <audio src={recording.url} controls="controls" />
-                            <span>
-                                <Moment format="MMMM Do, YYYY">{recording.meta.timeCreated}</Moment>
-                            </span>
-                            <span>
-                                <Moment format="LT">{recording.meta.timeCreated}</Moment>
-                            </span>
-                        </li>
-                    ))
+                <h1>My Recordings</h1>
+                <ul>
+                    {loadingComplete === true ? (
+                        myRecordings.map((recording, index) => (
+                            <li className="recording-card" key={index}>
+                                {console.log(recording)}
+                                <h2>{recording.meta.name.substring(0, recording.meta.name.length - 4)}</h2>
+                                <audio src={recording.url} controls="controls" />
+                                <span>
+                                    <Moment format="MMMM Do, YYYY">{recording.meta.timeCreated}</Moment>
+                                </span>
+                                <span>
+                                    <Moment format="LT">{recording.meta.timeCreated}</Moment>
+                                </span>
+                            </li>
+                        ))
+                        ): 
+                        <div>Loading</div>
+                    }
+                    {myRecordings.length === 0 && loadingComplete && (
+                        <div>
+                            <Link to ="/record">
+                                <button className="timerBtn submitBtn" onClick={console.log("click")}>Record</button>
+                            </Link>
+                            <p>You do not have any recordings saved...</p> 
+                            <p>Click above to create your first recording</p>
+                        </div>
                     )
-                }
-            </ul>
+                    }
+                </ul>
         </div>
     )
 }

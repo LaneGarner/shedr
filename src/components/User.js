@@ -1,14 +1,18 @@
 import { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+
+import { StoreContext } from '../Store'
+import firebase, { uiConfig } from '../firebase';
+
 import { Login } from "./Login";
+
 import { LogIcon } from "../icons/LogIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { RecordIconLarge } from "../icons/RecordIconLarge";
 import { PieChartIcon } from "../icons/PieChartIcon";
-import { StoreContext } from '../Store'
-import firebase, { uiConfig } from '../firebase';
+import { Logo } from "../icons/Logo"
 
-import "./User.css"
+import "./User.scss"
 
 const firebaseAuth = firebase.auth()
 
@@ -25,32 +29,40 @@ export const User = () => {
 
     return (
         <div className="userContainer">
-            {!user && <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} /> }
+            {!user && 
+                <div>
+                    <h2>Welcome to Shedr</h2>
+                    <p>To get the most out of Shedr, please login or sign up.</p>
+                    <p>With an account you can save practice logs, create a repertoire list, and even make recordings. Best of all you can access all of this content from any of your devices when you're logged in.</p>
+                    <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} /> 
+                    <p>Sign up</p>
+                </div>
+                }
                 {user && (
                 <div>
                     <h1>Hello {user.displayName.split(" ")[0]}, welcome to Shedr</h1>
-                    <p>Choose an option below to access your personal content</p>
+                    <p style={{color: "orange"}}>Choose an option below</p>
                 <div className="userDashboard">
                     <Link to="log">
-                        <div className="user-dashboard-card">
+                        <div className="card">
                             <LogIcon />
                             <h2>Practice log</h2>
                         </div>
                     </Link>
-                    <Link to="recordings">
-                        <div className="user-dashboard-card">
+                    <Link to="record">
+                        <div className="card">
                             <RecordIconLarge />
-                            <h2>My Recordings</h2>
+                            <h2>Record</h2>
                         </div>
                     </Link>
                     <Link to="/rep">
-                        <div className="user-dashboard-card">
+                        <div className="card">
                             <PaperClipIcon />
                             <h2>Repertoire list</h2>
                         </div>
                     </Link>
-                    <Link to="/user">
-                        <div onClick={()=>alert('feature coming soon')} className="user-dashboard-card">
+                    <Link to="/">
+                        <div onClick={()=>alert('feature coming soon')} className="card">
                             <PieChartIcon />
                             <h2>Practice stats</h2>
                         </div>

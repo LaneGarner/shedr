@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useHistory } from "react-router-dom";
-import { PracticeTimer } from "./PracticeTimer";
+import { useHistory } from "react-router-dom"
+import { StoreContext } from '../Store'
+
+import DatePicker from "react-datepicker";
+import TextareaAutosize from 'react-textarea-autosize'
+import "react-datepicker/dist/react-datepicker.css"
+
+import { PracticeTimer } from "./PracticeTimer"
 import { LogIconSmall } from "../icons/LogIconSmall"
 import { ClockIcon } from "../icons/ClockIcon"
-import DatePicker from "react-datepicker";
-import TextareaAutosize from 'react-textarea-autosize';
-import "react-datepicker/dist/react-datepicker.css";
-import "./NewSessionForm.css"
-import { StoreContext } from '../Store'
-// import firebase from '../firebase';
 
+import "./NewSessionForm.scss"
 
 export const NewSessionForm = () => {
     
-    const { user, setActivePage, setActiveSession, startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
+    const { user, setActiveSession, startDate, setStartDate, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer,  differenceState, setDifferenceState, practiceTime, setPracticeTime,  practiceTopicNotes, setPracticeTopicNotes, firebase } = useContext(StoreContext)
 
     const [startSessionModal, setStartSessionModal] = useState(false)
     const [stopSessionModal, setStopSessionModal] = useState(false)
@@ -37,14 +38,6 @@ export const NewSessionForm = () => {
         }
     }, [modalOpen]);
 
-
-    //set active page for header/footer
-    setActivePage("home")
-    
-    //scroll to top on load
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
 
     //useHistory hook to redirect on submit
     let history = useHistory();
@@ -255,10 +248,10 @@ export const NewSessionForm = () => {
                     <h2>Material</h2>
                     <label htmlFor="topic">Topic</label><br/>
                     <TextareaAutosize required value={practiceTopicNotes.topic} onChange={setTopic} id="topic" className="topic-input" placeholder="What are you practicing?" /> 
-                    <br />
+                    <br/>
                     <label htmlFor="notes">Notes</label><br/>
                     <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." />
-                    <br />
+                    <br/>
                     <button type="submit" className="timerBtn submitBtn">Submit</button>
                     <button onClick={cancelSubmit} type="reset" className="timerBtn cancelBtn">Cancel</button>
                 </form>

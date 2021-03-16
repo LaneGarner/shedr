@@ -3,7 +3,6 @@
     height: 100%;
 }
 
-
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
 }
@@ -19,21 +18,19 @@
     top: 5em;
     right: -200em;
     width: 16em;
+    a {
+    display: block;
+    padding: 1em;
+    }
 }
 
 .burger-menu-open {
     right: 0;
 }
 
-.burger-menu a {
-    display: block;
-    padding: 1em;
-}
-
 .menu-item {
     transition: color .3s;
-}
-
-.menu-item:hover {
-    color: orange;
+    &:hover {
+        color: orange;
+    }
 }

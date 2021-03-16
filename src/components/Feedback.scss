@@ -3,27 +3,21 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-
-.feedback-form p {
+    p {
     margin: .5em;
-}
-
-.feedback-form span {
+    }
+    span {
     color: orange;
-}
-
-.feedback-form p:nth-of-type(3) {
+    }
+    p:nth-of-type(3) {
     margin-bottom: 2em;
-}
-
-.feedback-form form {
+    }
+    form {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.feedback-form input {
+    }
+    input {
     display: block;
     margin-bottom: 2em;
     padding: .3em;
@@ -31,25 +25,22 @@
     border: none;
     font-family: monospace;
     width: 20em;
-}
-
-.feedback-form label {
+    }
+    label {
     margin-bottom: .5em;
-}
-
-#message {
+    }
+    button {
+    margin-top: 1.5em;
+    }
+    #message {
     resize: none;
     padding: .3em;
     border-radius: .2em;
     border: none;
     font-family: monospace;
     width: 20em;
-}
-
-.feedback-form button {
-    margin-top: 1.5em;
-}
-
-.checkmark {
+    }
+    .checkmark {
     font-size: 50px;
+    }
 }

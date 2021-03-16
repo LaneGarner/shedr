@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { StoreContext } from '../Store'
 import TextareaAutosize from 'react-textarea-autosize';
 import Axios from 'axios';
-import "./Feedback.css";
+import "./Feedback.scss";
 
 export const Feedback = () => {
     const { firebase } = useContext(StoreContext)

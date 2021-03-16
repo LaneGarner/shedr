@@ -1,20 +1,17 @@
 .metdrone-container {
     display: flex;
-    /* align-items: center; */
-    /* justify-items: center; */
     justify-content: center;
     flex-wrap: wrap;
+    label {
+    font-weight: 800;
+    }
 }
 
 .metdrone-component {
-    margin: auto 2em 2em 2em;
+    margin: 2em;
     width: 22em;
     padding: 3em;
     background: #272727;
     border-radius: 2em;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.metdrone-container label {
-    font-weight: 800;
 }

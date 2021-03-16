@@ -3,7 +3,7 @@ import { StoreContext } from '../Store';
 import { TrashIcon } from "../icons/TrashIcon";
 import { EditIcon } from "../icons/EditIcon";
 
-import "./RepList.css"
+import "./RepList.scss"
 
 let selectedRep;
 
@@ -179,7 +179,11 @@ export const RepList = () => {
                     </table>
                     </>
                 ) :
-                <p>Click above to add your first song</p>
+                <div>
+                    <p>You do not have any songs saved...</p> 
+                    <p>Click above to add your first song</p>
+                    {/* <p>Click above to add your first song</p> */}
+                </div>
             }
             {addRepModal && (
                 <div className="modal-container">

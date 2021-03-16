@@ -4,7 +4,7 @@ import { RecordIcon } from "../icons/RecordIcon";
 import { MetDroneIcon } from "../icons/MetDroneIcon";
 import { ForkIcon } from "../icons/ForkIcon";
 import { Link } from 'react-router-dom'
-import "./Footer.css";
+import "./Footer.scss";
 
 export const Footer = () => {
     const { closeMenu, activePage, isRecording } = useContext(StoreContext)

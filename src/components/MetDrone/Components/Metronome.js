@@ -1,20 +1,25 @@
 import { useState, useEffect, useRef , useContext} from 'react';
-import './Metronome.css';
+import { StoreContext } from '../../../Store'
+
 import * as Tone from 'tone'
+import StartAudioContext from 'startaudiocontext'
+
 import click1Sample from '../click1.flac';
 import click2Sample from '../click2.wav';
 import click3Sample from '../click3.wav';
-import StartAudioContext from 'startaudiocontext'
-import { StoreContext } from '../../../Store'
+
+import './Metronome.scss';
 
 const click1 = new Tone.Player(click1Sample).toDestination()
-const click2 = new Tone.Player(click2Sample).toDestination()
+//-------SAVE FOR POLYRHYTHM MODE!!!-------------
+// const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
 const Metronome = () => {    
     const { tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent, setClickVolume, clickVolume, polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm } = useContext(StoreContext)
     const [taps, setTaps] = useState([])
     
+    //-------SAVE FOR POLYRHYTHM MODE!!!-------------
     const three = 0.6666666666666666666666666666666666666666666666666666667
     const five = 0.4
     const seven = 0.285714285714286
@@ -59,9 +64,10 @@ const Metronome = () => {
         click1.volume.value = gainToDecibels(clickVolume)
     }, [clickVolume])
     
-    useEffect(() => {
-        click2.volume.value = gainToDecibels(clickVolume)
-    }, [clickVolume])
+    //-------SAVE FOR POLYRHYTHM MODE!!!-------------
+    // useEffect(() => {
+    //     click2.volume.value = gainToDecibels(clickVolume)
+    // }, [clickVolume])
     
     useEffect(() => {
         click3.volume.value = gainToDecibels(clickVolume)
@@ -93,6 +99,16 @@ const Metronome = () => {
         }
     }
     
+    const handleTempoInput = (e) => {
+        if(e.target.value !== "") {
+            setTempo(e.target.value)
+        } else {
+            stopClick()
+            setPlaying(false)
+            setTempo(e.target.value)
+        }
+    }
+    
     const startStop = () => {
         StartAudioContext(Tone.context)
         Tone.start()
@@ -108,7 +124,8 @@ const Metronome = () => {
     }
     
     const playClick = () => {
-        const bpmNum = parseInt(tempo);
+        if (tempo !== "") {
+            const bpmNum = parseInt(tempo);
         
         Tone.Transport.bpm.value = bpmNum;
         Tone.Transport.timeSignature = timeSig;        
@@ -122,16 +139,20 @@ const Metronome = () => {
         Tone.Transport.scheduleRepeat((time) => {
             setPosition(Tone.Transport.position)
             click3.start(time)
-        }, ".5");
-    
-        if(polyrhythmMode) {
-            setTimeSig(4)
-            Tone.Transport.scheduleRepeat((time) => {
-                setPosition(Tone.Transport.position)
-                click2.start(time)
-            }, polyrhythm);
-        }
+        }, "4n");
+        
+        //-------SAVE FOR POLYRHYTHM MODE!!!-------------
+        // if(polyrhythmMode) {
+        //     setTimeSig(4)
+        //     Tone.Transport.scheduleRepeat((time) => {
+        //         setPosition(Tone.Transport.position)
+        //         click2.start(time)
+        //     }, polyrhythm);
+        // }
+
         Tone.Transport.start();
+
+        }
     }
     
     const stopClick = () => {
@@ -160,10 +181,11 @@ const Metronome = () => {
                 <input checked={accent} type="checkbox" id="accent" onChange={handleAccent} />
                 <label htmlFor="accent" style={{fontWeight: 400}} >Accent</label>
             </div>
-            <div>
+            {/* //-------SAVE FOR POLYRHYTHM MODE!!!------------- */}
+            {/* <div>
                 <input checked={polyrhythmMode} type="checkbox" id="poly" onChange={()=>setPolyrhythmMode(!polyrhythmMode)} />
                 <label htmlFor="poly" style={{fontWeight: 400}} >Polyrhythm mode</label>
-            </div>
+            </div> */}
             <div className="met-settings">
                 {!polyrhythmMode ? (
                 <>
@@ -189,14 +211,15 @@ const Metronome = () => {
                 )}
                 <div className="bpm-slider">
                     <label htmlFor="bpmSlider">Tempo</label>
-                    <div>{tempo} BPM</div>
+                    <div><input style={{width: "2em", fontSize: "1.5em"}} type="text" value={tempo} onChange={handleTempoInput} /> BPM</div>
                     <input
                         id="bpmSlider"
                         type="range"
                         min="01"
                         max="400"
                         value={tempo}
-                        onChange={handleTempo} />
+                        onChange={handleTempo} 
+                    />
                 </div>
                 <div className="bpm-slider">
                     <label htmlFor="volumeSlider">Volume</label><br/>
@@ -221,4 +244,4 @@ const Metronome = () => {
     )
 }
 
-export default Metronome;
+export default Metronome

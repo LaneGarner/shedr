@@ -10,57 +10,43 @@
     background-color: transparent;
     cursor: pointer;
     transition: background-color .5s;
+    &:hover {
+        color: #333;
+    }
+    &:active {
+        color: white;
+    }
 }
 
 .timerDisplay {
     font-weight: 100;
 }
 
-.timerBtn:hover {
-    color: #333;
-}
-
-.timerBtn:active {
-    color: white;
-}
-
 .startBtn {
     border: solid 1px #5AC18E;
-    /* color: white; */
+    &:hover {
+        background-color:#5AC18E;
+    }
 }
-
-.startBtn:hover {
-    background-color:#5AC18E;
-    /* color: #333; */
-}
-
-/* .startBtn:active {
-    color: white;
-} */
 
 .pauseBtn {
     border: solid 1px dodgerblue;
-}
-
-.pauseBtn:hover {
-    background: dodgerblue;
+    &:hover {
+        background: dodgerblue;
+    }
 }
 
 .resumeBtn {
     border: solid 1px #5AC18E;
-    /* color: #333; */
-}
-
-.resumeBtn:hover {
+    &:hover {
     background-color:#5AC18E;
     color: #333;
+    }
 }
 
 .stopBtn {
     border: solid 1px tomato;
-}
-
-.stopBtn:hover {
+    &:hover {
     background-color: tomato;
+    }
 }
-

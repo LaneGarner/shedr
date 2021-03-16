@@ -1,4 +1,4 @@
-import "./PracticeTimer.css";
+import "./PracticeTimer.scss";
 
 export const PracticeTimer = ({ pause, setStopSessionModal, setStartSessionModal, setStartDate, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState }) => {
 

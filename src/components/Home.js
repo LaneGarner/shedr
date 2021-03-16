@@ -1,52 +1,39 @@
-// import React from 'react'
-// import { NavLink } from 'react-router-dom'
-// import { Logo } from "../icons/Logo";
+import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { StoreContext } from '../Store'
+
+import { Logo } from "../icons/Logo"
+import { FlatGuitarist } from "../images/FlatGuitarist"
+
+import image from "../flat-gtrist-preview.png"
+
+import './Home.scss'
 
 
-// export const Home = ({ activeSession, setActiveSession }) => {
-
-//     const startSession = () => {
-//         console.log('start')
-//         setActiveSession(true)
-//     }
+export const Home = () => {
+    const { setActivePage, activeSession, setActiveSession } = useContext(StoreContext)
     
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        setActivePage("none")
+    }, [])
 
-//     const styles = {
-//         homeContainer: {
-//             paddingTop: "8em",
-//             paddingBottom: "8em",
-//             backgroundColor: "#333",
-//             // height: "100vh",
-//             display: "flex",
-//             flexDirection: "column",
-//             alignItems: "center",
-//         },
-//         button: {
-//             margin: "2em",
-//             backgroundColor: "orange",
-//             border: "none",
-//             borderRadius: "2em",
-//             padding: "1.5em",
-//             cursor: "pointer",
-//             textDecoration: "none",
-//             color: "#333",
-//         },
-//         homeSubtitle: {
-//             color: "white",
-//             marginBottom: 0,
-//             fontWeight: 100,
-
-//         }
-//     };
-//     return (
-//         <div style={styles.homeContainer}>
-//             <Logo height="20em"/>
-//             <h2 style={styles.homeSubtitle}>Musician's practice toolkit</h2>
-//             {activeSession ? 
-//             <NavLink onClick={startSession}  to="/form" style={styles.button}> Current practice session</NavLink> :
-//             <NavLink onClick={startSession}  to="/form" style={styles.button}> New practice session</NavLink>
-//             }
-//         </div>
-//     )
-// }
+    return (
+        <div className="home-container">
+            {/* <Logo height="20em"/> */}
+            <div>
+                <FlatGuitarist />
+            </div>
+            <div>
+                <h1>Welcome to Shedr</h1>
+                <p>Shedr is a musican's practice toolkit designed to sit on your music stand while you practice. It is optimized for desktop, tablet, and mobile so you can practice effeciently wherever you are.</p>
+                <Link to="/dashboard" className="button"> Get Started</Link>
+            </div>
+            {/* <img style={{width: "40em"}} src={image}/> */}
+            {/* {activeSession ?  */}
+            {/* <Link onClick={startSession}  to="/log" className="button"> New practice session</Link> */}
+            {/* } */}
+        </div>
+    )
+}
 

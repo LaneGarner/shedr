@@ -1,12 +1,16 @@
 import { useContext } from 'react'
-import { HomeIcon } from "../icons/HomeIcon";
-import { UserIcon } from "../icons/UserIcon";
+import { StoreContext } from '../Store'
+
+import { HomeIcon } from "../icons/HomeIcon"
+import { UserIcon } from "../icons/UserIcon"
 import { Link } from 'react-router-dom'
 import { HamburgerSqueeze } from 'react-animated-burgers'
-import { StoreContext } from '../Store'
+import { LogoIconSmall } from "../icons/LogoIconSmall"
+import { LogIconHeader } from '../icons/LogIconHeader'
+
 import VegBurg from "./VegBurg"
-import "./Header.css"
-import { LogoIconSmall } from "../icons/LogoIconSmall";
+
+import "./Header.scss"
 
 export const Header = () => {
 
@@ -14,17 +18,14 @@ export const Header = () => {
     return (
         <header style={{zIndex: 1000}}>
             <nav>
-                <Link onClick={closeMenu} to="/">
+                <Link onClick={closeMenu} to="/dashboard">
                     <HomeIcon activePage={activePage} />
-                </Link>
-                <Link onClick={closeMenu} to="user">
-                    <UserIcon activePage={activePage} />
                 </Link>
             </nav>
 
-            <div className="header-icon">
-                <LogoIconSmall />
-            </div>
+                <Link className="header-icon" onClick={closeMenu} to="/">
+                    <LogoIconSmall />
+                </Link>
 
             <div className="burger-button" onClick={() => setIsOpen(!isOpen)}>
                 <HamburgerSqueeze barColor="white" isActive={isOpen} buttonWidth={40} />
@@ -35,7 +36,6 @@ export const Header = () => {
                     {activeSession && <Link onClick={closeMenu} to="/form">Current practice session</Link>}
                     {playing && <Link onClick={closeMenu} to="./metdrone">{tempo} BPM {timeSig}/4</Link>}
                     {droning && <Link onClick={closeMenu} to="./metdrone">{root} {chordType}</Link>}
-                    {/* {user && user.photo} */}
                 </div>
             ) :
             <></>

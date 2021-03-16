@@ -2,18 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .rep-table {
     border-collapse: collapse;
     margin: 2em;
     table-layout: fixed;
+    td, th {
+        border: 1px solid white;
+        padding: 1em;
+        width: 10em;
+    }
 }
 
 .rep-table td, .rep-table th {
-    border: 1px solid white;
-    padding: 1em;
-    width: 10em;
+
 }
 
 .rep-search-field {

@@ -1,13 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react'
-import "./PracticeLog.css";
-import { CloseIcon } from "../icons/CloseIcon"
-import { EditIcon } from "../icons/EditIcon"
-import { LogIcon } from "../icons/LogIcon"
-import { Link } from 'react-router-dom'
 import { StoreContext } from '../Store'
+
 import DatePicker from "react-datepicker";
 import TextareaAutosize from "react-textarea-autosize";
 
+import { CloseIcon } from "../icons/CloseIcon"
+import { EditIcon } from "../icons/EditIcon"
+import { LogIcon } from "../icons/LogIcon"
+
+import "./PracticeLog.scss";
 
 let selectedLog;
 
@@ -125,9 +126,14 @@ export const PracticeLog = () => {
     
     return (
         <div className="logContainer">
-            <LogIcon />
+            {/* <LogIcon /> */}
             <h1>Practice log</h1>
-            {logs.length === 0 && <Link to="/">Click here to create your first log</Link>}
+            {logs.length === 0 && 
+                <div>
+                    <p>You do not have any saved logs</p> 
+                    <p>Create your first log above</p>
+                </div>
+        }
             <div className="log-grid">
                 {logs.map((log, idx) => (
                     <div key={log.id} id={log.id} className="log-card">

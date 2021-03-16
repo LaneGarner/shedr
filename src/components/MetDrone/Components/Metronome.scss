@@ -1,0 +1,42 @@
+.metronome {
+    text-align: center;
+    color: white;
+    button {
+        background: transparent;
+        padding: .8em;
+        margin: .5em;
+        border: white solid 1px;
+        border-radius: 2em;
+        outline: 2em;
+        color: #fff;
+        font-size: 18px;
+        width: 100px;
+        cursor: pointer;
+        &:hover {
+            color: #333;
+            background: white;
+        }
+    }
+}
+
+.Count {
+    margin: 0;
+}
+
+.met-settings {
+    padding: 1em;
+}
+
+.bpm-slider {
+    margin-top: 1em;
+    input {
+        width: 80%;
+        margin-bottom: 2em;
+        margin-top: 1em;
+    }
+}
+
+#selectTimeSig {
+    font-size: 1.3em;
+    margin-top: .4em;
+}
