@@ -1,13 +1,18 @@
 .home-container {
     padding-bottom: 8em;
     background-color: #333;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-items: center;
-    margin-top: 5em;
-    // flex-direction: column;
-    align-items: center;
+    &-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        margin-top: 5em;
+    }
+    h1 {
+        color: orange;
+        font-size: 3em;
+    }
     a {
         text-decoration: none;
         color: white;
@@ -18,15 +23,47 @@
         font-size: 1.1em;
     }
     div:nth-of-type(1) {
-        padding: auto 1em;
+        div:nth-of-type(1) {
+            padding: auto 1em;
+        }
+        div:nth-of-type(2) {
+            padding: auto 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
     }
     div:nth-of-type(2) {
-        padding: auto 2em;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        h2 {
+            font-size: 2.8em;
+        }
+        ul {
+            font-size: 1.2em;
+            list-style: none;
+            li {
+                padding: .8em;
+            }
+            span {
+                font-weight: 800;
+                color: orange;
+            }
+        }
+        div:nth-of-type(1){
+            margin: 3em;
+        }
+        div:nth-of-type(2){
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // text-align: center;
+        }
     }
-    
+    div:nth-of-type(3) {
+        display: flex;
+        justify-content: space-around;
+    }
 }
 
 .button {
