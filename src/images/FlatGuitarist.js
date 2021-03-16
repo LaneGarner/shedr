@@ -1,6 +1,6 @@
 export const FlatGuitarist = () => {
     return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="650" viewBox="0 0 7537.676 4409.381">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7537.676 4409.381">
       <g id="Group_43" data-name="Group 43" transform="translate(-706.327 -1337.45)">
         <path id="Path_199" data-name="Path 199" d="M1004.906,5746.831l7100.861-47.763s461.716-1337.382-302.5-1512.516S7659.974,2228.243,6816.149,1893.9s-1639.885,827.9-2404.1,15.922S2660.712,1177.443,2549.264,1973.5s334.345,1082.643-1066.721,1544.358S1004.906,5746.831,1004.906,5746.831Z" fill="#c8d4e8" opacity="0.25"/>
         <g id="Group_42" data-name="Group 42">
