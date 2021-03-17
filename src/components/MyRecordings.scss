@@ -4,28 +4,42 @@
     // flex-wrap: wrap;
     align-items: center;
     text-align: center;
+    h1 {
+        margin-bottom: 0;
+        margin-top: 1em;
+    }
     ul {
         display: flex;
         flex-direction: column;
         // flex-wrap: wrap;
         align-items: center;
-        padding: 0
+        padding: 0;
+        audio {
+            width: 100%;
+        }
     }
 }
 
 .recording-card {
     background: #272727;
     padding: 3em;
-    margin: 2em;
+    margin-top: 2em;
     list-style-type: none;
     border-radius: 1em;
     display: flex;
     flex-direction: column;
-    width: 30em;
-    span {
-        padding: 1em;
+    width: 35em;
+    h2 {
+        margin-bottom: .3em;
+        margin-top: 0;
     }
-    span:nth-of-type(1) {
-        margin-top: 1em;
+    span {
+        padding: .5em;
+    }
+    span:nth-of-type(2) {
+        margin-bottom: 1em;
+    }
+    @media (max-width: 700px) {
+        width: 90vw;
     }
 }

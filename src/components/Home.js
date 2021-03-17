@@ -37,7 +37,7 @@ export const Home = () => {
                 <div>
                     <h2>All the tools you need in one place</h2>
                     <ul>
-                        <li><span>Practice Log</span> - Time and track of your practice sessions</li>
+                        <li><span>Practice Log</span> - Track and time your practice sessions</li>
                         <li><span>Repertoire List</span> - Build and review your repertoire</li>
                         <li><span>Practice Stats</span> - Stay motivated by analyzing your progress</li>
                         <li><span>MetDrone</span> - Practice with an accurate metronome and a harmonic drone</li>

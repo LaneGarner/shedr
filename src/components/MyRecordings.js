@@ -73,13 +73,13 @@ export const MyRecordings = () => {
                             <li className="recording-card" key={index}>
                                 {console.log(recording)}
                                 <h2>{recording.meta.name.substring(0, recording.meta.name.length - 4)}</h2>
-                                <audio src={recording.url} controls="controls" />
                                 <span>
                                     <Moment format="MMMM Do, YYYY">{recording.meta.timeCreated}</Moment>
                                 </span>
                                 <span>
                                     <Moment format="LT">{recording.meta.timeCreated}</Moment>
                                 </span>
+                                <audio src={recording.url} controls="controls" />
                             </li>
                         ))
                         ): 

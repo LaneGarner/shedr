@@ -37,20 +37,34 @@ export const NewRecording = () => {
     }, [user])
 
     useEffect(() => {
+        // navigator.mediaDevices.getUserMedia({ audio: true },
+        //     () => {
+        //     console.log('Permission Granted')
+        //     setIsBlocked(false);
+        //     },
+        //     () => {
+        //     console.log('Permission Denied')
+        //     setIsBlocked(true)
+        //     },
+        // )
+    }, [])
+
+    const getAudio = () => {
         navigator.mediaDevices.getUserMedia({ audio: true },
             () => {
-            console.log('Permission Granted');
+            console.log('Permission Granted')
             setIsBlocked(false);
             },
             () => {
-            console.log('Permission Denied');
+            console.log('Permission Denied')
             setIsBlocked(true)
             },
-        );
-    }, [])
-    
+        )
+    }
+
 
     const record = () => {
+        getAudio()
         setRecordingCreated(false)
         if (isBlocked) {
             console.log('Permission Denied');
@@ -80,46 +94,15 @@ export const NewRecording = () => {
                 const newBlobURL = URL.createObjectURL(blob)
                 setBlobURL(newBlobURL)
                 setIsRecording(false)
-                // stopTimer()
             }).catch((e) => console.log(e));
     }
-
-    useEffect(() => {
-        console.log(blobURL)
-    },[blobURL])
-
     
     const discardRecording = () => {
         setRecordingCreated(false)
         setBlobURL("")
     }
-
-    // const getFileBlob = (url, cb) => {
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.open("GET", url);
-    //     xhr.responseType = "blob";
-    //     xhr.addEventListener('load', function() {
-    //     cb(xhr.response);
-    //     });
-    //     xhr.send();
-    // };
-
-    // const uploadToStorage = (audioURL) =>{
-
-    //     getFileBlob(audioURL, blob =>{
-    //         const recordingRef = userRef.child(`${recordingTitle}.mp3`)
-    //         recordingRef.put(blob).then((snapshot) => {
-    //             console.log('Uploaded a blob or file!');
-    //         });
-
-    //     // firebase.storage().ref().put(blob).then(function(snapshot) {
-    //     //     console.log('Uploaded a blob or file!');
-    //     // })
-    // })
-    // }
     
     const handleSaveRecording = () => {
-        // console.log(blobURL)
         setSaveRecordingModal(false)
         setRecordingCreated(false)
         saveRecording()
@@ -127,8 +110,6 @@ export const NewRecording = () => {
     
     const saveRecording = () => {
         if(user) {
-            // uploadToStorage()
-            // console.log(userRef)
             const recordingRef = userRef.child(`${recordingTitle}.mp3`)
             recordingRef.put(recordingFile).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
@@ -171,10 +152,6 @@ export const NewRecording = () => {
 
     const stopTimer = () => {
         console.log('stop timer')
-        // const hrs = recordTimer.slice(0,2)
-        // const min = recordTimer.slice(3,5)
-        // const sec = recordTimer.slice(6,8)
-        // const pTime= [hrs, min, sec]
         pause()
         setRecordTimerStart(false)
         setRecordTimer("00:00:00")
@@ -230,7 +207,6 @@ export const NewRecording = () => {
                 <div className="modal">
                     <form className="save-recording-form" onSubmit={handleSaveRecording}>
                         <h2>Save recording</h2>
-                        <p>Let's save your recording. Once saved it will available in your user dashboard.</p>
                         <label htmlFor="recordingName">Title*</label><br/>
                         <input value={recordingTitle} onChange={e=>setRecordingTitle(e.target.value)} type="text" placeholder="Name your recording" id="recordingName" required/><br/>
                         <button className="timerBtn startBtn" type="submit">Save</button>

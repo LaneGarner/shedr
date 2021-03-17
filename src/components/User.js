@@ -9,15 +9,16 @@ import { Login } from "./Login";
 import { LogIcon } from "../icons/LogIcon";
 import { PaperClipIcon } from "../icons/PaperClipIcon";
 import { RecordIconLarge } from "../icons/RecordIconLarge";
+import { MetDroneIconLarge } from "../icons/MetDroneIconLarge";
+import { ForkIconLarge } from "../icons/ForkIconLarge";
 import { PieChartIcon } from "../icons/PieChartIcon";
-import { Logo } from "../icons/Logo"
 
 import "./User.scss"
 
 const firebaseAuth = firebase.auth()
 
 export const User = () => {
-    const { user, setActivePage } = useContext(StoreContext)
+    const { user, setActivePage, isRecording } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("user")
@@ -49,12 +50,6 @@ export const User = () => {
                             <h2>Practice log</h2>
                         </div>
                     </Link>
-                    <Link to="record">
-                        <div className="card">
-                            <RecordIconLarge />
-                            <h2>Record</h2>
-                        </div>
-                    </Link>
                     <Link to="/rep">
                         <div className="card">
                             <PaperClipIcon />
@@ -65,6 +60,24 @@ export const User = () => {
                         <div onClick={()=>alert('feature coming soon')} className="card">
                             <PieChartIcon />
                             <h2>Practice stats</h2>
+                        </div>
+                    </Link>
+                    <Link to="record">
+                        <div className="card">
+                            <RecordIconLarge />
+                            <h2>Record</h2>
+                        </div>
+                    </Link>
+                    <Link to="metdrone">
+                        <div className="card">
+                            <MetDroneIconLarge />
+                            <h2>MetDrone</h2>
+                        </div>
+                    </Link>
+                    <Link to="metdrone">
+                        <div className="card">
+                            <ForkIconLarge />
+                            <h2>Tuner</h2>
                         </div>
                     </Link>
                 </div>
