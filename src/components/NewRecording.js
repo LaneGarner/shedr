@@ -199,9 +199,6 @@ export const NewRecording = () => {
             </div>
         </>
         }
-        {/* <h2>My recordings</h2>
-        <h2>Audio</h2>
-        <h2>Looper</h2> */}
         {saveRecordingModal && (
             <div className="modal-container">
                 <div className="modal">

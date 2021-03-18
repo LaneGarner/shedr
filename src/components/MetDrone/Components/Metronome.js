@@ -211,7 +211,7 @@ const Metronome = () => {
                 )}
                 <div className="bpm-slider">
                     <label htmlFor="bpmSlider">Tempo</label>
-                    <div><input style={{width: "2em", fontSize: "1.5em"}} type="text" value={tempo} onChange={handleTempoInput} /> BPM</div>
+                    <div><input style={{width: "2.5em", fontSize: "1.5em"}} type="text" value={tempo} onChange={handleTempoInput} /> BPM</div>
                     <input
                         id="bpmSlider"
                         type="range"

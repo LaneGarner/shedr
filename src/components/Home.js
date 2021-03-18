@@ -35,7 +35,7 @@ export const Home = () => {
             </div>
             <div className="home-container-section">
                 <div>
-                    <h2>All the tools you need in one place</h2>
+                    <h2>Everything you need in one place</h2>
                     <ul>
                         <li><span>Practice Log</span> - Track and time your practice sessions</li>
                         <li><span>Repertoire List</span> - Build and review your repertoire</li>

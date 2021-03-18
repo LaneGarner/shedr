@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
-import './VegBurg.scss'
-import { Link } from 'react-router-dom'
-import { StoreContext } from "../Store";
+import React, { useContext } from "react"
+import { StoreContext } from "../Store"
+
+import { Link } from "react-router-dom"
+
+import "./VegBurg.scss"
 
 const VegBurg = () => {
     const { user, isOpen, closeMenu, logout } = useContext(StoreContext)
@@ -13,9 +15,7 @@ const VegBurg = () => {
 
     return (
         <div className={isOpen ? "burger-menu burger-menu-open" : "burger-menu"}>
-            {user ?
-                    <Link onClick={closeMenu} className="menu-item" to="/">Dashboard</Link>
-                :
+            {!user &&
                 <Link onClick={closeMenu} className="menu-item" to="/dashboard">Log In/Sign Up</Link>
             }
             <Link onClick={closeMenu} className="menu-item" to="/feedback">Feedback</Link>
@@ -23,12 +23,8 @@ const VegBurg = () => {
             { user && 
                 <Link onClick={logoutBtn} className="menu-item" to="/">Log Out</Link>
             }
-            {/* <Link onClick={closeMenu} className="menu-item" to="/log">Practice Log</Link> */}
-            {/* <Link onClick={closeMenu} className="menu-item" to="/record">Record</Link> */}
-            {/* <Link onClick={closeMenu} className="menu-item" to="/metdrone">MetDrone</Link> */}
-            {/* <Link onClick={closeMenu} className="menu-item" to="/fork">Fork</Link> */}
         </div>
-    );
+    )
 }
 
-export default VegBurg;
+export default VegBurg

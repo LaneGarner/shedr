@@ -23,7 +23,7 @@ export const Footer = () => {
             </div>
             <div className="footer-icon">
                 <Link onClick={closeMenu} to="fork">
-                    <ForkIcon activePage={activePage} />
+                    <ForkIcon width="44.587" activePage={activePage} />
                 </Link>
             </div>
         </footer>
