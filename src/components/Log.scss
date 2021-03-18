@@ -1,0 +1,21 @@
+// cursor: pointer; 
+// display: flex;
+// justify-content: center;
+// margin: 3em;
+
+.log-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .startBtn {
+        width: 10em;
+    }
+    hr {
+        width: 60%;
+        margin-top: 2em;
+        border: 1.5px solid #222;
+        background-color: #222
+
+    }
+}

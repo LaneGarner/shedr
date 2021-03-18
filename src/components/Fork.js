@@ -3,6 +3,7 @@ import { StoreContext } from '../Store'
 
 import { pitchDetection } from 'ml5'
 import Sketch from "react-p5"
+import StartAudioContext from "startaudiocontext"
 
 import { ForkIcon } from "../icons/ForkIcon"
 
@@ -512,6 +513,7 @@ export const Fork = () => {
 
         const setup = async () => {
             audioContext = new AudioContext()
+            StartAudioContext(audioContext)
             stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false })
             startPitch(stream, audioContext)
         }
