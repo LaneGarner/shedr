@@ -12,7 +12,7 @@ import "./PracticeLog.scss"
 let selectedLog
 
 export const PracticeLog = () => {
-    const { setActivePage, user, logs, setLogs, removeLog, firebase } = useContext(StoreContext)
+    const { user, logs, setLogs, removeLog, firebase } = useContext(StoreContext)
     const [ deleteLogModal, setDeleteLogModal] = useState(false)
     const [ editLogModal, setEditLogModal] = useState(false)
     const [ modalOpen, setModalOpen ] = useState(false)
@@ -49,11 +49,6 @@ export const PracticeLog = () => {
             });
         }
     }, [user, setLogs])
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        setActivePage("none")
-    }, [])
     
     useEffect(()=> {
         if (deleteLogModal || editLogModal ) {

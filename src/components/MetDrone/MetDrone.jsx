@@ -11,9 +11,6 @@ export const MetDrone = () => {
     
     useEffect(() => {
         setActivePage("metdrone")
-    })
-
-    useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 

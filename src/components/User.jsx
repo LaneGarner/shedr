@@ -19,12 +19,9 @@ const firebaseAuth = firebase.auth()
 
 export const User = () => {
     const { user, setActivePage } = useContext(StoreContext)
-    
-    useEffect(() => {
-        setActivePage("user")
-    })
 
     useEffect(() => {
+        setActivePage("user")
         window.scrollTo(0, 0);
     }, [])
 
@@ -35,7 +32,7 @@ export const User = () => {
                     <h1>Welcome to Shedr</h1>
                     <p>To get the most out of Shedr, please login or sign up.</p>
                     <p>With an account you can save practice logs, create a repertoire list, and even make recordings. <br/> Best of all you can access all of this content from any of your devices when you're logged in.</p>
-                    <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} /> 
+                    <Login uiConfig={uiConfig} firebaseAuth={firebaseAuth} /> 
                     <p>Sign up</p>
                 </div>
                 }

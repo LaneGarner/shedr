@@ -8,7 +8,7 @@ import "./Log.scss"
 
 export const Log = () => {
     const [ newLogOpen, setNewLogOpen ] = useState(false)
-    const { setActivePage, activePage } = useContext(StoreContext)
+    const { setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         window.scrollTo(0, 0);

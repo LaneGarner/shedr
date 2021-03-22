@@ -21,7 +21,7 @@ export const App = () => {
       })
     },[])
 
-    console.clear()
+    // console.clear()
     
   return (
     <FirebaseAuthContext>

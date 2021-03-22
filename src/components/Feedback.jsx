@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { StoreContext } from "../Store"
 
 import TextareaAutosize from "react-textarea-autosize"
@@ -8,12 +8,17 @@ import ReCAPTCHA from "react-google-recaptcha"
 import "./Feedback.scss"
 
 export const Feedback = () => {
-    const { firebase } = useContext(StoreContext)
+    const { setActivePage, firebase } = useContext(StoreContext)
     const [ feedbackForm, setFeedbackForm ] = useState(true)
     const [ name, setName ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ message, setMessage ] = useState("")
     const [ verified, setVerified ] = useState(false)
+
+    useEffect(() => {
+        setActivePage("none")
+        window.scrollTo(0, 0);
+    }, [])
 
     const handleFeedbackSubmit = (e) => {
         e.preventDefault()
