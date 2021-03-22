@@ -17,10 +17,10 @@ export const Header = () => {
         <>
         <header style={{zIndex: 1000}}>
             <nav>
-                <Link onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
+                <Link tooltip="Dashboard" onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
                     <HomeIcon hover={hover} activePage={activePage} />
                 </Link>
-                <Link onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
+                <Link tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
                     <LogIconHeader hover={hover} activePage={activePage} />
                 </Link>
             </nav>

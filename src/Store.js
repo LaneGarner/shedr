@@ -47,6 +47,7 @@ export default ({ children }) => {
     const [ recordTimer, setRecordTimer ] = useState("00:00:00")
     const [ recordDifferenceState, setRecordDifferenceState ] = useState()
 
+    const [ tunerMounted, setTunerMounted ] = useState(false)
 
     const [ practiceTime, setPracticeTime ] = useState(["00", "00", "00"])
     const [ practiceTopicNotes, setPracticeTopicNotes ] = useState({topic: "", notes: ""})
@@ -112,6 +113,8 @@ export default ({ children }) => {
         recordTInterval, setRecordTInterval, 
         recordTimer, setRecordTimer, 
         recordDifferenceState, setRecordDifferenceState,
+
+        tunerMounted, setTunerMounted,
     
         practiceTime, setPracticeTime,
         practiceTopicNotes, setPracticeTopicNotes,

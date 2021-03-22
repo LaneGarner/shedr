@@ -52,9 +52,9 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
     const setRecordings = () => {
         let getMeta, getURL
         const getRecordings = []
-        myRecordingsMetadata.map((meta, i) => {
+        myRecordingsMetadata.forEach((meta, i) => {
             const metaIndex = i
-            myRecordingsURL.map((url, i) => {
+            myRecordingsURL.forEach((url, i) => {
                 if (i === metaIndex) {
                     getURL = url
                 }
@@ -90,9 +90,9 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
     useEffect(() => {
         let getMeta, getURL
         const getRecordings = []
-        myRecordingsMetadata.map((meta, i) => {
+        myRecordingsMetadata.forEach((meta, i) => {
             const metaIndex = i
-            myRecordingsURL.map((url, i) => {
+            myRecordingsURL.forEach((url, i) => {
                 if (i === metaIndex) {
                     getURL = url
                 }

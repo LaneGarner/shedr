@@ -11,7 +11,7 @@ import "./Fork.scss"
 
 export const Fork = () => {
 
-    const { setActivePage } = useContext(StoreContext)
+    const { setActivePage, tunerMounted, setTunerMounted } = useContext(StoreContext)
     const [ tunerOpen, setTunerOpen ] = useState(false)
     const [ freq, setFreq ] = useState(0)
     const [ tuningMode, setTuningMode ] = useState("chromatic")
@@ -604,12 +604,31 @@ export const Fork = () => {
                     setFreq(frequency)
                     console.log(frequency)
                 } 
-                getPitch();
-                // clearTimeout
+                if (tunerMounted) {
+                    getPitch();
+                    // clearTimeout
+                }
             })
         }
-
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (freq === freq) {
+                setTunerMounted(false)
+                setTunerOpen(false)
+            }
+        }, 60000)
+    }, [freq])
+
+    useEffect(() => {
+        setTunerMounted(true)
+
+        return function cleanup() {
+            setTunerMounted(false)
+        }
+
+    }, [ freq, tunerOpen])
 
     return (
         <div className="fork-container">
@@ -627,7 +646,7 @@ export const Fork = () => {
                     <div className="startBtn timerBtn" onClick={startTuner}>Tune</div>
                 </>
                 ) : (
-                        <Sketch setup={setup} draw={draw} />
+                    <Sketch setup={setup} draw={draw} />
                 )
             }
         </div>

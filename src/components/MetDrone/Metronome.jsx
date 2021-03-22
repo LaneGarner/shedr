@@ -39,7 +39,7 @@ export const Metronome = () => {
         if (taps.length > 1) {
             let newTaps = []
             
-            taps.map((tap, i) => {
+            taps.forEach((tap, i) => {
                 const tapMath = 60000 / (taps[i] - taps[i - 1])
                 newTaps.push(tapMath)
             })

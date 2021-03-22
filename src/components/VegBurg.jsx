@@ -15,14 +15,13 @@ export const VegBurg = () => {
 
     return (
         <div className={isOpen ? "burger-menu burger-menu-open" : "burger-menu"}>
-            {!user &&
-                <Link onClick={closeMenu} className="menu-item" to="/dashboard">Log In/Sign Up</Link>
-            }
-            <Link onClick={closeMenu} className="menu-item" to="/feedback">Feedback</Link>
-            <Link onClick={closeMenu} className="menu-item" to="/settings">Settings</Link>
-            { user && 
+            {!user ?
+                <Link onClick={closeMenu} className="menu-item" to="/dashboard">Login / Sign up</Link> :
                 <Link onClick={logoutBtn} className="menu-item" to="/">Log Out</Link>
             }
+            <Link onClick={closeMenu} className="menu-item" to="/settings">Settings</Link>
+            <Link onClick={closeMenu} className="menu-item" to="/about">About</Link>
+            <Link onClick={closeMenu} className="menu-item" to="/feedback">Feedback</Link>
         </div>
     )
 }

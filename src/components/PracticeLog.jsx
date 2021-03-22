@@ -6,7 +6,6 @@ import TextareaAutosize from "react-textarea-autosize"
 
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
-import { LogIcon } from "../icons/LogIcon"
 
 import "./PracticeLog.scss"
 

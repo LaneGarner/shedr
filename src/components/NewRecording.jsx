@@ -7,12 +7,11 @@ import { RecordIcon } from "../icons/RecordIcon"
 
 import "./NewRecording.scss"
 
-// const recorder = new MicRecorder()
 const recorder = new MicRecorder({ bitRate: 128 })
 let userRef
 
 export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
-    const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, recordTimerRunning, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState } = useContext(StoreContext)
+    const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState } = useContext(StoreContext)
     const [ saveRecordingModal, setSaveRecordingModal ] = useState(false)
     const [ recordingTitle, setRecordingTitle ] = useState("")
     const [ recordingFile, setRecordingFile] = useState("")

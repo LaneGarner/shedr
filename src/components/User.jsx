@@ -18,7 +18,7 @@ import "./User.scss"
 const firebaseAuth = firebase.auth()
 
 export const User = () => {
-    const { user, setActivePage, isRecording } = useContext(StoreContext)
+    const { user, setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         setActivePage("user")

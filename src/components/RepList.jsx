@@ -21,7 +21,7 @@ export const RepList = () => {
     const [ editRepModal, setEditRepModal] = useState(false)
 
 
-    const { user, firebase, setActivePage } = useContext(StoreContext)
+    const { user, firebase } = useContext(StoreContext)
 
     let userId
     if(user) {

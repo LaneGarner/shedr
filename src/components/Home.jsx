@@ -10,7 +10,7 @@ import { FlatPianist } from "../images/FlatPianist"
 import "./Home.scss"
 
 export const Home = () => {
-    const { setActivePage, activeSession, setActiveSession } = useContext(StoreContext)
+    const { setActivePage } = useContext(StoreContext)
     
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -53,10 +53,6 @@ export const Home = () => {
                     <FlatPianist/>
                 </div>
             </div>
-            {/* <img style={{width: "40em"}} src={image}/> */}
-            {/* {activeSession ?  */}
-            {/* <Link onClick={startSession}  to="/log" className="button"> New practice session</Link> */}
-            {/* } */}
         </div>
     )
 }

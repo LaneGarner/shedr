@@ -12,6 +12,27 @@ footer {
     justify-content: space-around;
     align-items: center;
     z-index: 1000;
+    a[tooltip] {
+        position: relative;
+    }
+    a[tooltip]::before {
+        content: attr(tooltip);
+        display: block;
+        position: absolute;
+        background: #707070;
+        color: white;
+        padding: 1em 2em;
+        font-size: .8em;
+        border-radius: .5em;
+        bottom: 0;
+        transform: scale(0);
+        transition: transform ease-out 150ms, bottom ease-out 150ms;
+        transition-delay: 100ms;
+    }
+    a[tooltip]:hover::before {
+        transform: scale(1);
+        bottom: 120%;
+    }
 }
 
 .footer-icon {

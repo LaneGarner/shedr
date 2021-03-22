@@ -85,14 +85,14 @@ export const Drone = () => {
                 onChange={handleRootChange}
                 type="text" 
                 placeholder="Enter root"/>
-            <label htmlFor="droneChord">Chord type</label><br/>
-            <select id="droneChord" value={chordType} onChange={handleChordTypeChange} name="selectDroneRoot" id="selectDroneRoot">
+            <label htmlFor="selectDroneRoot">Chord type</label><br/>
+            <select value={chordType} onChange={handleChordTypeChange} name="selectDroneRoot" id="selectDroneRoot">
                 {chordTypes.map((chord, id) => <option key={id} value={chord}>{chord}</option>)}
             </select>
 
             <div className="bpm-slider">
                 <label htmlFor="droneVolumeSlider">Volume</label><br/>
-                <div>{droneVolume != 1 ? Math.round(droneVolume * 10): 11}</div>
+                <div>{droneVolume !== "1" ? Math.round(droneVolume * 10): 11}</div>
                 <input 
                     id="droneVolumeSlider"
                     type="range"
