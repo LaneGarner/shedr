@@ -43,4 +43,19 @@
     .checkmark {
     font-size: 50px;
     }
+    .disabledBtn {
+        width: 6em;
+        font-size: 1.3em;
+        border-radius: 2em;
+        padding: .6em;
+        border: none;
+        color:white;
+        // margin: 0;
+        outline: none;
+        // background-color: transparent;
+        cursor: not-allowed;
+    }
+    .recaptcha {
+        padding: 2em;
+    }
 }

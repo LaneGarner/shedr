@@ -1,8 +1,11 @@
-import React, { useState, useContext } from 'react'
-import { StoreContext } from '../Store'
-import TextareaAutosize from 'react-textarea-autosize';
-import Axios from 'axios';
-import "./Feedback.scss";
+import React, { useState, useContext } from "react"
+import { StoreContext } from "../Store"
+
+import TextareaAutosize from "react-textarea-autosize"
+import Axios from "axios"
+import ReCAPTCHA from "react-google-recaptcha"
+
+import "./Feedback.scss"
 
 export const Feedback = () => {
     const { firebase } = useContext(StoreContext)
@@ -10,6 +13,7 @@ export const Feedback = () => {
     const [ name, setName ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ message, setMessage ] = useState("")
+    const [ verified, setVerified ] = useState(false)
 
     const handleFeedbackSubmit = (e) => {
         e.preventDefault()
@@ -53,7 +57,8 @@ export const Feedback = () => {
                     <input value={email} onChange={e=>setEmail(e.target.value)} type="email" id="email" placeholder="Your email" required/>
                     <label htmlFor="message">Message*</label>
                     <TextareaAutosize value={message} onChange={e=>setMessage(e.target.value)} id="message" type="text" placeholder="Your message..." minRows="3" required />
-                    <button type="submit" className="timerBtn submitBtn">Submit</button>
+                    <ReCAPTCHA className="recaptcha" sitekey={process.env.REACT_APP_RECAPTCHA_KEY} onChange={()=>setVerified(true)} />
+                    <button style={{margin: 0}} disabled={!verified} type="submit" className={!verified ? "disabledBtn" : "timerBtn submitBtn" }>Submit</button>
                 </form>
             </>
             ) : 

@@ -1,21 +1,20 @@
-import { useState, useEffect, useRef , useContext} from 'react';
-import { StoreContext } from '../../../Store'
+import { useState, useEffect, useRef , useContext} from "react"
+import { StoreContext } from "../../Store"
 
-import * as Tone from 'tone'
-import StartAudioContext from 'startaudiocontext'
+import * as Tone from "tone"
+import StartAudioContext from "startaudiocontext"
 
-import click1Sample from '../click1.flac';
-import click2Sample from '../click2.wav';
-import click3Sample from '../click3.wav';
+import click1Sample from "./audio/click1.flac"
+import click3Sample from "./audio/click3.wav"
 
-import './Metronome.scss';
+import "./Metronome.scss"
 
 const click1 = new Tone.Player(click1Sample).toDestination()
 //-------SAVE FOR POLYRHYTHM MODE!!!-------------
 // const click2 = new Tone.Player(click2Sample).toDestination()
 const click3 = new Tone.Player(click3Sample).toDestination()
 
-const Metronome = () => {    
+export const Metronome = () => {    
     const { tempo, setTempo, playing, setPlaying, timeSig, setTimeSig, setPosition, accent, setAccent, setClickVolume, clickVolume, polyrhythmMode, setPolyrhythmMode, polyrhythm, setPolyrhythm } = useContext(StoreContext)
     const [taps, setTaps] = useState([])
     
@@ -243,5 +242,3 @@ const Metronome = () => {
         </div>
     )
 }
-
-export default Metronome

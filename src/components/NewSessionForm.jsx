@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
-import { StoreContext } from '../Store'
+import { StoreContext } from "../Store"
 
-import DatePicker from "react-datepicker";
-import TextareaAutosize from 'react-textarea-autosize'
+import DatePicker from "react-datepicker"
+import TextareaAutosize from "react-textarea-autosize"
 import "react-datepicker/dist/react-datepicker.css"
 
-import { PracticeTimer } from "./PracticeTimer"
+import { PracticeTimer } from "./PracticeTimer.jsx"
+
 import { LogIconSmall } from "../icons/LogIconSmall"
 import { ClockIcon } from "../icons/ClockIcon"
 
@@ -259,7 +260,7 @@ export const NewSessionForm = () => {
             {startSessionModal && (
                 <div className="modal-container">
                     <div className="modal">
-                        <button className="timerBtn pauseBtn" onClick={startTimer}>Skip</button>
+                        <button type="button" onClick={startTimer}>Skip</button>
                         <form onSubmit={startTimer}>
                             <h2>What are you practicing?</h2>
                             <TextareaAutosize style={{padding: "1em", fontSize: "16px"}} value={practiceTopicNotes.topic} onChange={setTopic} autoFocus />
@@ -268,8 +269,8 @@ export const NewSessionForm = () => {
                             <label for="hrs">hr</label>
                             <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
                             <label for="totalPracticeTime">min</label><br/>
-                            <button className="timerBtn startBtn" type="submit">Confirm</button>
-                            <button className="timerBtn stopBtn" onClick={()=>setStartSessionModal(false)}>Cancel</button>
+                            <button type="submit">Confirm</button>
+                            <button type="button" onClick={()=>setStartSessionModal(false)}>Cancel</button>
                         </form>
                     </div>
                 </div>) 

@@ -1,20 +1,16 @@
-import React from "react";
-import { Switch, Route } from "react-router";
-import ProtectedRoute from "./ProtectedRoute";
-import { User } from "./components/User";
-import { Record } from "./components/Record";
-// import { Record } from "./components/NewRecording";
-import { Log } from "./components/Log";
-import MetDrone from "./components/MetDrone/";
-import { Fork } from "./components/Fork";
-import { NewSessionForm } from "./components/NewSessionForm";
-import { PracticeLog } from "./components/PracticeLog";
-import { RepList } from "./components/RepList";
-import { MyRecordings } from "./components/MyRecordings";
-import { Feedback } from './components/Feedback';
-import { Home } from './components/Home';
+import { Switch, Route } from "react-router"
+import { ProtectedRoute } from "./ProtectedRoute"
 
-const Router = () => {
+import { User } from "./components/User.jsx"
+import { Record } from "./components/Record.jsx"
+import { Log } from "./components/Log.jsx"
+import { MetDrone } from "./components/MetDrone/MetDrone.jsx"
+import { Fork } from "./components/Fork.jsx"
+import { RepList } from "./components/RepList.jsx"
+import { Feedback } from "./components/Feedback.jsx"
+import { Home } from "./components/Home.jsx"
+
+export const Router = () => {
     return (
             <Switch>
                 <Route exact path="/dashboard" component={User} />
@@ -23,18 +19,16 @@ const Router = () => {
                 <Route path="/metdrone" component={MetDrone} />
                 <Route path="/fork" component={Fork} />
                 <Route path="/log" component={Log} />
-                <ProtectedRoute path="/practice-log">
+                {/* <ProtectedRoute path="/practice-log">
                     <PracticeLog />
-                </ProtectedRoute>
+                </ProtectedRoute> */}
                 <ProtectedRoute redirectTo="/User" path="/rep">
                     <RepList />
                 </ProtectedRoute>
-                <ProtectedRoute redirectTo="/User" path="/recordings">
+                {/* <ProtectedRoute redirectTo="/User" path="/recordings">
                     <MyRecordings />
-                </ProtectedRoute>
+                </ProtectedRoute> */}
                 <Route path="/feedback" component={Feedback} />
             </Switch>
     )
 }
-
-export default Router;

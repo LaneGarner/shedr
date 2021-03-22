@@ -1,25 +1,27 @@
-import { useContext } from 'react'
-import { StoreContext } from '../Store'
+import { useContext } from "react"
+import { StoreContext } from "../Store"
 
 import { HomeIcon } from "../icons/HomeIcon"
-import { UserIcon } from "../icons/UserIcon"
-import { Link } from 'react-router-dom'
-import { HamburgerSqueeze } from 'react-animated-burgers'
+import { Link } from "react-router-dom"
+import { HamburgerSqueeze } from "react-animated-burgers"
 import { LogoIconSmall } from "../icons/LogoIconSmall"
-import { LogIconHeader } from '../icons/LogIconHeader'
-
-import VegBurg from "./VegBurg"
+import { LogIconHeader } from "../icons/LogIconHeader"
+import { VegBurg } from "./VegBurg.jsx"
 
 import "./Header.scss"
 
 export const Header = () => {
 
-    const { activePage, tempo, playing, timeSig, droning, root, chordType, activeSession, isOpen, setIsOpen, closeMenu } = useContext(StoreContext)
+    const { hover, setHover, activePage, tempo, playing, timeSig, droning, root, chordType, activeSession, isOpen, setIsOpen, closeMenu } = useContext(StoreContext)
     return (
+        <>
         <header style={{zIndex: 1000}}>
             <nav>
-                <Link onClick={closeMenu} to="/dashboard">
-                    <HomeIcon activePage={activePage} />
+                <Link onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
+                    <HomeIcon hover={hover} activePage={activePage} />
+                </Link>
+                <Link onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
+                    <LogIconHeader hover={hover} activePage={activePage} />
                 </Link>
             </nav>
 
@@ -30,7 +32,7 @@ export const Header = () => {
             <div className="burger-button" onClick={() => setIsOpen(!isOpen)}>
                 <HamburgerSqueeze barColor="white" isActive={isOpen} buttonWidth={40} />
             </div>
-            <VegBurg closeMenu={closeMenu} isOpen={isOpen} setIsOpen={setIsOpen} />
+        </header>
             { playing || droning ? (
                 <div className="header-alert">
                     {activeSession && <Link onClick={closeMenu} to="/form">Current practice session</Link>}
@@ -39,7 +41,8 @@ export const Header = () => {
                 </div>
             ) :
             <></>
-            }
-        </header>
+        }
+        <VegBurg style={{zIndex: 999}} closeMenu={closeMenu} isOpen={isOpen} setIsOpen={setIsOpen} />
+        </>
     )
 }

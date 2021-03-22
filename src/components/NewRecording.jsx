@@ -1,31 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react"
+import { StoreContext } from "../Store"
 
-import { StoreContext } from '../Store'
-import { RecordIcon } from "../icons/RecordIcon";
+import MicRecorder from "mic-recorder-to-mp3"
 
-import MicRecorder from 'mic-recorder-to-mp3';
+import { RecordIcon } from "../icons/RecordIcon"
 
-import "./NewRecording.scss";
+import "./NewRecording.scss"
 
-const recorder = new MicRecorder({ bitRate: 128 });
-let userRef;
+// const recorder = new MicRecorder()
+const recorder = new MicRecorder({ bitRate: 128 })
+let userRef
 
-export const NewRecording = () => {
-    const { setActivePage, isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, recordTimerRunning, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState, } = useContext(StoreContext)
+export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
+    const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, recordTimerRunning, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState } = useContext(StoreContext)
     const [ saveRecordingModal, setSaveRecordingModal ] = useState(false)
     const [ recordingTitle, setRecordingTitle ] = useState("")
-
     const [ recordingFile, setRecordingFile] = useState("")
-    
+
     let startTime
 
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 600); // 10 minutes recordTimer
+    time.setSeconds(time.getSeconds() + 600)
 
-    const storageRef = firebase.storage().ref();
-    const audioRef = storageRef.child("audio");
+    const storageRef = firebase.storage().ref()
+    const audioRef = storageRef.child("audio")
 
-    let userId;
+    let userId
     if(user) {
         userId = user.uid
     } 
@@ -36,21 +36,26 @@ export const NewRecording = () => {
         }
     }, [user])
 
-    useEffect(() => {
-        // navigator.mediaDevices.getUserMedia({ audio: true },
-        //     () => {
-        //     console.log('Permission Granted')
-        //     setIsBlocked(false);
-        //     },
-        //     () => {
-        //     console.log('Permission Denied')
-        //     setIsBlocked(true)
-        //     },
-        // )
-    }, [])
+    // const testBrowser = async () => {
+    //     let stream = await navigator.mediaDevices.getUserMedia({audio: true});
+    //     let track = stream.getAudioTracks()[0];
+    //     console.log(track.getCapabilities());
+    // }
+
+    // testBrowser()
 
     const getAudio = () => {
-        navigator.mediaDevices.getUserMedia({ audio: true },
+        // navigator.mediaDevices.getUserMedia({ audio: true },
+        navigator.mediaDevices.getUserMedia({ audio: { 
+            echoCancellation: false,
+            sampleRate: 96000,
+            // sampleRate: 16000,
+            // noiseSuppression: false,
+            autoGainControl: true,
+            // googAutoGainControl: true,
+            // mozNoiseSuppression: false,
+            // mozAutoGainControl: false 
+        }},
             () => {
             console.log('Permission Granted')
             setIsBlocked(false);
@@ -62,19 +67,18 @@ export const NewRecording = () => {
         )
     }
 
-
     const record = () => {
         getAudio()
         setRecordingCreated(false)
         if (isBlocked) {
-            console.log('Permission Denied');
+            console.log('Permission Denied')
         } else {
             recorder
             .start()
             .then(() => {
                 setIsRecording(true);
                 startTimer()
-            }).catch((e) => console.error(e));
+            }).catch((e) => console.error(e))
         }
     }
 
@@ -102,7 +106,8 @@ export const NewRecording = () => {
         setBlobURL("")
     }
     
-    const handleSaveRecording = () => {
+    const handleSaveRecording = (e) => {
+        e.preventDefault()
         setSaveRecordingModal(false)
         setRecordingCreated(false)
         saveRecording()
@@ -111,9 +116,16 @@ export const NewRecording = () => {
     const saveRecording = () => {
         if(user) {
             const recordingRef = userRef.child(`${recordingTitle}.mp3`)
-            recordingRef.put(recordingFile).then((snapshot) => {
-                console.log('Uploaded a blob or file!');
-            });
+            recordingRef.put(recordingFile).then(() => {
+                const newUpdate = update + 1
+                setUpdate(newUpdate)
+            })
+            .then(()=> {
+                const newUpdateTwo = updateTwo + 1
+                setTimeout(()=>{
+                    setUpdateTwo(newUpdateTwo)
+                }, 1000)
+            })
         }
         setRecordingTitle("")
     }
@@ -169,9 +181,9 @@ export const NewRecording = () => {
             startTimer()
         }
     }
-
+    
     return (
-        <div className="record-container">            
+        <div className="record-container">
             {isRecording ? (
                 <div className="record-icon" onClick={stopRecording}>
                     <h1 className="recording-text">Recording</h1>
@@ -188,32 +200,30 @@ export const NewRecording = () => {
                     <RecordIcon width="81.543" height="122.316" isRecording={isRecording} />
                     <p>Click mic to start recording</p> 
                 </div> )
-        }
-        {recordingCreated &&
-        <>
-            <p style={{fontWeight: 800}}>Preview recording:</p>
-            <audio src={blobURL} controls="controls" />
-            <div className="record-buttons">
-                <button className="timerBtn cancelBtn" onClick={discardRecording}>Discard</button>
-                <button className="timerBtn startBtn" onClick={()=>setSaveRecordingModal(true)}>Save</button>
-            </div>
-        </>
-        }
-        {saveRecordingModal && (
-            <div className="modal-container">
-                <div className="modal">
-                    <form className="save-recording-form" onSubmit={handleSaveRecording}>
-                        <h2>Save recording</h2>
-                        <label htmlFor="recordingName">Title*</label><br/>
-                        <input value={recordingTitle} onChange={e=>setRecordingTitle(e.target.value)} type="text" placeholder="Name your recording" id="recordingName" required/><br/>
-                        <button className="timerBtn startBtn" type="submit">Save</button>
-                        <button className="timerBtn pauseBtn" onClick={()=>setSaveRecordingModal(false)}>Cancel</button>
-                    </form>
+            }
+            {recordingCreated &&
+            <>
+                <p style={{fontWeight: 800}}>Preview recording:</p>
+                <audio src={blobURL} controls="controls" />
+                <div className="record-buttons">
+                    <button className="timerBtn cancelBtn" onClick={discardRecording}>Discard</button>
+                    <button className="timerBtn startBtn" onClick={()=>setSaveRecordingModal(true)}>Save</button>
                 </div>
-            </div>) 
-        }
+            </>
+            }
+            {saveRecordingModal && (
+                <div className="modal-container">
+                    <div className="modal">
+                        <form className="save-recording-form" onSubmit={handleSaveRecording}>
+                            <h2>Save recording</h2>
+                            <label htmlFor="recordingName">Title*</label><br/>
+                            <input autoFocus value={recordingTitle} onChange={e=>setRecordingTitle(e.target.value)} type="text" placeholder="Name your recording" id="recordingName" required/>
+                            <button type="submit">Save</button>
+                            <button type="button" onClick={()=>setSaveRecordingModal(false)}>Cancel</button>
+                        </form>
+                    </div>
+                </div>) 
+            }
         </div>
-        
     )
-
 }

@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { StoreContext } from "../Store"
 
 import { Link } from "react-router-dom"
 
 import "./VegBurg.scss"
 
-const VegBurg = () => {
+export const VegBurg = () => {
     const { user, isOpen, closeMenu, logout } = useContext(StoreContext)
 
     const logoutBtn = () => {
@@ -26,5 +26,3 @@ const VegBurg = () => {
         </div>
     )
 }
-
-export default VegBurg

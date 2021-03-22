@@ -1,6 +1,6 @@
-import "./PracticeTimer.scss";
+import "./PracticeTimer.scss"
 
-export const PracticeTimer = ({ pause, setStopSessionModal, setStartSessionModal, setStartDate, setPracticeTime, timerStarted, setTimerStart, timerRunning, setTimerRunning, timerPaused, setTimerPaused, tInterval, setTInterval, timer, setTimer, differenceState, setDifferenceState }) => {
+export const PracticeTimer = ({ pause, setStopSessionModal, setStartSessionModal, timerStarted, timerRunning, timerPaused, timer }) => {
 
     const start = () => {
         setStartSessionModal(true)

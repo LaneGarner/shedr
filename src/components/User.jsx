@@ -1,17 +1,17 @@
-import { useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useContext } from "react"
+import { Link } from "react-router-dom"
 
-import { StoreContext } from '../Store'
-import firebase, { uiConfig } from '../firebase';
+import { StoreContext } from "../Store"
+import firebase, { uiConfig } from "../firebase"
 
-import { Login } from "./Login";
+import { Login } from "./Login.jsx";
 
-import { LogIcon } from "../icons/LogIcon";
-import { PaperClipIcon } from "../icons/PaperClipIcon";
-import { RecordIconLarge } from "../icons/RecordIconLarge";
-import { MetDroneIconLarge } from "../icons/MetDroneIconLarge";
-import { ForkIconLarge } from "../icons/ForkIconLarge";
-import { PieChartIcon } from "../icons/PieChartIcon";
+import { LogIcon } from "../icons/LogIcon"
+import { PaperClipIcon } from "../icons/PaperClipIcon"
+import { RecordIconLarge } from "../icons/RecordIconLarge"
+import { MetDroneIconLarge } from "../icons/MetDroneIconLarge"
+import { ForkIconLarge } from "../icons/ForkIconLarge"
+import { PieChartIcon } from "../icons/PieChartIcon"
 
 import "./User.scss"
 
@@ -32,9 +32,9 @@ export const User = () => {
         <div className="userContainer">
             {!user && 
                 <div>
-                    <h2>Welcome to Shedr</h2>
+                    <h1>Welcome to Shedr</h1>
                     <p>To get the most out of Shedr, please login or sign up.</p>
-                    <p>With an account you can save practice logs, create a repertoire list, and even make recordings. Best of all you can access all of this content from any of your devices when you're logged in.</p>
+                    <p>With an account you can save practice logs, create a repertoire list, and even make recordings. <br/> Best of all you can access all of this content from any of your devices when you're logged in.</p>
                     <Login setActivePage={setActivePage} uiConfig={uiConfig} firebaseAuth={firebaseAuth} /> 
                     <p>Sign up</p>
                 </div>
@@ -86,4 +86,3 @@ export const User = () => {
         </div>
     )
 }
-

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { StoreContext } from '../Store';
-import { TrashIcon } from "../icons/TrashIcon";
-import { EditIcon } from "../icons/EditIcon";
+import { useState, useEffect, useContext } from 'react'
+import { StoreContext } from '../Store'
+import { TrashIcon } from "../icons/TrashIcon"
+import { EditIcon } from "../icons/EditIcon"
 
 import "./RepList.scss"
 
-let selectedRep;
+let selectedRep
 
 export const RepList = () => {
     const [ newTitle, setNewTitle ] = useState("");
@@ -119,11 +119,7 @@ export const RepList = () => {
             });
         }
     }, [user]);
-    
-    //set active page for header/footer
-    // setActivePage("user");
-    
-    //scroll to top on load
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])

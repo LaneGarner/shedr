@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from "react"
-import { StoreContext } from "../../../Store"
+import { useEffect, useContext } from "react"
+import { StoreContext } from "../../Store"
 
 import * as Tone from "tone"
 import StartAudioContext from "startaudiocontext"
-import { Chord, ChordType } from "@tonaljs/tonal";
+import { Chord, ChordType } from "@tonaljs/tonal"
 
 import "./Drone.scss"
 

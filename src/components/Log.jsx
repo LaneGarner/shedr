@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { StoreContext } from '../Store'
+import { useState, useEffect, useContext } from "react"
+import { StoreContext } from "../Store"
 
-import { NewSessionForm } from "./NewSessionForm"
-import { PracticeLog } from "./PracticeLog"
+import { NewSessionForm } from "./NewSessionForm.jsx"
+import { PracticeLog } from "./PracticeLog.jsx"
 
 import "./Log.scss"
 
@@ -15,19 +15,15 @@ export const Log = () => {
         setActivePage("log")
     }, [])
 
-    useEffect(()=> {
-        console.log(activePage)
-    })
-
     return (
         <div className="log-container">
             <h1>New Practice Session</h1>
             {newLogOpen ? (
                 <NewSessionForm />
             ) :
-            <div className="startBtn timerBtn" onClick={()=>setNewLogOpen(true)}>Start New Session</div>
+            <div className="logStart startBtn timerBtn" onClick={()=>setNewLogOpen(true)}>New Session</div>
             }
-            <hr />
+            <hr className="hr"/>
             <PracticeLog />
         </div>
     )

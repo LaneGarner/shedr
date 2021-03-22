@@ -1,19 +1,19 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { StoreContext } from '../Store'
+import { useEffect, useContext, useState } from "react"
+import { StoreContext } from "../Store"
 
-import DatePicker from "react-datepicker";
-import TextareaAutosize from "react-textarea-autosize";
+import DatePicker from "react-datepicker"
+import TextareaAutosize from "react-textarea-autosize"
 
 import { CloseIcon } from "../icons/CloseIcon"
 import { EditIcon } from "../icons/EditIcon"
 import { LogIcon } from "../icons/LogIcon"
 
-import "./PracticeLog.scss";
+import "./PracticeLog.scss"
 
-let selectedLog;
+let selectedLog
 
 export const PracticeLog = () => {
-    const { user, logs, setLogs, removeLog, firebase } = useContext(StoreContext)
+    const { setActivePage, user, logs, setLogs, removeLog, firebase } = useContext(StoreContext)
     const [ deleteLogModal, setDeleteLogModal] = useState(false)
     const [ editLogModal, setEditLogModal] = useState(false)
     const [ modalOpen, setModalOpen ] = useState(false)
@@ -27,7 +27,6 @@ export const PracticeLog = () => {
         const logsRef = firebase.database().ref('logs/' + user.uid);
         logsRef.orderByChild("startDate").on('value', (snapshot) => {
             let logs = snapshot.val();
-            // const sortedActivities = logs.sort((a, b) => b.startDate - a.startDate)
             let newState = [];
             for (let log in logs) {
                 let thisDate = new Date(logs[log].startDate).toLocaleDateString()
@@ -42,13 +41,19 @@ export const PracticeLog = () => {
                     userId: logs[log].userId,
                     });
                 }
-                setLogs(newState)
+                newState.sort(function compare(a, b) {
+                    var dateA = new Date(a.startDate);
+                    var dateB = new Date(b.startDate);
+                    return dateA - dateB;
+                })
+                setLogs(newState.reverse())
             });
         }
     }, [user, setLogs])
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setActivePage("none")
     }, [])
     
     useEffect(()=> {
@@ -162,8 +167,8 @@ export const PracticeLog = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>This will remove this item from your practice log</p>
-                        <button className="timerBtn cancelBtn" onClick={()=>setDeleteLogModal(false)}>Cancel</button>
-                        <button className="timerBtn stopBtn" onClick={confirmDeleteLog}>Delete</button>
+                        <button onClick={()=>setDeleteLogModal(false)}>Cancel</button>
+                        <button onClick={confirmDeleteLog}>Delete</button>
                     </div>
                 </div>) 
             }
@@ -172,11 +177,9 @@ export const PracticeLog = () => {
                     <div className="modal">
                         <form onSubmit={confirmEditLog}>
                             {typeof selectedLog !== undefined && 
-                            
                             <div>
                                 <label htmlFor="datepicker">Start time</label><br/>
                                     <DatePicker
-                                        // className="datepicker"
                                         selected={new Date(newStartDate)}
                                         onChange={(e) => setNewStartDate(e)}
                                         id="datepicker"
@@ -202,8 +205,8 @@ export const PracticeLog = () => {
                             </div>
                             }
                             <div>
-                                <button type="submit" className="timerBtn pauseBtn">Save</button>
-                                <button className="timerBtn cancelBtn" onClick={()=>setEditLogModal(false)}>Cancel</button>
+                                <button type="submit">Save</button>
+                                <button type="button" onClick={()=>setEditLogModal(false)}>Cancel</button>
                             </div>
                         </form>
                     </div>

@@ -1,17 +1,13 @@
-import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { StoreContext } from '../Store'
+import { useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { StoreContext } from "../Store"
 
-import { Logo } from "../icons/Logo"
 import { FlatGuitarist } from "../images/FlatGuitarist"
 import { FlatFemaleGuitarist } from "../images/FlatFemaleGuitarist"
 import { FlatDrummer } from "../images/FlatDrummer"
 import { FlatPianist } from "../images/FlatPianist"
 
-import image from "../flat-gtrist-preview.png"
-
-import './Home.scss'
-
+import "./Home.scss"
 
 export const Home = () => {
     const { setActivePage, activeSession, setActiveSession } = useContext(StoreContext)

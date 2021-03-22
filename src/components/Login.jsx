@@ -1,5 +1,5 @@
-import 'firebaseui/dist/firebaseui.css'
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import "firebaseui/dist/firebaseui.css"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 import './Login.scss'
 

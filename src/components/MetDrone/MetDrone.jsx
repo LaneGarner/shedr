@@ -1,10 +1,10 @@
-import { useEffect, useContext } from 'react'
-import { StoreContext } from '../../Store'
+import { useEffect, useContext } from "react"
+import { StoreContext } from "../../Store"
 
-import Metronome from './Components/Metronome';
-import { Drone } from './Components/Drone';
+import { Metronome } from "./Metronome.jsx"
+import { Drone } from "./Drone.jsx"
 
-import './MetDrone.scss'
+import "./MetDrone.scss"
 
 export const MetDrone = () => {
     const { setActivePage, droneVolume, setDroneVolume } = useContext(StoreContext)
