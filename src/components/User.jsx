@@ -41,7 +41,7 @@ export const User = () => {
                     <h1>Hello {user.displayName.split(" ")[0]}, welcome to Shedr</h1>
                     <p style={{color: "orange"}}>Choose an option below</p>
                 <div className="userDashboard">
-                    <Link to="log">
+                    <Link to="/log">
                         <div className="card">
                             <LogIcon />
                             <h2>Practice log</h2>
@@ -53,25 +53,25 @@ export const User = () => {
                             <h2>Repertoire list</h2>
                         </div>
                     </Link>
-                    <Link to="/">
-                        <div onClick={()=>alert('feature coming soon')} className="card">
+                    <Link to="/stats">
+                        <div className="card">
                             <PieChartIcon />
                             <h2>Practice stats</h2>
                         </div>
                     </Link>
-                    <Link to="record">
+                    <Link to="/record">
                         <div className="card">
                             <RecordIconLarge />
                             <h2>Record</h2>
                         </div>
                     </Link>
-                    <Link to="metdrone">
+                    <Link to="/metdrone">
                         <div className="card">
                             <MetDroneIconLarge />
                             <h2>MetDrone</h2>
                         </div>
                     </Link>
-                    <Link to="metdrone">
+                    <Link to="/fork">
                         <div className="card">
                             <ForkIconLarge />
                             <h2>Tuner</h2>

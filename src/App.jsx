@@ -9,7 +9,6 @@ import { Header } from "./components/Header.jsx"
 import { Footer } from "./components/Footer.jsx"
 import { StoreContext } from "./Store"
 
-
 export const App = () => {
   const { setUser } = useContext(StoreContext)
   

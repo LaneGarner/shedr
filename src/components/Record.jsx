@@ -8,6 +8,7 @@ export const Record = () => {
     const { setActivePage, user } = useContext(StoreContext)
     const [ update, setUpdate ] = useState(0)
     const [ updateTwo, setUpdateTwo ] = useState(0)
+    const [ loadingComplete, setLoadingComplete] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -16,11 +17,11 @@ export const Record = () => {
 
     return (
         <div>
-            <NewRecording update={update} setUpdate={setUpdate} updateTwo={updateTwo} setUpdateTwo={setUpdateTwo} />
+            <NewRecording loadingComplete={loadingComplete} setLoadingComplete={setLoadingComplete} update={update} setUpdate={setUpdate} updateTwo={updateTwo} setUpdateTwo={setUpdateTwo} />
             {user && 
                 <>
                     <hr style={{width: "60%", marginTop: "2em", border:"1.5px solid #222", backgroundColor: "#222"}} />
-                    <MyRecordings update={update} setUpdate={setUpdate} updateTwo={updateTwo} setUpdateTwo={setUpdateTwo} />
+                    <MyRecordings loadingComplete={loadingComplete} setLoadingComplete={setLoadingComplete} update={update} setUpdate={setUpdate} updateTwo={updateTwo} setUpdateTwo={setUpdateTwo} />
                 </>
             }
         </div>

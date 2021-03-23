@@ -11,6 +11,7 @@ import { Feedback } from "./components/Feedback.jsx"
 import { About } from "./components/About.jsx"
 import { Settings } from "./components/Settings.jsx"
 import { Home } from "./components/Home.jsx"
+import { Stats } from "./components/Stats.jsx"
 
 export const Router = () => {
     return (
@@ -27,6 +28,7 @@ export const Router = () => {
                 <Route path="/feedback" component={Feedback} />
                 <Route path="/about" component={About} />
                 <Route path="/settings" component={Settings} />
+                <Route path="/stats" component={Stats} />
             </Switch>
     )
 }

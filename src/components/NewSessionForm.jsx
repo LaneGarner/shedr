@@ -243,7 +243,7 @@ export const NewSessionForm = () => {
                         <label htmlFor="hrs">hr</label>
                         <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
                         <label htmlFor="totalPracticeTime">min</label>
-                        <input value={practiceTime[2]} onChange={setSec} type="number" id="min" name="min" min="0" max="60"></input>
+                        <input value={practiceTime[2]} onChange={setSec} type="number" id="sec" name="sec" min="0" max="60"></input>
                         <label htmlFor="min">sec</label>
                     </div>
                     <h2>Material</h2>
@@ -253,14 +253,14 @@ export const NewSessionForm = () => {
                     <label htmlFor="notes">Notes</label><br/>
                     <TextareaAutosize value={practiceTopicNotes.notes} onChange={setNotes} id="notes" type="text" placeholder="Add notes like tempos, keys, and goals here..." />
                     <br/>
-                    <button type="submit" className="timerBtn submitBtn">Submit</button>
                     <button onClick={cancelSubmit} type="reset" className="timerBtn cancelBtn">Cancel</button>
+                    <button type="submit" className="timerBtn submitBtn">Submit</button>
                 </form>
             </div>
             {startSessionModal && (
                 <div className="modal-container">
                     <div className="modal">
-                        <button type="button" onClick={startTimer}>Skip</button>
+                        <button className="modalBtn skip" type="button" onClick={startTimer}>Skip</button>
                         <form onSubmit={startTimer}>
                             <h2>What are you practicing?</h2>
                             <TextareaAutosize style={{padding: "1em", fontSize: "16px"}} value={practiceTopicNotes.topic} onChange={setTopic} autoFocus />
@@ -269,8 +269,8 @@ export const NewSessionForm = () => {
                             <label for="hrs">hr</label>
                             <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
                             <label for="totalPracticeTime">min</label><br/>
-                            <button type="submit">Confirm</button>
-                            <button type="button" onClick={()=>setStartSessionModal(false)}>Cancel</button>
+                            <button className="modalBtn cancel" type="button" onClick={()=>setStartSessionModal(false)}>Cancel</button>
+                            <button className="modalBtn submit" type="submit">Confirm</button>
                         </form>
                     </div>
                 </div>) 
@@ -281,8 +281,8 @@ export const NewSessionForm = () => {
                         <form onSubmit={stopTimer}>
                             <h2>Are you sure?</h2>
                             <p>Stopping now will end your practice timer and log your practice time</p>
-                            <button type="submit" className="timerBtn startBtn">Confirm</button>
-                            <button className="timerBtn stopBtn" onClick={cancelStop}>Cancel</button>
+                            <button className="modalBtn cancel" type="button" onClick={cancelStop}>Cancel</button>
+                            <button className="modalBtn submit" type="submit">Confirm</button>
                         </form>
                     </div>
                 </div>) 
@@ -299,8 +299,8 @@ export const NewSessionForm = () => {
                                 <li><strong>Topic:</strong> {practiceTopicNotes.topic}</li>
                                 <li><strong>Notes:</strong> {practiceTopicNotes.notes}</li>
                             </ul>
-                            <button className="timerBtn startBtn" type="submit">Submit</button>
-                            <button className="timerBtn pauseBtn" onClick={()=>setSubmitSessionModal(false)}>Back</button>
+                            <button className="modalBtn skip" type="button" onClick={()=>setSubmitSessionModal(false)}>Back</button>
+                            <button className="modalBtn submit" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>) 
@@ -311,8 +311,8 @@ export const NewSessionForm = () => {
                         <form onSubmit={handleCancel}>
                             <h2>Are you sure?</h2>
                             <p>Canceling now will clear this form and reset your session</p>
-                            <button type="submit" className="timerBtn stopBtn">Cancel Session</button>
-                            <button className="timerBtn cancelBtn" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
+                            <button className="modalBtn skip" type="button" onClick={()=>setCancelSessionModal(false)}>Back to form</button>
+                            <button className="modalBtn cancel" type="submit">Cancel Session</button>
                         </form>
                     </div>
                 </div>) 

@@ -20,7 +20,6 @@ export const RepList = () => {
     const [ deleteRepModal, setDeleteRepModal] = useState(false)
     const [ editRepModal, setEditRepModal] = useState(false)
 
-
     const { user, firebase } = useContext(StoreContext)
 
     let userId
@@ -115,6 +114,7 @@ export const RepList = () => {
                         notes: songs[song].notes,
                         });
                     }
+                newState.sort((a,b)=> (a.title > b.title ? 1 : -1))
                 setRep(newState);
             });
         }
@@ -178,7 +178,6 @@ export const RepList = () => {
                 <div>
                     <p>You do not have any songs saved...</p> 
                     <p>Click above to add your first song</p>
-                    {/* <p>Click above to add your first song</p> */}
                 </div>
             }
             {addRepModal && (
@@ -195,8 +194,8 @@ export const RepList = () => {
                             <label htmlFor="title">Notes</label>
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
-                                <button className="timerBtn stopBtn" onClick={()=>setAddRepModal(false)}>Cancel</button>
-                                <button type="submit" className="timerBtn startBtn">Add</button>
+                                <button type="button" className="modalBtn" onClick={()=>setAddRepModal(false)}>Cancel</button>
+                                <button type="submit" className="modalBtn">Add</button>
                             </div>
                         </form>
                     </div>
@@ -207,15 +206,15 @@ export const RepList = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>This will delete this item from your repertoire list</p>
-                        <button className="timerBtn cancelBtn" onClick={()=>setDeleteRepModal(false)}>Cancel</button>
-                        <button className="timerBtn stopBtn" onClick={confirmDeleteRep}>Delete</button>
+                        <button className="modalBtn" onClick={()=>setDeleteRepModal(false)}>Cancel</button>
+                        <button className="modalBtn" onClick={confirmDeleteRep}>Delete</button>
                     </div>
                 </div>)
             }
             {editRepModal && (
                 <div className="modal-container">
                     <div className="modal">
-                    <form className="add-rep" onSubmit={confirmAddRep}>
+                    <form className="add-rep" onSubmit={confirmEditRep}>
                         <h2>Edit Rep</h2>
                             <label htmlFor="title">Title</label>
                             <input value={newTitle} onChange={e=>setNewTitle(e.target.value)} id="title" type="text"/>
@@ -226,8 +225,8 @@ export const RepList = () => {
                             <label htmlFor="title">Notes</label>
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
-                                <button className="timerBtn startBtn" onClick={confirmEditRep}>Save</button>
-                                <button className="timerBtn cancelBtn" onClick={()=>setEditRepModal(false)}>Cancel</button>
+                                <button type="button" className="modalBtn" onClick={()=>setEditRepModal(false)}>Cancel</button>
+                                <button type="submit" className="modalBtn">Save</button>
                             </div>
                         </form>
                     </div>

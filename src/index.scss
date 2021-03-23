@@ -31,3 +31,26 @@ code {
 input {
   font-family: monospace;
 }
+
+.modalBtn {
+  padding: .5em;
+  border-radius: 3em;
+  border: none;
+  margin: 1em;
+  cursor: pointer;
+}
+
+.submit {
+  background: #5AC18E;
+  color: white;
+}
+
+.cancel {
+  background: tomato;
+  color: white;
+}
+
+.skip {
+  background: dodgerblue;
+  color: white;
+}

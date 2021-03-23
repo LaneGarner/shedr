@@ -3,20 +3,25 @@ import { StoreContext } from "../Store"
 
 import Moment from "react-moment"
 import "moment-timezone"
+import Loader from "react-loader-spinner";
 
 import { CloseIcon } from "../icons/CloseIcon"
 
 import "./MyRecordings.scss"
 
-Moment.globalLocal = true;
+Moment.globalLocal = true
 
-export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
+let selectedRecording
+
+export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo}) => {
     const { firebase, user } = useContext(StoreContext)
     const [ myRecordings, setMyRecordings ] = useState([])
     const [ myRecordingsURL, setMyRecordingsURL ] = useState([])
     const [ myRecordingsMetadata, setMyRecordingsMetadata ] = useState([])
-    const [ loadingComplete, setLoadingComplete] = useState(false)
-    // const [ update, setUpdate ] = useState(0)
+    // const [ loadingComplete, setLoadingComplete] = useState(false)
+    const [ deleteRecordingModal, setDeleteRecordingModal] = useState(false)
+    const [ modalOpen, setModalOpen ] = useState(false)
+    const [ loadingSpinner, setLoadingSpinner ] = useState(false)
     
     let userId, storage, listRef
 
@@ -37,7 +42,7 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
             
             Promise.all(urlPromise).then((data) => {
                 setMyRecordingsURL(data)
-                setLoadingComplete(true)
+                // setLoadingComplete(true)
             })
         })
     }
@@ -48,6 +53,23 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
             updateList()
         }
     }, [])
+
+    useEffect(()=> {
+        if (deleteRecordingModal ) {
+            setModalOpen(true)
+        } else {
+            setModalOpen(false)
+        }
+    }, [ deleteRecordingModal]);
+    
+    useEffect(() => {
+        if (modalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [modalOpen]);
+
 
     const setRecordings = () => {
         let getMeta, getURL
@@ -75,15 +97,16 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
     
     const updateList = () => {
         // console.log("update")
-        setLoadingComplete(false)
+        // setLoadingComplete(false)
         fetchRecordings()
         setRecordings()
-        setLoadingComplete(true)
+        // setLoadingComplete(true)
     }
 
     useEffect(() => {
         setTimeout(()=> {
             updateList()
+            setLoadingComplete(true)
         }, 1000)
     }, [])
 
@@ -113,12 +136,20 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
     }, [loadingComplete])
 
     const handleDeleteRecording = (recording) => {
-        const deleteRef = firebase.storage().ref(recording.meta.fullPath)
+        setDeleteRecordingModal(true)
+        selectedRecording = recording
+    }
+
+    const deleteRecording = () => {
+        setDeleteRecordingModal(false)
+        const deleteRef = firebase.storage().ref(selectedRecording.meta.fullPath)
         deleteRef.delete().then(() => {
             updateList()
+            setLoadingSpinner(true)
             const newUpdate = update + 1
             setTimeout(()=> {
                 setUpdate(newUpdate)
+                setLoadingSpinner(false)
             }, 500)
         }).catch((error) => {
             console.log(error)
@@ -133,11 +164,14 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
         <div className="recordings-container">
                 <h1>My Recordings</h1>
                 <ul>
-                    {loadingComplete && <button onClick={updateList}>Update list</button>}
+                    {loadingComplete && <button className="modalBtn skip" onClick={updateList}>Update list</button>}
                     {loadingComplete ? (
                         myRecordings.map((recording, index) => (
                             <li className="recording-card" key={index}>
-                                <div className="delete-recording-button" onClick={()=>handleDeleteRecording(recording)}><CloseIcon/></div>
+                                {loadingSpinner && selectedRecording ? 
+                                    <Loader className="delete-recording-button" type="ThreeDots" color="dodgerblue" height={30} width={30}/> :
+                                    <div className="delete-recording-button" onClick={()=>handleDeleteRecording(recording)}><CloseIcon/></div>
+                                }
                                 <h2>{recording.meta.name.substring(0, recording.meta.name.length - 4)}</h2>
                                 <span>
                                     <Moment format="MMMM Do, YYYY">{recording.meta.timeCreated}</Moment>
@@ -149,7 +183,10 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
                             </li>
                         ))
                         ): 
-                        <div>Loading</div>
+                        <div>
+                            <Loader type="ThreeDots" color="dodgerblue" height={30} width={30} />
+                            <p>Loading</p>
+                        </div>
                     }
                     {myRecordings.length === 0 && loadingComplete && (
                         <div>
@@ -159,6 +196,16 @@ export const MyRecordings = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
                     )
                     }
                 </ul>
+                {deleteRecordingModal && (
+                <div className="modal-container">
+                    <div className="modal">
+                        <h2>Are you sure?</h2>
+                        <p>This will permanently delete this recording</p>
+                        <button className="modalBtn skip" onClick={()=>setDeleteRecordingModal(false)}>Back</button>
+                        <button className="modalBtn cancel" onClick={deleteRecording}>Delete</button>
+                    </div>
+                </div>) 
+            }
         </div>
     )
 }

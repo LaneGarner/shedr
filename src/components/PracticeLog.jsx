@@ -38,11 +38,11 @@ export const PracticeLog = () => {
                     practiceTime: logs[log].practiceTime,
                     practiceTopicNotes: logs[log].practiceTopicNotes,
                     userId: logs[log].userId,
-                    });
+                    })
                 }
                 newState.sort(function compare(a, b) {
-                    var dateA = new Date(a.startDate);
-                    var dateB = new Date(b.startDate);
+                    var dateA = new Date(a.startDate)
+                    var dateB = new Date(b.startDate)
                     return dateA - dateB;
                 })
                 setLogs(newState.reverse())
@@ -68,7 +68,7 @@ export const PracticeLog = () => {
 
     const handleDeleteLog = (log) => {
         setDeleteLogModal(true)
-        selectedLog = log;
+        selectedLog = log
     }
 
     const confirmDeleteLog = () => {
@@ -125,7 +125,6 @@ export const PracticeLog = () => {
     
     return (
         <div className="logContainer">
-            {/* <LogIcon /> */}
             <h1>Practice log</h1>
             {logs.length === 0 && 
                 <div>
@@ -161,8 +160,8 @@ export const PracticeLog = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>This will remove this item from your practice log</p>
-                        <button onClick={()=>setDeleteLogModal(false)}>Cancel</button>
-                        <button onClick={confirmDeleteLog}>Delete</button>
+                        <button className="modalBtn skip" onClick={()=>setDeleteLogModal(false)}>Back</button>
+                        <button className="modalBtn cancel" onClick={confirmDeleteLog}>Delete</button>
                     </div>
                 </div>) 
             }
@@ -199,8 +198,8 @@ export const PracticeLog = () => {
                             </div>
                             }
                             <div>
-                                <button type="submit">Save</button>
-                                <button type="button" onClick={()=>setEditLogModal(false)}>Cancel</button>
+                                <button className="modalBtn cancel" type="button" onClick={()=>setEditLogModal(false)}>Cancel</button>
+                                <button className="modalBtn submit" type="submit">Save</button>
                             </div>
                         </form>
                     </div>

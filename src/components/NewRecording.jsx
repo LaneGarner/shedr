@@ -10,7 +10,7 @@ import "./NewRecording.scss"
 const recorder = new MicRecorder({ bitRate: 128 })
 let userRef
 
-export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
+export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo}) => {
     const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState } = useContext(StoreContext)
     const [ saveRecordingModal, setSaveRecordingModal ] = useState(false)
     const [ recordingTitle, setRecordingTitle ] = useState("")
@@ -107,6 +107,7 @@ export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
     
     const handleSaveRecording = (e) => {
         e.preventDefault()
+        setLoadingComplete(false)
         setSaveRecordingModal(false)
         setRecordingCreated(false)
         saveRecording()
@@ -122,6 +123,7 @@ export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
             .then(()=> {
                 const newUpdateTwo = updateTwo + 1
                 setTimeout(()=>{
+                    setLoadingComplete(true)
                     setUpdateTwo(newUpdateTwo)
                 }, 1000)
             })
@@ -217,8 +219,10 @@ export const NewRecording = ({update, setUpdate, updateTwo, setUpdateTwo}) => {
                             <h2>Save recording</h2>
                             <label htmlFor="recordingName">Title*</label><br/>
                             <input autoFocus value={recordingTitle} onChange={e=>setRecordingTitle(e.target.value)} type="text" placeholder="Name your recording" id="recordingName" required/>
-                            <button type="submit">Save</button>
-                            <button type="button" onClick={()=>setSaveRecordingModal(false)}>Cancel</button>
+                            <div style={{marginTop: "1em"}}>
+                                <button className="modalBtn cancel" type="button" onClick={()=>setSaveRecordingModal(false)}>Cancel</button>
+                                <button className="modalBtn submit" type="submit">Save</button>
+                            </div>
                         </form>
                     </div>
                 </div>) 
