@@ -8,19 +8,19 @@ import "./RepList.scss"
 let selectedRep
 
 export const RepList = () => {
-    const [ newTitle, setNewTitle ] = useState("");
-    const [ newArtist, setNewArtist ] = useState("");
-    const [ newStyle, setNewStyle ] = useState("");
-    const [ newNotes, setNewNotes ] = useState("");
-    const [ addRepModal, setAddRepModal ] = useState(false);
+    const [ newTitle, setNewTitle ] = useState("")
+    const [ newArtist, setNewArtist ] = useState("")
+    const [ newStyle, setNewStyle ] = useState("")
+    const [ newNotes, setNewNotes ] = useState("")
+    const [ addRepModal, setAddRepModal ] = useState(false)
     const [ modalOpen, setModalOpen ] = useState(false)
     const [ filterRepertoire, setFilterRepertoire ] = useState(false)
-    const [ filterSearch, setFilterSearch ] = useState("");
-    const [ rep, setRep ] = useState([]);
+    const [ filterSearch, setFilterSearch ] = useState("")
+    const [ rep, setRep ] = useState([])
     const [ deleteRepModal, setDeleteRepModal] = useState(false)
     const [ editRepModal, setEditRepModal] = useState(false)
 
-    const { user, firebase } = useContext(StoreContext)
+    const { user, firebase, setActivePage } = useContext(StoreContext)
 
     let userId
     if(user) {
@@ -28,6 +28,12 @@ export const RepList = () => {
     } else {
         userId = null
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setActivePage("none")
+    }, [])
+
 
     const confirmAddRep = (e) => {
         e.preventDefault();
@@ -194,8 +200,8 @@ export const RepList = () => {
                             <label htmlFor="title">Notes</label>
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
-                                <button type="button" className="modalBtn" onClick={()=>setAddRepModal(false)}>Cancel</button>
-                                <button type="submit" className="modalBtn">Add</button>
+                                <button type="button" className="modalBtn cancel" onClick={()=>setAddRepModal(false)}>Cancel</button>
+                                <button type="submit" className="modalBtn submit">Add</button>
                             </div>
                         </form>
                     </div>
@@ -206,8 +212,8 @@ export const RepList = () => {
                     <div className="modal">
                         <h2>Are you sure?</h2>
                         <p>This will delete this item from your repertoire list</p>
-                        <button className="modalBtn" onClick={()=>setDeleteRepModal(false)}>Cancel</button>
-                        <button className="modalBtn" onClick={confirmDeleteRep}>Delete</button>
+                        <button className="modalBtn skip" onClick={()=>setDeleteRepModal(false)}>Cancel</button>
+                        <button className="modalBtn cancel" onClick={confirmDeleteRep}>Delete</button>
                     </div>
                 </div>)
             }
@@ -225,8 +231,8 @@ export const RepList = () => {
                             <label htmlFor="title">Notes</label>
                             <input value={newNotes} onChange={e=>setNewNotes(e.target.value)} id="notes" type="text"/>
                             <div>
-                                <button type="button" className="modalBtn" onClick={()=>setEditRepModal(false)}>Cancel</button>
-                                <button type="submit" className="modalBtn">Save</button>
+                                <button type="button" className="modalBtn skip" onClick={()=>setEditRepModal(false)}>Cancel</button>
+                                <button type="submit" className="modalBtn submit">Save</button>
                             </div>
                         </form>
                     </div>

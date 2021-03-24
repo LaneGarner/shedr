@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { StoreContext } from "../Store"
 
 import MicRecorder from "mic-recorder-to-mp3"
+import { Link } from "react-router-dom"
 
 import { RecordIcon } from "../icons/RecordIcon"
 
@@ -47,10 +48,10 @@ export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUp
         // navigator.mediaDevices.getUserMedia({ audio: true },
         navigator.mediaDevices.getUserMedia({ audio: { 
             echoCancellation: false,
-            sampleRate: 96000,
+            autoGainControl: true,
+            // sampleRate: 96000,
             // sampleRate: 16000,
             // noiseSuppression: false,
-            autoGainControl: true,
             // googAutoGainControl: true,
             // mozNoiseSuppression: false,
             // mozAutoGainControl: false 
@@ -67,7 +68,7 @@ export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUp
     }
 
     const record = () => {
-        getAudio()
+        // getAudio()
         setRecordingCreated(false)
         if (isBlocked) {
             console.log('Permission Denied')
@@ -208,7 +209,8 @@ export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUp
                 <audio src={blobURL} controls="controls" />
                 <div className="record-buttons">
                     <button className="timerBtn cancelBtn" onClick={discardRecording}>Discard</button>
-                    <button className="timerBtn startBtn" onClick={()=>setSaveRecordingModal(true)}>Save</button>
+                    {user && <button className="timerBtn startBtn" onClick={()=>setSaveRecordingModal(true)}>Save</button>}
+                {!user && <Link to="/dashboard">Login or sign up for an account to save your recordings</Link>}
                 </div>
             </>
             }

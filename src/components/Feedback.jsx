@@ -22,21 +22,17 @@ export const Feedback = () => {
 
     const handleFeedbackSubmit = (e) => {
         e.preventDefault()
-        // const feedbackRef = firebase.database().ref("feedback/");
-        // const feedback = { name, email, message }
-        // feedbackRef.push(feedback);
-        
-        const data = { name, email, message };
+        const data = { name, email, message }
 
         Axios.post("https://us-central1-shedr-app.cloudfunctions.net/submit", data)
         .then(res => {
             return firebase
                 .database()
                 .ref("feedback")
-                .push(data);
+                .push(data)
         })
         .catch(error => {
-            console.log(error);
+            console.log(error)
         });
     
         

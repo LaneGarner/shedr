@@ -266,9 +266,9 @@ export const NewSessionForm = () => {
                             <TextareaAutosize style={{padding: "1em", fontSize: "16px"}} value={practiceTopicNotes.topic} onChange={setTopic} autoFocus />
                             <h2>How long are you practicing?</h2>
                             <input value={practiceTime[0]} onChange={setHrs} type="number" id="hrs" name="hrs" min="0" max="99"></input>
-                            <label for="hrs">hr</label>
+                            <label htmlFor="hrs">hr</label>
                             <input value={practiceTime[1]} onChange={setMin} type="number" id="min" name="min" min="0" max="60"></input>
-                            <label for="totalPracticeTime">min</label><br/>
+                            <label htmlFor="totalPracticeTime">min</label><br/>
                             <button className="modalBtn cancel" type="button" onClick={()=>setStartSessionModal(false)}>Cancel</button>
                             <button className="modalBtn submit" type="submit">Confirm</button>
                         </form>

@@ -22,6 +22,10 @@ export const PracticeLog = () => {
     const [ newPracticeTime, setNewPracticeTime ] = useState()
 
     useEffect(() => {
+        console.log(logs)
+    }, [logs])
+
+    useEffect(() => {
         if(user) {        
         const logsRef = firebase.database().ref('logs/' + user.uid);
         logsRef.orderByChild("startDate").on('value', (snapshot) => {
@@ -60,11 +64,11 @@ export const PracticeLog = () => {
     
     useEffect(() => {
         if (modalOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = "unset";
         }
-    }, [modalOpen]);
+    }, [modalOpen])
 
     const handleDeleteLog = (log) => {
         setDeleteLogModal(true)
@@ -77,8 +81,14 @@ export const PracticeLog = () => {
     }
 
     const handleEditLog = (log) => {
-        const startDateTime = `${log.startDate} ${log.startTime}`
-        setNewStartDate(startDateTime);
+        console.log(typeof log.startTime)
+        let startDt = log.startDate
+        startDt = startDt.replace(/['"]+/g, '')
+        let startTm = log.startTime
+        startTm = startTm.replace(/['"]+/g, '')
+        const startDateTime = `${startDt} ${startTm}`
+        // setNewStartDate(startDateTime);
+        setNewStartDate(Date.parse(startDateTime));
         setNewNotes(log.practiceTopicNotes.notes);
         setNewTopic(log.practiceTopicNotes.topic);
         setNewPracticeTime(log.practiceTime)
@@ -163,7 +173,7 @@ export const PracticeLog = () => {
                         <button className="modalBtn skip" onClick={()=>setDeleteLogModal(false)}>Back</button>
                         <button className="modalBtn cancel" onClick={confirmDeleteLog}>Delete</button>
                     </div>
-                </div>) 
+                </div> ) 
             }
             {editLogModal && (
                 <div className="modal-container">
@@ -173,13 +183,14 @@ export const PracticeLog = () => {
                             <div>
                                 <label htmlFor="datepicker">Start time</label><br/>
                                     <DatePicker
-                                        selected={new Date(newStartDate)}
-                                        onChange={(e) => setNewStartDate(e)}
+                                        selected={newStartDate}
+                                        onChange={setNewStartDate}
                                         id="datepicker"
                                         showTimeSelect
                                         timeIntervals={1}
                                         dateFormat="Pp"
-                                    /><br />
+                                    />
+                                    <br/>
                                     <div className="pr-time-input">
                                         <h4>Total practice time:</h4>
                                         <input value={newPracticeTime[0]} onChange={setNewHrs} type="number" id="newHrs" name="newHrs" min="0" max="99"></input>
