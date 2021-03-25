@@ -19,8 +19,10 @@ export const VegBurg = () => {
                 <Link onClick={closeMenu} className="menu-item" to="/dashboard">Login / Sign up</Link> :
                 <Link onClick={logoutBtn} className="menu-item" to="/">Log Out</Link>
             }
-            <Link onClick={closeMenu} className="menu-item" to="/settings">Settings</Link>
+            <Link onClick={closeMenu} className="menu-item mobile-menu" to="/dashboard">Dashboard</Link>
+            <Link onClick={closeMenu} className="menu-item mobile-menu" to="/log">Practice Log</Link>
             <Link onClick={closeMenu} className="menu-item" to="/about">About</Link>
+            <Link onClick={closeMenu} className="menu-item" to="/settings">Settings</Link>
             <Link onClick={closeMenu} className="menu-item" to="/feedback">Feedback</Link>
         </div>
     )

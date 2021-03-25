@@ -13,7 +13,7 @@ Moment.globalLocal = true
 
 let selectedRecording
 
-export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo}) => {
+export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo, setRecordingNames}) => {
     const { firebase, user } = useContext(StoreContext)
     const [ myRecordings, setMyRecordings ] = useState([])
     const [ myRecordingsURL, setMyRecordingsURL ] = useState([])
@@ -46,6 +46,16 @@ export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUp
             })
         })
     }
+
+    useEffect(()=> {
+        const names = []
+        if (loadingComplete) {
+            myRecordings.forEach((recording) => {
+                names.push(recording.meta.name)
+            })
+            setRecordingNames(names)
+        }
+    }, [myRecordings])
     
     useEffect(() => {
         if(user) {
