@@ -43,9 +43,9 @@ export const FlatGuitarist = () => {
               <path id="Path_34" data-name="Path 34" d="M2723.279,4839.587c-70.691,139.244-135.5,138.385-191.2,110.109s-81.193-73.263-10.5-212.507,254.655-323.122,310.353-294.846S2793.97,4700.342,2723.279,4839.587Z" fill="#1c90ff"/>
               <path id="Path_35" data-name="Path 35" d="M2283.493,5061.979c53.874,110.075,109.008,108.054,157.62,84.262s72.3-60.349,18.421-170.423-202.05-253.57-250.663-229.777S2229.618,4951.9,2283.493,5061.979Z" fill="#1c90ff"/>
               <path id="Path_36" data-name="Path 36" d="M2305.055,4682.833c43.543,88.965,88.1,87.332,127.393,68.1s58.431-48.775,14.888-137.74-163.3-204.941-202.592-185.711S2261.512,4593.868,2305.055,4682.833Z" fill="#1c90ff"/>
-              <path id="Path_37" data-name="Path 37" d="M2340.156,4596.648s116.872,154.573,165.883,392.086,33.93,448.637,33.93,448.637" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
-              <path id="Path_38" data-name="Path 38" d="M2687,4653.2s-154.573,196.043-196.043,497.648-45.241,320.455-45.241,320.455" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
-              <path id="Path_39" data-name="Path 39" d="M2310,4905.793s218.663,278.984,218.663,591.9" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
+              <path id="Path_37" data-name="Path 37" d="M2340.156,4596.648s116.872,154.573,165.883,392.086,33.93,448.637,33.93,448.637" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
+              <path id="Path_38" data-name="Path 38" d="M2687,4653.2s-154.573,196.043-196.043,497.648-45.241,320.455-45.241,320.455" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
+              <path id="Path_39" data-name="Path 39" d="M2310,4905.793s218.663,278.984,218.663,591.9" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
             </g>
             <path id="Path_40" data-name="Path 40" d="M2694.542,5503.347c0,111.4-86.928,201.7-194.158,201.7s-194.158-90.3-194.158-201.7,92.582-122.527,199.813-122.527S2694.542,5391.952,2694.542,5503.347Z" fill="orange"/>
           </g>
@@ -54,9 +54,9 @@ export const FlatGuitarist = () => {
               <path id="Path_41" data-name="Path 41" d="M6312.8,3643.639c-35.731,70.38-68.488,69.946-96.641,55.654s-41.038-37.03-5.307-107.411,128.714-163.32,156.866-149.028S6348.532,3573.258,6312.8,3643.639Z" fill="#1c90ff"/>
               <path id="Path_42" data-name="Path 42" d="M6090.513,3756.046c27.231,55.637,55.1,54.616,79.669,42.59s36.542-30.5,9.311-86.14-102.125-128.165-126.7-116.139S6063.283,3700.41,6090.513,3756.046Z" fill="#1c90ff"/>
               <path id="Path_43" data-name="Path 43" d="M6101.412,3564.408c22.009,44.967,44.531,44.142,64.39,34.422s29.534-24.653,7.526-69.62-82.541-103.587-102.4-93.867S6079.4,3519.441,6101.412,3564.408Z" fill="#1c90ff"/>
-              <path id="Path_44" data-name="Path 44" d="M6119.154,3520.847s59.072,78.128,83.845,198.178,17.15,226.762,17.15,226.762" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
-              <path id="Path_45" data-name="Path 45" d="M6294.466,3549.43s-78.128,99.089-99.09,251.534-22.866,161.973-22.866,161.973" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
-              <path id="Path_46" data-name="Path 46" d="M6103.91,3677.1s110.522,141.011,110.522,299.173" fill="none" stroke="#1f2a64" stroke-miterlimit="10" stroke-width="6"/>
+              <path id="Path_44" data-name="Path 44" d="M6119.154,3520.847s59.072,78.128,83.845,198.178,17.15,226.762,17.15,226.762" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
+              <path id="Path_45" data-name="Path 45" d="M6294.466,3549.43s-78.128,99.089-99.09,251.534-22.866,161.973-22.866,161.973" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
+              <path id="Path_46" data-name="Path 46" d="M6103.91,3677.1s110.522,141.011,110.522,299.173" fill="none" stroke="#1f2a64" strokeMiterlimit="10" strokeWidth="6"/>
             </g>
             <path id="Path_47" data-name="Path 47" d="M6298.277,3979.134c0,56.3-43.937,101.948-98.137,101.948S6102,4035.438,6102,3979.134s46.795-61.931,101-61.931S6298.277,3922.83,6298.277,3979.134Z" fill="orange"/>
           </g>

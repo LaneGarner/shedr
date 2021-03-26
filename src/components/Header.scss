@@ -48,6 +48,9 @@ header {
         transform: scale(0);
         transition: transform ease-out 150ms, top ease-out 150ms;
         transition-delay: 100ms;
+        @media (max-width: 700px) {
+            display: none;
+        }
     }
     a[tooltip]:hover::before {
         transform: scale(1);

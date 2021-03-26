@@ -145,7 +145,7 @@ export const FlatDrummer = () => {
         <path id="Path_151" data-name="Path 151" d="M1914.5,457.94l-75.7,14.981c-2.8.561-2.1,2.862.9,2.862h164.9c2.9,0,3.6-2.3.9-2.862l-75.7-14.981A41.261,41.261,0,0,0,1914.5,457.94Z" transform="translate(0 11.517)" fill="#e3b764"/>
       </g>
       <path id="Path_152" data-name="Path 152" d="M1905.2,803.2l-55.3,35.6a2.01,2.01,0,0,0,1.1,3.7h143a2.01,2.01,0,0,0,1.1-3.7l-55.3-35.6A31.892,31.892,0,0,0,1905.2,803.2Z" fill="#2f2c2b"/>
-      <path id="Path_153" data-name="Path 153" d="M1926.8,448.4h-9.4a2.9,2.9,0,0,1-2.9-2.9v-4.4a2.9,2.9,0,0,1,2.9-2.9h9.4a2.9,2.9,0,0,1,2.9,2.9v4.4A2.9,2.9,0,0,1,1926.8,448.4Z" transform="translate(0.45 20.342)" fill="#2f2c2b" stroke="#2f2c2b" stroke-miterlimit="10" stroke-width="1.096"/>
+      <path id="Path_153" data-name="Path 153" d="M1926.8,448.4h-9.4a2.9,2.9,0,0,1-2.9-2.9v-4.4a2.9,2.9,0,0,1,2.9-2.9h9.4a2.9,2.9,0,0,1,2.9,2.9v4.4A2.9,2.9,0,0,1,1926.8,448.4Z" transform="translate(0.45 20.342)" fill="#2f2c2b" stroke="#2f2c2b" strokeMiterlimit="10" strokeWidth="1.096"/>
     </g>
     <g id="Group_207" data-name="Group 207">
       <g id="Group_206" data-name="Group 206">
@@ -188,7 +188,7 @@ export const FlatDrummer = () => {
           <path id="Path_148-2" data-name="Path 148" d="M1920.9,405.281v13.743c0,.187-.1.37,0,.557v.025a24.534,24.534,0,0,0,3.3,0V405.862c0-.187.1-.37,0-.557v-.025a24.544,24.544,0,0,0-3.3,0Z" transform="translate(-1920.856 -405.225)" fill="#2f2c2b"/>
         </g>
       </g>
-      <path id="Path_153-2" data-name="Path 153" d="M1926.8,448.4h-9.4a2.9,2.9,0,0,1-2.9-2.9v-4.4a2.9,2.9,0,0,1,2.9-2.9h9.4a2.9,2.9,0,0,1,2.9,2.9v4.4A2.9,2.9,0,0,1,1926.8,448.4Z" transform="translate(0.45 20.342)" fill="#2f2c2b" stroke="#2f2c2b" stroke-miterlimit="10" stroke-width="1.096"/>
+      <path id="Path_153-2" data-name="Path 153" d="M1926.8,448.4h-9.4a2.9,2.9,0,0,1-2.9-2.9v-4.4a2.9,2.9,0,0,1,2.9-2.9h9.4a2.9,2.9,0,0,1,2.9,2.9v4.4A2.9,2.9,0,0,1,1926.8,448.4Z" transform="translate(0.45 20.342)" fill="#2f2c2b" stroke="#2f2c2b" strokeMiterlimit="10" strokeWidth="1.096"/>
     </g>
   </g>
 </svg>

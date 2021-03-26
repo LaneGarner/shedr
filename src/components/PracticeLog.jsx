@@ -22,10 +22,6 @@ export const PracticeLog = () => {
     const [ newPracticeTime, setNewPracticeTime ] = useState()
 
     useEffect(() => {
-        console.log(logs)
-    }, [logs])
-
-    useEffect(() => {
         if(user) {        
         const logsRef = firebase.database().ref('logs/' + user.uid);
         logsRef.orderByChild("startDate").on('value', (snapshot) => {
@@ -81,7 +77,6 @@ export const PracticeLog = () => {
     }
 
     const handleEditLog = (log) => {
-        console.log(typeof log.startTime)
         let startDt = log.startDate
         startDt = startDt.replace(/['"]+/g, '')
         let startTm = log.startTime

@@ -4,16 +4,14 @@ import { StoreContext } from "../Store"
 import MicRecorder from "mic-recorder-to-mp3"
 import { Link } from "react-router-dom"
 
-import { RecordIcon } from "../icons/RecordIcon"
-
 import "./NewRecording.scss"
 import { RecordingIcon } from "./RecordingIcon"
 
 const recorder = new MicRecorder({ bitRate: 128 })
 let userRef
 
-export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo, recordingNames }) => {
-    const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, setIsBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState, } = useContext(StoreContext)
+export const NewRecording = ({setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo, recordingNames }) => {
+    const { isRecording, setIsRecording, blobURL, setBlobURL, isBlocked, recordingCreated, setRecordingCreated, firebase, user, recordTimerStarted, setRecordTimerStart, setRecordTimerRunning, recordTimerPaused, setRecordTimerPaused, recordTInterval, setRecordTInterval, recordTimer, setRecordTimer, recordDifferenceState, setRecordDifferenceState, } = useContext(StoreContext)
     const [ recordingTitle, setRecordingTitle ] = useState("")
     const [ recordingFile, setRecordingFile] = useState("")
     const [ saveRecordingModal, setSaveRecordingModal ] = useState(false)
@@ -218,7 +216,7 @@ export const NewRecording = ({loadingComplete, setLoadingComplete, update, setUp
     
     return (
         <div className="record-container">
-            {!recordingCreated && <RecordingIcon isRecording={isRecording} stopRecording={stopRecording} isRecording={isRecording} recordTimer={recordTimer} record={record}/>}
+            {!recordingCreated && <RecordingIcon isRecording={isRecording} stopRecording={stopRecording} recordTimer={recordTimer} record={record}/>}
             {recordingCreated &&
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <h1 style={{paddingBottom: ".5em"}}>Preview Recording</h1>

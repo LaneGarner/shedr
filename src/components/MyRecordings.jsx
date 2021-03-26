@@ -13,7 +13,7 @@ Moment.globalLocal = true
 
 let selectedRecording
 
-export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setUpdateTwo, setRecordingNames}) => {
+export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUpdate, updateTwo, setRecordingNames}) => {
     const { firebase, user } = useContext(StoreContext)
     const [ myRecordings, setMyRecordings ] = useState([])
     const [ myRecordingsURL, setMyRecordingsURL ] = useState([])
@@ -70,15 +70,15 @@ export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUp
         } else {
             setModalOpen(false)
         }
-    }, [ deleteRecordingModal]);
+    }, [ deleteRecordingModal])
     
     useEffect(() => {
         if (modalOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'
         } else {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = 'unset'
         }
-    }, [modalOpen]);
+    }, [modalOpen])
 
 
     const setRecordings = () => {
@@ -106,11 +106,8 @@ export const MyRecordings = ({loadingComplete, setLoadingComplete, update, setUp
     }
     
     const updateList = () => {
-        // console.log("update")
-        // setLoadingComplete(false)
         fetchRecordings()
         setRecordings()
-        // setLoadingComplete(true)
     }
 
     useEffect(() => {

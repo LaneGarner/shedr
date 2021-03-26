@@ -17,15 +17,15 @@ export const Header = () => {
         <>
         <header style={{zIndex: 1000}}>
             <nav>
-                <Link tooltip="Dashboard" onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
+                <Link aria-label="Dashboard" tooltip="Dashboard" onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
                     <HomeIcon hover={hover} activePage={activePage} />
                 </Link>
-                <Link tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
+                <Link aria-label="Practice Log" tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
                     <LogIconHeader hover={hover} activePage={activePage} />
                 </Link>
             </nav>
 
-                <Link className="header-icon" onClick={closeMenu} to="/">
+                <Link aria-label="Home" className="header-icon" onClick={closeMenu} to="/">
                     <LogoIconSmall />
                 </Link>
 

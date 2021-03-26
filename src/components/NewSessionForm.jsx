@@ -50,7 +50,8 @@ export const NewSessionForm = () => {
         userId = null
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         setModalOpen(false)
         document.body.style.overflow = 'unset'
         if (user) {
@@ -70,8 +71,8 @@ export const NewSessionForm = () => {
             const itemsRef = firebase.database().ref('logs/' + userId);
             const makeLog = {userId, practiceTopicNotes, startDate, practiceTime: pTime }
             itemsRef.push(makeLog);
+            // history.push("/log");
             cancelForm()
-            history.push("/log");
         } else {
             history.push("/user");
         }
@@ -85,9 +86,10 @@ export const NewSessionForm = () => {
     
     const cancelForm = () => { 
         setActiveSession(false)
-        setStartDate(new Date())
-        setPracticeTime({hrs: "00", min: "00", sec: "00"})
-        setPracticeTopicNotes({topic: "", notes: ""})
+        setSubmitSessionModal(false)
+            setStartDate(new Date())
+            setPracticeTime({hrs: "00", min: "00", sec: "00"})
+            setPracticeTopicNotes({topic: "", notes: ""})
     }
 
     const setHrs = (e) => {

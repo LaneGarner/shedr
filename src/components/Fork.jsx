@@ -602,7 +602,6 @@ export const Fork = () => {
             pitch.getPitch(function(err, frequency) {
                 if (frequency) {
                     setFreq(frequency)
-                    console.log(frequency)
                 } 
                 if (tunerMounted) {
                     getPitch();
