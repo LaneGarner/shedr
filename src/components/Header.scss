@@ -8,7 +8,7 @@ header {
     padding-bottom: 5em;
 
     padding-left: 1em;
-    padding-right: 2em;
+    padding-right: 1em;
     height: 7.7em;
     position: fixed;
     top: 0;
@@ -16,21 +16,21 @@ header {
     width: 100%;
     z-index: 1000;
     nav {
-        display: flex;
-        justify-content: space-around;
-        max-width: 20em;
-        min-width: 8em;
+        // display: flex;
+        // justify-content: space-around;
+        // max-width: 20em;
+        // min-width: 8em;
         @media (max-width: 500px) {
             display: none;
         } 
     }
-    .burger-button {
-        position: fixed;
-        width: 36px;
-        height: 30px;
-        top: 2.1em;
-        right: 3em;
-    }
+    // .burger-button {
+    //     position: fixed;
+    //     width: 36px;
+    //     height: 30px;
+    //     // top: 2.1em;
+    //     right: em;
+    // }
     a[tooltip] {
         position: relative;
     }
@@ -89,11 +89,11 @@ header {
     flex-direction: column;
     align-items: center;
     // width: 10em;
-    // div {
-    //     margin: .2em 0 .5em 0;
-    //     padding: 0;
-    //     position: fixed;
-    // }
+    div {
+        margin: .2em 0 .5em 0;
+        padding: 0;
+        position: fixed;
+    }
 }
 
 .header-logo {
