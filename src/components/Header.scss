@@ -4,8 +4,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 3em;
+    padding-bottom: 5em;
+
     padding-left: 1em;
     padding-right: 2em;
     height: 7.7em;
@@ -93,4 +94,8 @@ header {
     //     padding: 0;
     //     position: fixed;
     // }
+}
+
+.header-logo {
+    top: 10px;
 }

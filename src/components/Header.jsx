@@ -25,7 +25,7 @@ export const Header = () => {
                 </Link> */}
             </nav>
 
-                <Link aria-label="Home" className="header-icon" onClick={closeMenu} to="/">
+                <Link aria-label="Home" className="header-logo header-icon" onClick={closeMenu} to="/">
                     <LogoIconSmall />
                 </Link>
 
