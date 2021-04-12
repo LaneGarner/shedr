@@ -30,7 +30,7 @@ export default ({ children }) => {
     const [ root, setRoot ] = useState("C")
     const [ chordType, setChordType ] = useState("minor ninth")
 
-    const [ activeSession, setActiveSession ] = useState()
+    const [ activeSession, setActiveSession ] = useState(false)
     const [ startDate, setStartDate ] = useState(Date.now());
 
     const [ timerStarted, setTimerStart ] = useState(false)

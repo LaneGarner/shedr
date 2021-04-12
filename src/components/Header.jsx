@@ -20,9 +20,9 @@ export const Header = () => {
                 <Link aria-label="Dashboard" tooltip="Dashboard" onMouseEnter={()=>setHover("dashboard")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/dashboard">
                     <HomeIcon hover={hover} activePage={activePage} />
                 </Link>
-                <Link aria-label="Practice Log" tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
+                {/* <Link aria-label="Practice Log" tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
                     <LogIconHeader hover={hover} activePage={activePage} />
-                </Link>
+                </Link> */}
             </nav>
 
                 <Link aria-label="Home" className="header-icon" onClick={closeMenu} to="/">

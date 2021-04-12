@@ -44,3 +44,9 @@
     font-weight: 100;
     font-size: 3em;
 }
+
+.mobile-menu {
+    @media (max-width: 500px) {
+        display: none;
+    }
+}

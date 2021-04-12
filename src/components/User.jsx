@@ -59,12 +59,12 @@ export const User = () => {
                             <h2>Practice stats</h2>
                         </div>
                     </Link>
-                    <Link to="/record">
+                    {/* <Link to="/record">
                         <div className="card">
                             <RecordIconLarge />
                             <h2>Record</h2>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to="/metdrone">
                         <div className="card">
                             <MetDroneIconLarge />

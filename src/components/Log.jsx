@@ -8,7 +8,7 @@ import "./Log.scss"
 
 export const Log = () => {
     const [ newLogOpen, setNewLogOpen ] = useState(false)
-    const { setActivePage } = useContext(StoreContext)
+    const { setActivePage, timerRunning } = useContext(StoreContext)
     
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -18,7 +18,7 @@ export const Log = () => {
     return (
         <div className="log-container">
             <h1>New Practice Session</h1>
-            {newLogOpen ? (
+            {newLogOpen || timerRunning ? (
                 <NewSessionForm />
             ) :
             <div className="logStart startBtn timerBtn" onClick={()=>setNewLogOpen(true)}>New Session</div>

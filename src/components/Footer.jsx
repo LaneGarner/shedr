@@ -2,7 +2,8 @@ import { useContext } from "react"
 import { StoreContext } from "../Store"
 import { Link } from "react-router-dom"
 
-import { RecordIcon } from "../icons/RecordIcon"
+// import { RecordIcon } from "../icons/RecordIcon"
+import { LogIconHeader } from "../icons/LogIconHeader"
 import { MetDroneIcon } from "../icons/MetDroneIcon"
 import { ForkIcon } from "../icons/ForkIcon"
 
@@ -14,8 +15,11 @@ export const Footer = () => {
     return (
         <footer>
             <div className="footer-icon">
-                <Link aria-label="Record" tooltip="Record" onMouseEnter={()=>setHover("record")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="record">
+                {/* <Link aria-label="Record" tooltip="Record" onMouseEnter={()=>setHover("record")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="record">
                     <RecordIcon hover={hover} width="27.181" height="40.772" isRecording={isRecording} activePage={activePage} />
+                </Link> */}
+                <Link aria-label="Practice Log" tooltip="Log" onMouseEnter={()=>setHover("log")} onMouseLeave={()=>setHover("none")} onClick={closeMenu} to="/log">
+                    <LogIconHeader hover={hover} activePage={activePage} />
                 </Link>
             </div>
             <div className="footer-icon">
